@@ -54,3 +54,6 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+defaults:
+  - post:
+      date: YYYY-MM-DD HH:MM:SS
