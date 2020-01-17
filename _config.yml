@@ -57,3 +57,5 @@ plugins:
 defaults:
   - post:
       date: YYYY-MM-DD HH:MM:SS
+
+paginate: 5
