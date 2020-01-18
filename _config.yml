@@ -17,15 +17,11 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-
-title: ImJcker
+author: 百年孤独
+title: imjcker
 email: helloalanturing@icloud.com
 description: >- # this means to ignore newlines until "baseurl:"
-  全栈工程师,
-  Java劝退师,
-  大数据专家,
-  人工智能专家,
-  单身万岁!!!
+  全栈工程师,大数据,人工智能专家,单身万岁!!!
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "http://blog.imjcker.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: helloalanturing
@@ -35,6 +31,9 @@ github_username:  imjcker
 theme: minima
 plugins:
   - jekyll-feed
+
+disqus:
+  shortname: imjcker
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -60,3 +59,11 @@ defaults:
       date: YYYY-MM-DD HH:MM:SS
 
 paginate: 5
+paginate_path: /page:num
+
+show_excerpts: true
+#excerpt_separator: \n\n
+
+# 自定义变量
+imjcker:
+  menu: 首页
