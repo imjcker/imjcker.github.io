@@ -19,19 +19,19 @@ permalink: /about/
 
 ### 技术特长
 
-1. 熟悉JAVA语言,主流开源框架(SpringMVC, Spring boot, Mybatis, Struts2,  JPA等)
+1. 熟悉JAVA语言,主流开源框架(SpringMVC, Spring boot, Mybatis, Struts2, JPA等)
 2. 前端技术: JQuery, easyUI, bootstrap3,4, Vue.
-3. 其它技术：Nginx, freemarker, Linux, 全文检索，OCR识别等.
-4. 熟悉MySQL、Oracle, Sybase, H2, 了解redis, memcache的使用.
+3. 其它技术：Nginx, freemarker, Linux, shell, elasticsearch, redis, mongodb, kafka, zookeeper, rabbitmq, flink, OCR识别.
+4. 熟悉MySQL、Oracle, Sybase, H2, memcache的使用.
 5. 主要使用中间件有：tomcat、weblogic、websphere.
 
 ---
 
-
-
 ### 工作经历
 
-2018/04 - 至今 同方赛威讯信息技术有限公司
+2019/04 - 至今 亿字节
+
+2018/04 - 2019/04 同方赛威讯信息技术有限公司
 
 2015/12 - 2018/04 文思海辉技术有限公司
 
@@ -39,18 +39,25 @@ permalink: /about/
 
 ---
 
-
-
 ### 项目经验
 
+#### 2019/04 - 至今 统一接口平台
 
+软件环境： Linux 
 
-#### 2018/10 - 至今 澳门综合办案系统
+硬件环境：CentOS 6，
+
+开发工具：Idea、webstorm, 
+
+项目描述： 统一接口平台是一套面向中小型商业银行和金融机构的高并发的接口管理系统.  
+主要使用技术：spring boot，jpa，spring mvc，mybatis, vue，MySQL，rabbitmq, kafka, zookeeper, elasticsearch, redis, mongodb, flink
+
+责任职责：DevOps
+---  
+#### 2018/10 - 2019/04 澳门综合办案系统
 
 <p style="color:red">涉及敏感内容，不展示</p> 
-
-
-
+---  
 #### 2018/07 - 2018/10 刑拘监督系统
 
 软件环境： Windows Server 2008
@@ -64,7 +71,7 @@ permalink: /about/
 责任职责：开发、设计、运维工程师。
 
 
-
+---
 #### 2018/06 - 2018/09 类案监督系统 
 
 软件环境： Windows Server 2008
@@ -77,7 +84,7 @@ permalink: /about/
 
 责任职责：开发、设计、运维工程师。
 
-
+---
 
 #### 2018/04 - 2018/06 远程送达系统
 
@@ -91,7 +98,7 @@ permalink: /about/
 
 责任职责：开发、设计、运维工程师。
 
-
+---
 
 #### 2018/02 – 至今 开源Java博客
 
@@ -105,7 +112,7 @@ permalink: /about/
 
 责任职责：开发、设计、运维工程师。
 
-
+---
 
 #### 2018/02 – 2018/04  天府银行流程银行系统
 
@@ -125,7 +132,7 @@ permalink: /about/
 
 3. 负责部分文档的编写工作
 
-
+---
 
 #### 2018/01 – 2018/02  攀枝花商业银行国际收支申报系统
 
@@ -145,7 +152,7 @@ permalink: /about/
 
 3. 负责部分文档的编写工作
 
-
+---
 
 #### 2017/07 – 2017/12  北部湾银行国结系统升级改造
 
@@ -167,7 +174,7 @@ permalink: /about/
 2.  负责国结系统接口报文解析及形成工作
 3. 负责部分文档的编写工作
 
-
+---
 
 #### 2016/10 – 2017/07  北部湾银行跨境电商结算平台
 
@@ -187,7 +194,7 @@ permalink: /about/
 
 2.  负责部分文档的编写工作
 
-
+---
 
 **2016/01 – 2016/08  广西农信国际结算系统**
 

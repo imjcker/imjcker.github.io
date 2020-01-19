@@ -24,6 +24,10 @@ layout: default
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
   </div>
+  <div class="row">
+    <a style="float: left;" href="{{page.previous.url}}">上一篇: {{page.previous.title}}</a>
+    <a style="float: right;" href="{{page.next.url}}">下一篇: {{page.next.title}}</a>
+  </div>
 
   {%- if site.disqus.shortname -%}
     {%- include disqus_comments.html -%}
