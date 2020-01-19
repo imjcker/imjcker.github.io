@@ -1,6 +1,9 @@
 ---
-layout: post
-title: Jrebel激活服务
+layout: post  
+title: Jrebel激活服务  
+category: 工具
+tags:
+  - jrebel
 ---
 
 This application still working today, but for then reason of copyright, I was not allow to publish this post, this is a way to work around if possible. LMAO...😂

@@ -21,11 +21,13 @@
 
       <div class="footer-col footer-col-3">
         <ul class="list-group list-group-flush">
-          {% for post in paginator.posts %}
-          <li class="list-group-item">
-            <a href="{{ post.url }}">{{ post.title }}</a>
-          </li>
-          {% endfor %}
+          {%- if page.categories.size > 0 -%}
+            {% for cat in page.categories %}
+              <li class="list-group-item">
+                <a href="{{ post.url }}">{{ cat }}</a>
+              </li>
+            {% endfor %}
+          {%- endif -%}
         </ul>
       </div>
 
@@ -38,6 +40,3 @@
   </div>
 
 </footer>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

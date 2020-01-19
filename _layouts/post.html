@@ -12,7 +12,13 @@ layout: default
       </time>
       {%- if page.author -%}
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
-      {%- endif -%}</p>
+      {%- endif -%}
+      {%- if page.categories.size > 0 -%}
+        {%- for category in page.categories -%}
+          <button type="button" class="btn btn-sm btn-outline-success" disabled>{{category}}</button>
+        {%- endfor -%}
+      {%- endif -%}
+    </p>
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
