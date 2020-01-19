@@ -3,8 +3,7 @@ layout: post
 title: Jrebel激活服务
 ---
 
-## 2020-01-10
-this application still working today, but for then reason of copyright, I was not allow to publish this post, this is a way to work around if possible. LMAO...😂
+This application still working today, but for then reason of copyright, I was not allow to publish this post, this is a way to work around if possible. LMAO...😂
 
 **enjoy::)** 
 

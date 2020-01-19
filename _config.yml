@@ -31,12 +31,13 @@ github_username:  imjcker
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-paginate
 
 disqus:
   shortname: imjcker
 
-#paginate: 5
-#paginate_path: /page:num
+# 分页
+paginate: 3
 
 show_excerpts: true
 #excerpt_separator: \n\n

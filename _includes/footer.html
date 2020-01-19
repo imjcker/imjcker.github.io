@@ -21,7 +21,7 @@
 
       <div class="footer-col footer-col-3">
         <ul class="list-group list-group-flush">
-          {% for post in site.posts %}
+          {% for post in paginator.posts %}
           <li class="list-group-item">
             <a href="{{ post.url }}">{{ post.title }}</a>
           </li>
@@ -30,7 +30,7 @@
       </div>
 
       <div class="footer-col footer-col-2">
-        <img src="/assets/qrcode_258.jpg" alt="wechat" style="width: 72px;height: 72px;">
+        <img src="/assets/qrcode_258.jpg" alt="wechat" style="width: 90px;height: 90px;">
         <p>{{- site.description | escape -}}</p>
       </div>
     </div>

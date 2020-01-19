@@ -4,10 +4,9 @@ title: sys spring boot starter
 date: 2016-06-02
 ---
 
-## sys-spring-boot-starter
+UI动态展示系统参数, 基于spring boot，bootstrap4  
+run as a stand alone app or a dependency of any spring boot based application.  
 
-UI动态展示系统参数, 基于spring boot，bootstrap4
-run as a stand alone app or a dependency of any spring boot based application.
 ![界面截图](https://img-blog.csdnimg.cn/2020010921574533.gif)
 
 ## run with docker
@@ -21,3 +20,5 @@ sudo docker run -d --name monitor -p 8081:8080 imjcker/sys-spring-boot-starter:l
 ```shell
 git clone https://github.com/imjcker/sys-spring-boot-starter
 ```
+## 工具推荐
+如果你需要一款全面的服务器监视系统，推荐你使用[netdata](https://netdata.cloud)
