@@ -25,8 +25,20 @@ layout: default
     {{ content }}
   </div>
   <div class="row">
-    <a style="float: left;" href="{{page.previous.url}}">上一篇: {{page.previous.title}}</a>
-    <a style="float: right;" href="{{page.next.url}}">下一篇: {{page.next.title}}</a>
+
+      {%- if page.next -%}
+        <a style="float: right;" href="{{page.next.url}}">上一篇: {{page.next.title}}</a>
+      {%- else -%}
+        没了
+      {%- endif -%}
+
+      {%- if page.previous -%}
+        <a style="float: left;" href="{{page.previous.url}}">下一篇: {{page.previous.title}}</a>
+      {%- else -%}
+        没了
+      {%- endif -%}
+
+
   </div>
 
   {%- if site.disqus.shortname -%}

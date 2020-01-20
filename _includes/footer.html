@@ -21,11 +21,9 @@
 
       <div class="footer-col footer-col-3">
         <ul class="list-group list-group-flush">
-          {%- if page.categories.size > 0 -%}
-            {% for cat in page.categories %}
-              <li class="list-group-item">
-                <a href="{{ post.url }}">{{ cat }}</a>
-              </li>
+          {%- if page.tags.size > 0 -%}
+            {% for tag in page.tags %}
+              <li>{{tag}}</li>
             {% endfor %}
           {%- endif -%}
         </ul>
