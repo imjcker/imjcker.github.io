@@ -11,8 +11,8 @@ layout: default
 
   {%- if site.posts.size > 0 -%}
       {%- for post in paginator.posts -%}
-      <div class="col-md-3">
-      <a href="{{ post.url | relative_url }}" class="list-group-item list-group-item-action" style="height: 270px; margin-top: 5px;">
+      <div class="col-md-{{site.style.home.col}}">
+      <a href="{{ post.url | relative_url }}" class="list-group-item list-group-item-action" style="height: 300px; margin-top: 5px;">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">{{ post.title | escape }}</h5>
           {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}

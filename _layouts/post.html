@@ -24,21 +24,23 @@ layout: default
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
   </div>
-  <div class="row">
-
-      {%- if page.next -%}
-        <a style="float: right;" href="{{page.next.url}}">上一篇: {{page.next.title}}</a>
-      {%- else -%}
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-4">
+        {%- if page.next -%}
+        <a href="{{page.next.url}}">上一篇: {{page.next.title}}</a>
+        {%- else -%}
         没了
-      {%- endif -%}
-
-      {%- if page.previous -%}
-        <a style="float: left;" href="{{page.previous.url}}">下一篇: {{page.previous.title}}</a>
-      {%- else -%}
+        {%- endif -%}
+      </div>
+      <div class="col-4">
+        {%- if page.previous -%}
+        <a href="{{page.previous.url}}">下一篇: {{page.previous.title}}</a>
+        {%- else -%}
         没了
-      {%- endif -%}
-
-
+        {%- endif -%}
+      </div>
+    </div>
   </div>
 
   {%- if site.disqus.shortname -%}
