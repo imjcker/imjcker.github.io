@@ -16,12 +16,11 @@ plugins:
 
 disqus:
   shortname: imjcker
-
 # 分页
 paginate: 6
 
 show_excerpts: true
-
+highlighter: rouge
 # 自定义变量
 imjcker:
   menu: 首页
