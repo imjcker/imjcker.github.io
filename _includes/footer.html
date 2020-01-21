@@ -1,35 +1,53 @@
-<footer class="site-footer h-card">
-  <data class="u-url" href="{{ "/" | relative_url }}"></data>
-  <div class="wrapper">
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <p class="p-name">
-          {%- if site.author -%}
-          {{ site.author | escape }}
-          {%- else -%}
-          {{ site.title | escape }}
-          {%- endif -%}
-        </p>
-        {%- include social.html -%}
-        <ul class="contact-list">
-            {%- if site.email -%}
-            <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-            {%- endif -%}
-        </ul>
-      </div>
-      <div class="footer-col footer-col-3">
-        <ul class="list-group list-group-flush">
-          {%- if page.tags.size > 0 -%}
-            {% for tag in page.tags %}
-              <li>{{tag}}</li>
-            {% endfor %}
-          {%- endif -%}
-        </ul>
-      </div>
-      <div class="footer-col footer-col-2">
-        <img src="/assets/qrcode_258.jpg" alt="wechat" style="width: 90px;height: 90px;">
-        <p>{{- site.description | escape -}}</p>
-      </div>
+<footer class="footer" style="background-color: #f5f5f5;">
+    <div class="container">
+        <data class="u-url" href="{{ "/" | relative_url }}"></data>
+        <div class="row">
+            <div class="col-md-4">
+                <p class="p-name">
+                    {%- if site.author -%}
+                    {{ site.author | escape }}
+                    {%- else -%}
+                    {{ site.title | escape }}
+                    {%- endif -%}
+                </p>
+                <ul class="list-group list-group-flush">
+                    {%- if site.social.email -%}
+                    <li><a class="u-email" href="mailto:{{ site.social.email }}">{{ site.social.email }}</a></li>
+                    {%- endif -%}
+                    {%- if site.social.qq -%}
+                    <li><a class="u-email" href="mailto:{{ site.social.email }}">{{ site.social.qq }}</a></li>
+                    {%- endif -%}
+                    {%- if site.social.wechat -%}
+                    <li><a class="u-email" href="mailto:{{ site.social.email }}">{{ site.social.wechat }}</a></li>
+                    {%- endif -%}
+                    {%- if site.social.twitter_username -%}
+                    <li><a href="https://www.twitter.com/{{ site.social.twitter_username| cgi_escape | escape }}"><span
+                            class="username">{{ site.social.twitter_username| escape }}</span></a></li>
+                    {%- endif -%}
+                    {%- if site.social.github_username -%}
+                    <li><a href="https://github.com/{{ site.social.github_username| cgi_escape | escape }}"><span
+                            class="username">{{ site.social.github_username| escape }}</span></a></li>
+                    {%- endif -%}
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                {%- if page.tags.size > 0 -%}
+                <ul class="list-group list-group-flush">
+                    {% for tag in page.tags %}
+                    <li>{{tag}}</li>
+                    {% endfor %}
+                </ul>
+                {%- else -%}
+                <p>hello world</p>
+                {%- endif -%}
+            </div>
+
+            <div class="col-md-4">
+                <img src="/assets/qrcode.jpg" alt="wechat" style="width: 90px;height: 90px;">
+                <p>{{- site.description | escape -}}</p>
+            </div>
+
+        </div>
     </div>
-  </div>
 </footer>
