@@ -11,20 +11,20 @@ layout: default
 
   {%- if site.posts.size > 0 -%}
       {%- for post in paginator.posts -%}
-      <div class="col-md-{{site.style.home.col}}">
-      <a href="{{ post.url | relative_url }}" class="list-group-item list-group-item-action" style="height: 300px; margin-top: 5px;">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">{{ post.title | escape }}</h5>
-          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-          <small class="text-muted">{{ post.date | date: date_format }}</small>
+        <div class="col-md-{{site.style.home.col}}">
+        <a id="{{post.id}}" href="{{ post.url | relative_url }}" onmouseover="initPostCardStyle($(this).attr('id'))" class="list-group-item list-group-item-action imjcker-post" style="height: 300px; margin-top: 5px; ">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ post.title | escape }}</h5>
+            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+            <small class="text-muted">{{ post.date | date: date_format }}</small>
+          </div>
+          <p class="mb-1">{%- if site.show_excerpts -%}
+            {{ post.excerpt }}
+            {%- endif -%}
+          </p>
+          <small class="text-muted">百年孤独</small>
+        </a>
         </div>
-        <p class="mb-1">{%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-          {%- endif -%}
-        </p>
-        <small class="text-muted">百年孤独</small>
-      </a>
-      </div>
       {%- endfor -%}
   {%- endif -%}
 
