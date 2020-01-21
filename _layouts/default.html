@@ -16,11 +16,10 @@
       $(function(){
       });
 
-      function initPostCardStyle(id) {
-        console.log(id);
+      function initPostCardStyle(id, bg) {
         let postCard = $("#" + id);
         postCard.mouseover(function(){
-          postCard.css("background-image", "url(/assets/avatar.jpg)");
+          postCard.css("background-image", "url(/assets/"+bg+")");
           postCard.css("color", "#ffffff");
         });
         postCard.mouseout(function () {

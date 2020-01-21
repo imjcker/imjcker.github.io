@@ -42,8 +42,8 @@
                 {%- else -%}
                 友情连接：
                 <ul class="list-group list-group-flush">
-                    {% for link in site.social.friends %}
-                    <li>{{link}}</li>
+                    {% for post in paginator.posts limit:5 %}
+                    <a href="{{ post.url | relative_url }}">{{post.title}}</a>
                     {% endfor %}
                 </ul>
                 {%- endif -%}

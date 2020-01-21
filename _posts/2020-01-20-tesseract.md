@@ -3,6 +3,7 @@ layout: post
 title: Tesseract 使用记录
 category: OCR
 tags: OCR tesseract
+bg: tesseract.png
 ---
 对tesseract的使用源于项目开发中要将PDF文件转换为双层PDF，然后提取文件内容，存入ES供文档检索使用。本文粗略地记录了Tesseract的搭建和使用。
 

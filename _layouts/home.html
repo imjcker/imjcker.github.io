@@ -12,7 +12,7 @@ layout: default
   {%- if site.posts.size > 0 -%}
       {%- for post in paginator.posts -%}
         <div class="col-md-{{site.style.home.col}}">
-        <a id="{{post.id}}" href="{{ post.url | relative_url }}" onmouseover="initPostCardStyle($(this).attr('id'))" class="list-group-item list-group-item-action imjcker-post" style="height: 300px; margin-top: 5px; ">
+        <a id="{{post.id | split: '/' | last}}" href="{{ post.url | relative_url }}" onmouseover="initPostCardStyle($(this).attr('id'), '{{post.bg | escape}}')" class="list-group-item list-group-item-action imjcker-post" style="height: 300px; margin-top: 5px; ">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">{{ post.title | escape }}</h5>
             {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
