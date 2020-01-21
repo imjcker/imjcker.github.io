@@ -30,6 +30,9 @@ social:
   twitter_username: helloalanturing
   github_username: imjcker
   email: helloalanturing@icloud.com
+  friends:
+    - https://www.google.com
+    - https://cn.bing.com
 
 
 style:

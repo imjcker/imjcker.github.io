@@ -1,4 +1,4 @@
-<footer class="footer" style="background-color: #f5f5f5;">
+<footer class="footer" style="background-color: #f5f5f5; margin-top: 5px;">
     <div class="container">
         <data class="u-url" href="{{ "/" | relative_url }}"></data>
         <div class="row">
@@ -33,18 +33,24 @@
 
             <div class="col-md-4">
                 {%- if page.tags.size > 0 -%}
+                相关文章
                 <ul class="list-group list-group-flush">
                     {% for tag in page.tags %}
                     <li>{{tag}}</li>
                     {% endfor %}
                 </ul>
                 {%- else -%}
-                <p>hello world</p>
+                友情连接：
+                <ul class="list-group list-group-flush">
+                    {% for link in site.social.friends %}
+                    <li>{{link}}</li>
+                    {% endfor %}
+                </ul>
                 {%- endif -%}
             </div>
 
             <div class="col-md-4">
-                <img src="/assets/qrcode.jpg" alt="wechat" style="width: 90px;height: 90px;">
+                <img src="/assets/qrcode.jpg" alt="wechat" style="width: 90px;height: 90px; margin-top: 5px;">
                 <p>{{- site.description | escape -}}</p>
             </div>
 
