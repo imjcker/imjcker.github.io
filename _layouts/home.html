@@ -49,8 +49,8 @@ layout: default
           {%- endif -%}
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">{{ post.title | escape }}</h5>
-            <small class="text-muted">{{ post.date | date: "%Y年%m月%d日" }}</small>
           </div>
+            <small class="text-muted">{{ post.date | date: "%Y年%m月%d日" }}</small>
           <p class="mb-1">
             {%- if site.show_excerpts -%}
               {{ post.excerpt }}
@@ -60,7 +60,7 @@ layout: default
             <small class="text-muted">{{site.author}}</small>
           </p>
           <p class="mb-1">
-            <small class="text-muted">{{post.category}}</small>
+            <small class="badge badge-primary">{{post.category}}</small>
           </p>
           {%- for cat in post.tags -%}
           <span class="badge badge-success">{{cat}}</span>&nbsp;
