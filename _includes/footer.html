@@ -1,4 +1,4 @@
-<footer class="footer" style="background-color: #f5f5f5; margin-top: 5px;">
+<footer class="footer" style="background-color: #ffffff; margin-top: 5px;">
     <div class="container">
         <data class="u-url" href="{{ "/" | relative_url }}"></data>
         <div class="row">
@@ -11,14 +11,14 @@
                     {%- endif -%}
                 </p>
                 <ul class="list-group list-group-flush">
-                    {%- if site.social.email -%}<a class="u-email" href="mailto:{{ site.social.email }}">email: {{ site.social.email }}</a>{%- endif -%}
-                    {%- if site.social.qq -%}<a class="u-email" href="mailto:{{ site.social.email }}">QQ: {{ site.social.qq }}</a>{%- endif -%}
-                    {%- if site.social.wechat -%}<a class="u-email" href="mailto:{{ site.social.email }}">WeChat: {{ site.social.wechat }}</a>{%- endif -%}
+                    {%- if site.social.email -%}<li class="list-group-item" style="padding: 0; "><a class="u-email" href="mailto:{{ site.social.email }}">email: {{ site.social.email }}</a></li>{%- endif -%}
+                    {%- if site.social.qq -%}<li class="list-group-item" style="padding: 0; "><a class="u-email" href="mailto:{{ site.social.email }}">QQ: {{ site.social.qq }}</a></li>{%- endif -%}
+                    {%- if site.social.wechat -%}<li class="list-group-item" style="padding: 0; "><a class="u-email" href="mailto:{{ site.social.email }}">WeChat: {{ site.social.wechat }}</a></li>{%- endif -%}
                     {%- if site.social.twitter_username -%}
-                    <a href="https://www.twitter.com/{{ site.social.twitter_username| cgi_escape | escape }}"><span class="username">twitter: {{ site.social.twitter_username| escape }}</span></a>
+                    <li class="list-group-item" style="padding: 0; "><a href="https://www.twitter.com/{{ site.social.twitter_username| cgi_escape | escape }}"><span class="username">twitter: {{ site.social.twitter_username| escape }}</span></a></li>
                     {%- endif -%}
                     {%- if site.social.github_username -%}
-                    <a href="https://github.com/{{ site.social.github_username| cgi_escape | escape }}"><span class="username">GitHub: {{ site.social.github_username| escape }}</span></a>
+                    <li class="list-group-item" style="padding: 0; "><a href="https://github.com/{{ site.social.github_username| cgi_escape | escape }}"><span class="username">GitHub: {{ site.social.github_username| escape }}</span></a></li>
                     {%- endif -%}
                 </ul>
             </div>
@@ -31,7 +31,7 @@
                             {%- if cat[0] == page.categories[0] -%}
                                 {% for p in cat[1] %}
                                     {% if p.title != page.title %}
-                                    <a href="{{ p.url | relative_url }}">{{p.title}}</a>
+                                        <li class="list-group-item" style="padding: 0; "><a href="{{ p.url | relative_url }}">{{p.title}}</a></li>
                                     {% endif %}
                                 {%- endfor -%}
                             {% endif %}
@@ -41,7 +41,7 @@
                     最新文章:
                     <ul class="list-group list-group-flush">
                         {% for post in site.posts limit:5 %}
-                        <a href="{{ post.url | relative_url }}">{{post.title}}</a>
+                        <li class="list-group-item" style="padding: 0; "><a href="{{ post.url | relative_url }}">{{post.title}}</a></li>
                         {% endfor %}
                     </ul>
                 {%- endif -%}
