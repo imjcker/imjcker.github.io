@@ -40,9 +40,9 @@
                     {% endfor %}
                 </ul>
                 {%- else -%}
-                友情连接：
+                最新文章：
                 <ul class="list-group list-group-flush">
-                    {% for post in paginator.posts limit:5 %}
+                    {% for post in site.posts limit:5 %}
                     <a href="{{ post.url | relative_url }}">{{post.title}}</a>
                     {% endfor %}
                 </ul>

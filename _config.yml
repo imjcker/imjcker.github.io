@@ -17,10 +17,10 @@ plugins:
 disqus:
   shortname: imjcker
 # 分页
-paginate: 6
-
-show_excerpts: true
-highlighter: rouge
+paginate: 8
+postCardRow: 2 # 12 x postCardRow / paginate 为整数
+# 是否显示预览信息
+show_excerpts: false
 # 自定义变量
 imjcker:
   menu: 首页
@@ -37,5 +37,6 @@ social:
 
 style:
   home:
-    col: 4 #必须配合分页使用
+    show_carousel: false
+
 
