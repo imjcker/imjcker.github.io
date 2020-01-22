@@ -41,30 +41,27 @@ layout: default
 
     {%- for post in paginator.posts -%}
       <div class="col-md-{{12 | times: site.postCardRow | divided_by: paginator.per_page}}">
-        <a id="{{post.id | split: '/' | last}}" href="{{ post.url | relative_url }}" onmouseover="showExcerpts($(this).attr('id'), '{{post.bg | escape}}')" class="list-group-item list-group-item-action imjcker-post" style="height: 360px; margin-top: 5px; ">
+        <a id="{{post.id | split: '/' | last}}" href="{{ post.url | relative_url }}" class="list-group-item list-group-item-action imjcker-post" style=" margin-top: 5px; ">
           {%- if post.bg -%}
           <img class="img-fluid card-img-top" src="/assets/{{post.bg}}" alt="Card image cap">
           {%- else -%}
-          <img class="img-fluid card-img-top"  src="/assets/avatar.jpg" alt="Card image cap" >
+          <img class="img-fluid card-img-top"  src="/assets/{{site.style.home.card_img}}" alt="Card image cap" >
           {%- endif -%}
+
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">{{ post.title | escape }}</h5>
           </div>
-            <small class="text-muted">{{ post.date | date: "%Y年%m月%d日" }}</small>
-          <p class="mb-1">
-            {%- if site.show_excerpts -%}
-              {{ post.excerpt }}
-            {%- endif -%}
-          </p>
-          <p class="mb-1">
-            <small class="text-muted">{{site.author}}</small>
-          </p>
-          <p class="mb-1">
-            <small class="badge badge-primary">{{post.category}}</small>
-          </p>
-          {%- for cat in post.tags -%}
-          <span class="badge badge-success">{{cat}}</span>&nbsp;
-          {%- endfor -%}
+
+          <div class="mb-1 d-md-none d-lg-block">
+            {% if post.excerpt.size > 48 %}
+              {{post.excerpt | truncate: 48}}
+            {% else %}
+              {{post.excerpt}}
+            {% endif %}
+          </div>
+
+          <small class="badge badge-primary" style="position: absolute; bottom: 1px; left: 3px;">{{post.category}}</small>
+          <small class="text-muted" style="position: absolute; bottom: 0; right: 3px;">{{ post.date | date: "%Y年%m月%d日" }}</small>
         </a>
       </div>
     {%- endfor -%}

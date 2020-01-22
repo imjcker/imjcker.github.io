@@ -11,20 +11,14 @@
                     {%- endif -%}
                 </p>
                 <ul class="list-group list-group-flush">
-                    {%- if site.social.email -%}
-                    <a class="u-email" href="mailto:{{ site.social.email }}">{{ site.social.email }}</a>
-                    {%- endif -%}
-                    {%- if site.social.qq -%}
-                    <a class="u-email" href="mailto:{{ site.social.email }}">{{ site.social.qq }}</a>
-                    {%- endif -%}
-                    {%- if site.social.wechat -%}
-                    <a class="u-email" href="mailto:{{ site.social.email }}">{{ site.social.wechat }}</a>
-                    {%- endif -%}
+                    {%- if site.social.email -%}<a class="u-email" href="mailto:{{ site.social.email }}">email: {{ site.social.email }}</a>{%- endif -%}
+                    {%- if site.social.qq -%}<a class="u-email" href="mailto:{{ site.social.email }}">QQ: {{ site.social.qq }}</a>{%- endif -%}
+                    {%- if site.social.wechat -%}<a class="u-email" href="mailto:{{ site.social.email }}">WeChat: {{ site.social.wechat }}</a>{%- endif -%}
                     {%- if site.social.twitter_username -%}
-                    <a href="https://www.twitter.com/{{ site.social.twitter_username| cgi_escape | escape }}"><span class="username">{{ site.social.twitter_username| escape }}</span></a>
+                    <a href="https://www.twitter.com/{{ site.social.twitter_username| cgi_escape | escape }}"><span class="username">twitter: {{ site.social.twitter_username| escape }}</span></a>
                     {%- endif -%}
                     {%- if site.social.github_username -%}
-                    <a href="https://github.com/{{ site.social.github_username| cgi_escape | escape }}"><span class="username">{{ site.social.github_username| escape }}</span></a>
+                    <a href="https://github.com/{{ site.social.github_username| cgi_escape | escape }}"><span class="username">GitHub: {{ site.social.github_username| escape }}</span></a>
                     {%- endif -%}
                 </ul>
             </div>
@@ -36,7 +30,9 @@
                     {% for cat in site.categories %}
                         {%- if cat[0] == page.categories[0] -%}
                             {% for p in cat[1] %}
-                            <a href="{{ p.url | relative_url }}">{{p.title}}</a>
+                                {% if p.title != page.title %}
+                                <a href="{{ p.url | relative_url }}">{{p.title}}</a>
+                                {% endif %}
                             {%- endfor -%}
                         {% endif %}
                     {% endfor %}

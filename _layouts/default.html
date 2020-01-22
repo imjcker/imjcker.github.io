@@ -14,8 +14,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script type="text/javascript">
       $(function(){
-        $(".img-fluid").height($(".img-fluid").width() * 0.618);
-        $(".imjcker-post").height($(".imjcker-post").width() / 0.618);
+        let card = $(".imjcker-post");
+        let cardImg = $(".img-fluid");
+        card.height(card.width() / 0.618);
+        cardImg.height(cardImg.width() * 0.618);
+        card.resize(function () {
+          card.height(card.width() / 0.618);
+          cardImg.height(cardImg.width() * 0.618);
+        });
       });
 
       function showExcerpts(id, bg) {
@@ -29,6 +35,81 @@
           postCard.css("color", "");
         });
       }
+
+      (function($, h, c) {
+        var a = $([]),
+                e = $.resize = $.extend($.resize, {}),
+                i,
+                k = "setTimeout",
+                j = "resize",
+                d = j + "-special-event",
+                b = "delay",
+                f = "throttleWindow";
+        e[b] = 250;
+        e[f] = true;
+        $.event.special[j] = {
+          setup: function() {
+            if (!e[f] && this[k]) {
+              return false;
+            }
+            var l = $(this);
+            a = a.add(l);
+            $.data(this, d, {
+              w: l.width(),
+              h: l.height()
+            });
+            if (a.length === 1) {
+              g();
+            }
+          },
+          teardown: function() {
+            if (!e[f] && this[k]) {
+              return false;
+            }
+            var l = $(this);
+            a = a.not(l);
+            l.removeData(d);
+            if (!a.length) {
+              clearTimeout(i);
+            }
+          },
+          add: function(l) {
+            if (!e[f] && this[k]) {
+              return false;
+            }
+            var n;
+            function m(s, o, p) {
+              var q = $(this),
+                      r = $.data(this, d);
+              r.w = o !== c ? o: q.width();
+              r.h = p !== c ? p: q.height();
+              n.apply(this, arguments);
+            }
+            if ($.isFunction(l)) {
+              n = l;
+              return m;
+            } else {
+              n = l.handler;
+              l.handler = m;
+            }
+          }
+        };
+        function g() {
+          i = h[k](function() {
+                    a.each(function() {
+                      var n = $(this),
+                              m = n.width(),
+                              l = n.height(),
+                              o = $.data(this, d);
+                      if (m !== o.w || l !== o.h) {
+                        n.trigger(j, [o.w = m, o.h = l]);
+                      }
+                    });
+                    g();
+                  },
+                  e[b]);
+        }
+      })(jQuery, this);
     </script>
   </body>
 
