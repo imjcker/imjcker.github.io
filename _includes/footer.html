@@ -25,25 +25,25 @@
 
             <div class="col-md-4">
                 {%- if page.categories.size > 0 -%}
-                相关文章:
-                <ul class="list-group list-group-flush">
-                    {% for cat in site.categories %}
-                        {%- if cat[0] == page.categories[0] -%}
-                            {% for p in cat[1] %}
-                                {% if p.title != page.title %}
-                                <a href="{{ p.url | relative_url }}">{{p.title}}</a>
-                                {% endif %}
-                            {%- endfor -%}
-                        {% endif %}
-                    {% endfor %}
-                </ul>
+                    相关文章:
+                    <ul class="list-group list-group-flush">
+                        {% for cat in site.categories %}
+                            {%- if cat[0] == page.categories[0] -%}
+                                {% for p in cat[1] %}
+                                    {% if p.title != page.title %}
+                                    <a href="{{ p.url | relative_url }}">{{p.title}}</a>
+                                    {% endif %}
+                                {%- endfor -%}
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
                 {%- else -%}
-                最新文章:
-                <ul class="list-group list-group-flush">
-                    {% for post in site.posts limit:5 %}
-                    <a href="{{ post.url | relative_url }}">{{post.title}}</a>
-                    {% endfor %}
-                </ul>
+                    最新文章:
+                    <ul class="list-group list-group-flush">
+                        {% for post in site.posts limit:5 %}
+                        <a href="{{ post.url | relative_url }}">{{post.title}}</a>
+                        {% endfor %}
+                    </ul>
                 {%- endif -%}
             </div>
 
