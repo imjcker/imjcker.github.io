@@ -21,19 +21,29 @@ layout: default
     </p>
   </header>
 
-  <div class="container" style="position: relative;">
+  <div class="container">
     <div class="row">
       <div class="col-md-9">
         {{ content }}
       </div>
-      <div class="col-md-3" style="position: absolute; right: 3px; top: 70px;">
+      <div class="col-md-3 d-md-none d-lg-block">
         <div class="row">
-          <div class="card" style=" margin-top: 5px; ">
-            <div class="card-header">文章分类</div>
+          <div class="card" style=" margin-top: 5px; width: 100%;">
+            <div class="card-header">相关文章</div>
             <div class="card-body">
-              {%- for category in site.categories -%}
-              <small class="badge badge-primary" style="margin: 5px;">{{category[0]}}({{category[1].size}})</small>
-              {%- endfor -%}
+              {%- if page.categories.size > 0 -%}
+              <ul class="list-group list-group-flush">
+                {% for cat in site.categories %}
+                {%- if cat[0] == page.categories[0] -%}
+                {% for p in cat[1] %}
+                {% if p.title != page.title %}
+                <li class="list-group-item" style="padding: 0; "><a href="{{ p.url | relative_url }}">{{p.title}}</a></li>
+                {% endif %}
+                {%- endfor -%}
+                {% endif %}
+                {% endfor %}
+              </ul>
+              {%- endif -%}
             </div>
           </div>
           <div class="card" style=" margin-top: 5px; width: 100%;">

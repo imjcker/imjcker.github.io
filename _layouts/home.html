@@ -6,9 +6,7 @@ layout: default
   {%- if page.title -%}
     <h1 class="page-heading">{{ page.title }}</h1>
   {%- endif -%}
-
-  {{ content }}
-
+    {{ content }}
   {%- if site.posts.size > 0 -%}
     {%- if site.style.home.show_carousel -%}
       <div id="carouselExampleIndicators" class="carousel slide col-md-12" data-ride="carousel">
@@ -68,21 +66,22 @@ layout: default
       {%- endfor -%}
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 d-md-none d-lg-block">
       <div class="row">
         <div class="card" style=" margin-top: 5px; ">
           <div class="card-header">文章分类</div>
           <div class="card-body">
-              {%- for category in site.categories -%}
-              <small class="badge badge-primary" style="margin: 5px;">{{category[0]}}({{category[1].size}})</small>
-              {%- endfor -%}
+            {%- for category in site.categories -%}
+              {% assign index = 'now' | date: "%s" | modulo: site.style.css.size %}
+              <small class="badge badge-{{site.style.css[index]}}" style="margin: 5px;">{{category[0]}}({{category[1].size}})</small>
+            {%- endfor -%}
           </div>
         </div>
         <div class="card" style=" margin-top: 5px; width: 100%;">
           <div class="card-header">最新文章</div>
           <div class="card-body">
             <ul class="list-group list-group-flush">
-              {% for post in site.posts limit:5 %}
+              {% for post in site.posts limit:10 %}
               <li class="list-group-item" style="padding: 0; "><a href="{{ post.url | relative_url }}">{{post.title}}</a></li>
               {% endfor %}
             </ul>

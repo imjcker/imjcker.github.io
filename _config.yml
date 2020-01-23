@@ -40,5 +40,6 @@ style:
   home:
     show_carousel: false
     card_img: avatar.jpg
+  css: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']
 
 
