@@ -38,58 +38,35 @@ layout: default
         </a>
       </div>
     {%- endif -%}
-    <div class="col-md-9">
-      <div class="row">
-      {%- for post in paginator.posts -%}
-        <div class="col-md-{{12 | times: site.postCardRow | divided_by: paginator.per_page}}">
-          <a id="{{post.id | split: '/' | last}}" href="{{ post.url | relative_url }}" class="list-group-item list-group-item-action imjcker-post" style=" margin-top: 5px; ">
-            {%- if post.bg -%}
-            <img class="img-fluid card-img-top" src="/assets/{{post.bg}}" alt="Card image cap">
-            {%- else -%}
-            <img class="img-fluid card-img-top"  src="/assets/{{site.style.home.card_img}}" alt="Card image cap" >
-            {%- endif -%}
 
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">{{ post.title | escape }}</h5>
-            </div>
+    {%- for post in paginator.posts -%}
+      {% if post.categories contains page.category %}
+      <div class="col-md-{{12 | times: site.postCardRow | divided_by: paginator.per_page}}">
+        <a id="{{post.id | split: '/' | last}}" href="{{ post.url | relative_url }}" class="list-group-item list-group-item-action imjcker-post" style=" margin-top: 5px; ">
+          {%- if post.bg -%}
+          <img class="img-fluid card-img-top" src="/assets/{{post.bg}}" alt="Card image cap">
+          {%- else -%}
+          <img class="img-fluid card-img-top"  src="/assets/{{site.style.home.card_img}}" alt="Card image cap" >
+          {%- endif -%}
 
-            <div class="mb-1 d-md-none d-lg-block">
-              {% if post.excerpt.size > 48 %}
-                {{post.excerpt | truncate: 48}}
-              {% else %}
-                {{post.excerpt}}
-              {% endif %}
-            </div>
-
-            <small class="badge badge-primary" style="position: absolute; bottom: 1px; left: 3px;">{{post.category}}</small>
-            <small class="text-muted" style="position: absolute; bottom: 0; right: 3px;">{{ post.date | date: "%Y年%m月%d日" }}</small>
-          </a>
-        </div>
-      {%- endfor -%}
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="row">
-        <div class="card" style=" margin-top: 5px; ">
-          <div class="card-header">文章分类</div>
-          <div class="card-body">
-              {%- for category in site.categories -%}
-              <small class="badge badge-primary" style="margin: 5px;">{{category[0]}}({{category[1].size}})</small>
-              {%- endfor -%}
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ post.title | escape }}</h5>
           </div>
-        </div>
-        <div class="card" style=" margin-top: 5px; width: 100%;">
-          <div class="card-header">最新文章</div>
-          <div class="card-body">
-            <ul class="list-group list-group-flush">
-              {% for post in site.posts limit:5 %}
-              <li class="list-group-item" style="padding: 0; "><a href="{{ post.url | relative_url }}">{{post.title}}</a></li>
-              {% endfor %}
-            </ul>
+
+          <div class="mb-1 d-md-none d-lg-block">
+            {% if post.excerpt.size > 48 %}
+              {{post.excerpt | truncate: 48}}
+            {% else %}
+              {{post.excerpt}}
+            {% endif %}
           </div>
-        </div>
+
+          <small class="badge badge-primary" style="position: absolute; bottom: 1px; left: 3px;">{{post.category}}</small>
+          <small class="text-muted" style="position: absolute; bottom: 0; right: 3px;">{{ post.date | date: "%Y年%m月%d日" }}</small>
+        </a>
       </div>
-    </div>
+      {% endif %}
+    {%- endfor -%}
   {%- endif -%}
 
   {% if paginator.total_pages > 1 %}

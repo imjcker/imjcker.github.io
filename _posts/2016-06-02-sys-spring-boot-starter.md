@@ -1,7 +1,7 @@
 ---
-layout: post  
+layout: post
 title: sys spring boot starter  
-date: 2016-06-02
+category: spring-cloud
 ---
 
 UI动态展示系统参数, 基于spring boot，bootstrap4  

@@ -2,6 +2,7 @@
 layout: page
 title: spring cloud
 permalink: /spring-cloud/
+category: spring-cloud
 ---
 
 ### spring cloud 系列

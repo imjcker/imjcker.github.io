@@ -17,10 +17,11 @@ plugins:
 disqus:
   shortname: imjcker
 # 分页
-paginate: 8
+paginate: 6
 postCardRow: 2 # 12 x postCardRow / paginate 为整数
 # 是否显示预览信息
 show_excerpts: false
+
 # 自定义变量
 imjcker:
   menu: 首页
