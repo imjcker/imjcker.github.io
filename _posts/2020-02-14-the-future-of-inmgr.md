@@ -26,6 +26,16 @@ bg: inmgr.png
 闭门造车盲目开发是做好产品的大忌，借鉴好的先例和成功的经验必不可少，以下是整理的一些个人认为可以借鉴的功能亮点。
 1. xxl-api，自定义数据个格式，UI等
     http://demo.imjcker.com admin 123456
-2. 
+2. Eolinker
+
+3. RAP
+
+4. easyAPI
+
+5. Apizza
+
+6. showDoc
+
+
 
 
