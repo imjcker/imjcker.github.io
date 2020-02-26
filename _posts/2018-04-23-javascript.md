@@ -53,3 +53,5 @@ npm install vue-cli -g
 vue init webpack xxx
 ```
 
+Vue 路由使用：
+
