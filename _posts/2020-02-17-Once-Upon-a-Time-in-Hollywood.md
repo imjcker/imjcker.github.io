@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Once Upon a Time in Hollywood
+title: 好莱坞往事
 category: movies
 tags: movies
 bg: hlwws.jpeg
