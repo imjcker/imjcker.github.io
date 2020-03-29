@@ -1,7 +1,7 @@
 ---
 layout: post
 title: VirtualBox
-category: vm
+category: tools
 tags: vm
 ---
 在VirtualBox中安装和克隆CentOS

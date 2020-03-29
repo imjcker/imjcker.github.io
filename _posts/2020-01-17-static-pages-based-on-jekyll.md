@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Jekyll静态博客
-category: 博客
+category: tools
 tags: 
   - 博客
   - jekyll

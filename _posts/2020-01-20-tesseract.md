@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Tesseract 使用记录
-category: OCR
+category: tools
 tags: OCR tesseract
 bg: tesseract.png
 ---

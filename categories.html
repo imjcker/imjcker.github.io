@@ -1,0 +1,33 @@
+---
+layout: default
+title: 分类
+permalink: /categories/
+---
+
+<div class="row">
+  <div class="row justify-content-center">
+    <div class="col col-md-9">
+      <div class="row">
+        {%- for category in site.categories -%}
+          {% assign index = 'now' | date: "%s" | modulo: site.style.css.size %}
+          <div  style=" margin-top: 5px; width: 100%">
+            <div class="card-body" style="padding: 0;">
+              <h5 id="{{category[0]}}" class="card-title" onclick="handleCategory(this.id)">{{category[0]}}</h5>
+              <ul id="category-{{category[0]}}" class="list-group list-group-flush imjcker-category">
+                {% for cat in site.categories %}
+                  {%- if cat[0] == category[0] -%}
+                    {% for p in cat[1] %}
+                      {% if p.title != page.title %}
+                      <li class="list-group-item" style="padding: 0; "><a href="{{ p.url | relative_url }}">{{p.title}}</a></li>
+                      {% endif %}
+                    {%- endfor -%}
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>

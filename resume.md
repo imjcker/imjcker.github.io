@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: default
 title: 关于
-permalink: /about/
+permalink: /resume/
 ---
 
 ### 基本信息
@@ -45,7 +45,7 @@ permalink: /about/
 
 软件环境： Linux 
 
-硬件环境：CentOS 6，
+硬件环境：CentOS 6
 
 开发工具：Idea、webstorm, 
 

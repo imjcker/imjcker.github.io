@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Flink All in one
-category: bigdata
+category: 大数据
 tags: flink
 bg: flink.png
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: javascript
-categories: nodejs javascript vue
+categories: javascript
 tags: nodejs javascript vue
 ---
 

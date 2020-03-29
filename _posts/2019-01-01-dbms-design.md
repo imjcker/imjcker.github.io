@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 数据库设计方案
-category: dbms
+category: DB
 tags: oracle mysql 
 ---
 
