@@ -12,18 +12,18 @@ permalink: /resume/
 | 出生年月：1991年07月            | 民族：汉                                                     |
 | 籍贯：四川                      | 工作年限：3年                                                |
 | 电话：15390017403               | 邮箱：[helloalanturing@icloud.com](mailto:helloalanturing@icloud.com) |
-| 博客：<http://blog.imjcker.com> | GitHub: [imjcker](https://github.com/imjcker)                |
+| 博客：<https://imjcker.com> | GitHub: [imjcker](https://github.com/imjcker)                |
 | 学历：本科                      | 专业：计算机科学与技术                                       |
 | 英语等级：CET 4                 | 毕业院校：四川理工（2012-09-2016-06）                        |
 |                                 |                                                              |
 
 ### 技术特长
 
-1. 熟悉JAVA语言,主流开源框架(SpringMVC, Spring boot, Mybatis, Struts2, JPA等)
+1. 熟悉JAVA语言,主流开源框架(Spring Cloud, Spring boot, Mybatis, Struts2, JPA等)
 2. 前端技术: JQuery, easyUI, bootstrap3,4, Vue.
-3. 其它技术：Nginx, freemarker, Linux, shell, elasticsearch, redis, mongodb, kafka, zookeeper, rabbitmq, flink, OCR识别.
+3. 其它技术：Nginx, freemarker, Linux, shell, ES, redis, mongodb, kafka, zookeeper, RabbitMQ, flink, OCR识别.
 4. 熟悉MySQL、Oracle, Sybase, H2, memcache的使用.
-5. 主要使用中间件有：tomcat、weblogic、websphere.
+5. 主要使用中间件有：tomcat、webLogic、webSphere.
 
 ---
 
