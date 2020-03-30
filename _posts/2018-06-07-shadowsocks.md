@@ -21,7 +21,7 @@ ssserver -p 13579 -k ss.imjcker.com -m chacha20 --user nobody -d start
 ## docker 快速安装
 
 ```shell
-docker run -d --name ssserver -p 13579:8388 -p 13579:8388/udp --restart always -e PASSWORD=ss.imjcker.com -e METHOD=aes-256-cfb shadowsocks/shadowsocks-libev:latest
+docker run -d --name ssserver -p 13579:8388 -p 13579:8388/udp --restart always -e PASSWORD=ss.imjcker.com -e METHOD=chacha20 shadowsocks/shadowsocks-libev:latest
 ```
 
 

@@ -23,7 +23,7 @@ layout: default
   <p><strong>页面不存在 :(</strong></p>
   <p>也许你可以尝试以下这些页面:</p>
   <ul>
-    {% for post in site.posts %}
+    {% for post in site.posts limit:10 %}
     <li>
       <a href="{{ post.url }}">{{ post.title }}</a>
     </li>

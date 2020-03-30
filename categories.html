@@ -10,7 +10,7 @@ permalink: /categories/
       <div class="row">
         {%- for category in site.categories -%}
           {% assign index = 'now' | date: "%s" | modulo: site.style.css.size %}
-          <div  style=" margin-top: 5px; width: 100%">
+          <div class="col col-md-6" style=" margin-top: 5px; width: 100%">
             <div class="list-group list-group-flush">
               <div class="list-group-item">
                 <a id="{{category[0]}}" href="#" onclick="handleCategory(this.id)" style="font-size: larger" class="badge badge-light">{{category[0]}}</a>
@@ -19,7 +19,7 @@ permalink: /categories/
                     {%- if cat[0] == category[0] -%}
                       {% for p in cat[1] %}
                         {% if p.title != page.title %}
-                        <li class="list-group-item" style="padding: 0; "><a href="{{ p.url | relative_url }}">{{p.title}}</a></li>
+                        <li class="list-group-item" style="list-style: none; padding: 0; margin: 0;"><a href="{{ p.url | relative_url }}">{{p.title}}</a></li>
                         {% endif %}
                       {%- endfor -%}
                     {% endif %}

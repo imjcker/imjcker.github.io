@@ -38,52 +38,25 @@ layout: default
               </div>
             {%- endfor -%}
           </div>
+          {% if paginator.total_pages > 1 %}
+          <div class="row justify-content-center">
+            <div class="col-4">
+              {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path | relative_url }}">上一页</a>
+              {%- else -%}
+              上一页: 没了
+              {% endif %}
+            </div>
+            <div class="col-4"><p style="text-align: center; width: 100%;">第{{paginator.page}}页/共{{paginator.total_pages}}页</p></div>
+            <div class="col-4">
+              {% if paginator.next_page %}<a href="{{ paginator.next_page_path | relative_url }}" style="float: right;">下一页</a>
+              {%- else -%}
+              下一页: 没了
+              {% endif %}
+            </div>
+          </div>
+          {% endif %}
         </div>
       </div>
-    <!--<div class="col-md-3 d-md-none d-lg-block">
-      <div class="row">
-        <div class="card" style=" margin-top: 5px; ">
-          <div class="card-header">文章分类</div>
-          <div class="card-body">
-            {%- for category in site.categories -%}
-              {% assign index = 'now' | date: "%s" | modulo: site.style.css.size %}
-              <small class="badge badge-{{site.style.css[index]}}" style="margin: 5px;">{{category[0]}}({{category[1].size}})</small>
-            {%- endfor -%}
-          </div>
-        </div>
-        <div class="card" style=" margin-top: 5px; width: 100%;">
-          <div class="card-header">最新文章</div>
-          <div class="card-body">
-            <ul class="list-group list-group-flush">
-              {% for post in site.posts limit:10 %}
-              <li class="list-group-item" style="padding: 0; "><a href="{{ post.url | relative_url }}">{{post.title}}</a></li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>-->
   {%- endif -%}
-
-  {% if paginator.total_pages > 1 %}
-  <div class="container">
-    <div class="row">
-      <div class="col-4">
-        {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path | relative_url }}">上一页</a>
-        {%- else -%}
-        上一页: 没了
-        {% endif %}
-      </div>
-      <div class="col-4"><p style="align-content: center; width: 100%;">第{{paginator.page}}页/共{{paginator.total_pages}}页</p></div>
-      <div class="col-4">
-        {% if paginator.next_page %}<a href="{{ paginator.next_page_path | relative_url }}" style="float: right;">下一页</a>
-        {%- else -%}
-        下一页: 没了
-        {% endif %}
-      </div>
-    </div>
-  </div>
-  {% endif %}
-
 
 </div>

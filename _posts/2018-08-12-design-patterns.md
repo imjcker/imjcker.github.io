@@ -31,7 +31,6 @@ tags: 设计模式
 
 概要：客户端不应该依赖它不需要的接口，一个类对另一个类的依赖应该建立在最小接口上。
 
-![接口隔离原则UML类图](/Users/alan/OneDrive/Documents/static/img/posts/接口隔离原则UML类图.svg)
 
 5. 迪米特原则（最少知道原则）
 
@@ -55,7 +54,6 @@ tags: 设计模式
 
 
 
-![23种设计模式](./images/设计模式.png)
 
 
 
