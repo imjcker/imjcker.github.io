@@ -29,9 +29,9 @@
                     <ul class="list-group list-group-flush">
                         {% for cat in site.categories %}
                             {%- if cat[0] == page.categories[0] -%}
-                                {% for p in cat[1] %}
+                                {% for p in cat[1] limit:10 %}
                                     {% if p.title != page.title %}
-                                        <li class="list-group-item bg-light" style="padding: 0; "><a href="{{ p.url | relative_url }}">{{p.title}}</a></li>
+                                        <li class="list-group-item bg-light" style="padding: 0; line-height: 30px;"><a href="{{ p.url | relative_url }}">{{p.title}}</a></li>
                                     {% endif %}
                                 {%- endfor -%}
                             {% endif %}
@@ -40,8 +40,8 @@
                 {%- else -%}
                     最新文章:
                     <ul class="list-group list-group-flush">
-                        {% for post in site.posts limit:5 %}
-                        <li class="list-group-item bg-light" style="padding: 0; "><a href="{{ post.url | relative_url }}">{{post.title}}</a></li>
+                        {% for post in site.posts limit:10 %}
+                        <li class="list-group-item bg-light" style="padding: 0; line-height: 30px;"><a href="{{ post.url | relative_url }}">{{post.title}}</a></li>
                         {% endfor %}
                     </ul>
                 {%- endif -%}
