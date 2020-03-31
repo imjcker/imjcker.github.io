@@ -8,27 +8,35 @@ permalink: /categories/
   <div class="row justify-content-center">
     <div class="col col-md-9">
       <div class="row">
-        {%- for category in site.categories -%}
-          {% assign index = 'now' | date: "%s" | modulo: site.style.css.size %}
-          <div class="col col-md-6" style=" margin-top: 5px; width: 100%">
-            <div class="list-group list-group-flush">
-              <div class="list-group-item">
-                <a id="{{category[0]}}" href="#" onclick="handleCategory(this.id)" style="font-size: larger" class="badge badge-light">{{category[0]}}</a>
-                <ul id="category-{{category[0]}}" style="display: none" class="list-group list-group-flush imjcker-category">
-                  {% for cat in site.categories %}
-                    {%- if cat[0] == category[0] -%}
-                      {% for p in cat[1] %}
-                        {% if p.title != page.title %}
-                        <li class="list-group-item" style="list-style: none; padding: 0; margin: 0;"><a href="{{ p.url | relative_url }}">{{p.title}}</a></li>
-                        {% endif %}
-                      {%- endfor -%}
-                    {% endif %}
-                  {% endfor %}
-                </ul>
-              </div>
-            </div>
-          </div>
-        {%- endfor -%}
+        <div class="col col-md-12">
+          {%- for category in site.categories -%}
+            <a class="btn btn-outline-info mx-1 my-1" href="#{{category[0]}}">{{category[0]}}</a>
+          {%- endfor -%}
+
+          {%- for category in site.categories -%}
+            {% assign index = 'now' | date: "%s" | modulo: site.style.css.size %}
+              <h5 id="{{category[0]}}" onclick="handleCategory(this.id)" style="color: #3f3f3f">{{category[0]}}</h5>
+              <ul id="category-{{category[0]}}" class="list-group list-group-flush">
+                {% for cat in site.categories %}
+                  {%- if cat[0] == category[0] -%}
+                    {% for p in cat[1] %}
+                      {% if p.title != page.title %}
+                      <li class="list-group-item" style="padding: 0.625rem 0; color: #2a7ae2">
+                        <a href="{{ p.url | relative_url }}">
+                          {{p.title}}
+                          <time class="dt-published" style="float: right" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+                            {{ p.date | date: date_format }}
+                          </time>
+                        </a>
+                      </li>
+                      {% endif %}
+                    {%- endfor -%}
+                  {% endif %}
+                {% endfor %}
+              </ul>
+          {%- endfor -%}
+        </div>
       </div>
     </div>
   </div>
