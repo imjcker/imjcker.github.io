@@ -16,7 +16,7 @@ layout: default
               {{ page.date | date: date_format }}
             </time>
             {%- if page.author -%}
-            • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
+            • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card mx-1" itemprop="name">{{ page.author }}</span></span>
             {%- endif -%}
             {%- if page.categories.size > 0 -%}
             {%- for category in page.categories -%}
