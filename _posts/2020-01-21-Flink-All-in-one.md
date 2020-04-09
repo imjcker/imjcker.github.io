@@ -34,7 +34,7 @@ services:
     expose:
       - "6123"
     ports:
-      - "8081:8081"
+      - "8083:8081"
     command: jobmanager
     environment:
       - JOB_MANAGER_RPC_ADDRESS=jobmanager

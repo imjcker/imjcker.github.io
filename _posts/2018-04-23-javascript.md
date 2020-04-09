@@ -24,7 +24,7 @@ tags: nodejs javascript vue
 
    CentOS Node.js Install Documentation
 
-```
+```shell
 curl -sL https://rpm.nodesource.com/setup | bash -
 
 ```
