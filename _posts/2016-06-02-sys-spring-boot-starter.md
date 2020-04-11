@@ -2,6 +2,7 @@
 layout: post
 title: sys spring boot starter  
 category: spring-cloud
+tags: spring
 ---
 
 UI动态展示系统参数, 基于spring boot，bootstrap4  
