@@ -8,13 +8,12 @@ zookeeper 集群搭建记录
 
 
 
-### 但节点安装启动
+### 单节点安装启动
 
 ```shell
-docker pull zookeeper
-docker run --name zk01 -d zookeeper
-docker logs zk01
-docker exec -it zk01 /bin/bash
+docker run -d --name zookeeper-server-imjcker -p 2181:2181 -p 2888:2888 -p 3888:3888 -d --restart always zookeeper
+docker logs zookeeper
+docker exec -it zookeeper /bin/bash
 ```
 
 ### 集群配置
