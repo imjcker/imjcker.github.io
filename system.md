@@ -8,11 +8,12 @@ permalink: /system/
 
 |               系统               |                             地址                                 |
 | ------------------------------- | ------------------------------------------------------------ |
-| 博客                    |  <http://blog.imjcker.com>                                                  |
-| Jenkins            | <http://imjcker.com:8087>                                                   |
-| Eureka                     | <http://imjcker.com:8761>                                               |
-| RabbitMQ               | <http://imjcker.com:15762> |
-| Flink | <http://imjcker.com:8089>                |
-| Pinpoint                     | <http://imjcker.com:8083>                                      |
+| 博客                   |  <http://blog.imjcker.com>                                                  |
+| Jenkins               | <http://imjcker.com:8087>                                                   |
+| Eureka                | <http://imjcker.com:8761>                                               |
+| RabbitMQ              | <http://imjcker.com:15762> |
+| Flink                 | <http://imjcker.com:8089>                |
+| Pinpoint              | <http://imjcker.com:8083>                                      |
 | redis                 | <http://imjcker.com:8082>                        |
-|                                 |                                                              |
+| kafka manager         | <http://imjcker.com:9000>                          |
+| haha | haah |
