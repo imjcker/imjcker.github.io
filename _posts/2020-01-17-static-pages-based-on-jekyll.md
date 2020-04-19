@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Jekyll静态博客
-category: tools
+category: 博客建设
 tags: 
   - 博客
   - jekyll
@@ -14,13 +14,13 @@ bg: jekyll.png
 如果你喜欢, 可以直接[fork](https://github.com/imjcker/imjcker.github.io)使用.  
 
 
-![site](../assets/2020/blog.imjcker.com.index-1.png)
+![site](/assets/2020/blog.imjcker.com.index-1.png)
 
-![site](../assets/2020/blog.imjcker.com.index-2.png)
+![site](/assets/2020/blog.imjcker.com.index-2.png)
 
 
 
-![site](../assets/2020/blog.imjcker.com.post-1.png)
+![site](/assets/2020/blog.imjcker.com.post-1.png)
 
 ## 设置域名
 

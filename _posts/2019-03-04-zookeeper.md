@@ -64,8 +64,8 @@ services:
 准备目录
 
 ```shell
-mkdir /data/zookeeper/zkdata -p
-mkdir /data/zookeeper/zkdatalog
+mkdir /data/zookeeper/data -p
+mkdir /data/zookeeper/log
 ```
 
 ```shell
@@ -87,8 +87,8 @@ cp zoo_sample.cfg zoo.cfg
 tickTime=2000
 initLimit=10
 syncLimit=5
-dataDir=/data/zookeeper/zkdata
-dataLogDir=/data/zookeeper/zkdatalog
+dataDir=/data/zookeeper/data
+dataLogDir=/data/zookeeper/log
 clientPort=2181
 server.1=140.82.49.26:2888:3888
 server.2=149.28.207.189:2888:3888
