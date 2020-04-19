@@ -4,7 +4,7 @@ title: zookeeper集群
 category: MQ
 tags: zookeeper
 ---
-zookeeper 集群搭建记录
+zookeeper 集群搭建记录，你懂的！！！
 
 ## docker 安装
 
@@ -88,11 +88,11 @@ tickTime=2000
 initLimit=10
 syncLimit=5
 dataDir=/data/zookeeper/zkdata
-dataLogDir=/data/zookeeper/zklog
+dataLogDir=/data/zookeeper/zkdatalog
 clientPort=2181
-server.1=node1.imjcker.com:2888:3888
-server.2=node2.imjcker.com:2888:3888
-server.3=node3.imjcker.com:2888:3888
+server.1=140.82.49.26:2888:3888
+server.2=149.28.207.189:2888:3888
+server.3=144.202.97.115:2888:3888
 ```
 
 配置myid文件
@@ -111,7 +111,7 @@ echo "3" > /data/zookeeper/zkdata/myid
 ```shell
 vi /etc/profile
 
-export ZOOKEEPER_HOME=/usr/local/zookeeper
+export ZOOKEEPER_HOME=/usr/local/apache-zookeeper-3.6.0-bin
 export PATH=$PATH:$ZOOKEEPER_HOME/bin
 
 source /etc/profile

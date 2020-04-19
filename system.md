@@ -16,5 +16,6 @@ permalink: /system/
 | Pinpoint              | <http://imjcker.com:8083>                                      |
 | redis                 | <http://imjcker.com:8082>                        |
 | kafka manager         | <http://imjcker.com:9000>                          |
-| haha | haah |
+| Skywalking | <http://imjcker.com:9800> |
+| ElasticHD | http://imjcker.com:9800 |
 
