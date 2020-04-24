@@ -1,7 +1,7 @@
 ---
 layout: post
 title: SkyWalking搭建使用
-category: 大数据
+category: 开发运维
 tags: APM skywalking
 ---
 

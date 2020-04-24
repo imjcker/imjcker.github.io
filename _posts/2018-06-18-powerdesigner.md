@@ -1,7 +1,7 @@
 ---
 layout: post
 title: PowerDesigner
-category: tools
+category: DB
 tags: PowerDesigner
 ---
 
