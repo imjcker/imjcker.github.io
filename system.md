@@ -18,4 +18,5 @@ permalink: /system/
 | kafka manager         | <http://imjcker.com:9000>                          |
 | Skywalking | <http://imjcker.com:9800> |
 | ElasticHD | http://imjcker.com:9800 |
+| Hadoop | <http://imjcker.com:9870><http://imjcker.com:8088> |
 

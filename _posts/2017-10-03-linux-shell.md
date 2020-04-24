@@ -38,3 +38,44 @@ $# 入参个数
 $1 第一个入参，以此类推
 ```
 
+
+
+#### telnet
+
+telnet: Unable to connect to remote host: No route to host
+
+执行： 
+
+```shell
+iptables -F
+```
+
+
+
+#### xsync
+
+```shell
+#!/bin/bash
+
+pcount=$#
+if((pcount==0)); then
+echo no args;
+exit;
+fi
+
+p1=$1
+fname=`basename $p1`
+echo fname=$fname
+
+pdir=`cd -P $(dirname $p1); pwd`
+echo pdir=$pdir
+
+user=`whoami`
+
+for host in hadoop-m hadoop-s1 hadoop-s2 hadoop-s3
+do
+        echo -------------------hadoop$host --------------
+        rsync -rvl $pdir/$fname $user@$host:$pdir
+done
+```
+

@@ -64,8 +64,8 @@ services:
 准备目录
 
 ```shell
-mkdir /data/zookeeper/data -p
-mkdir /data/zookeeper/log
+mkdir /usr/local/zookeeper/data -p
+mkdir /usr/local/zookeeper/log
 ```
 
 ```shell
@@ -74,7 +74,7 @@ wget https://downloads.apache.org/zookeeper/zookeeper-3.6.0/apache-zookeeper-3.6
 # 解压到指定路径
 tar zxf apache-zookeeper-3.6.0-bin.tar.gz -C /usr/local
 # 修改配置文件
-cd /usr/local/apache-zookeeper-3.6.0-bin/conf
+cd /usr/local/zookeeper/conf
 # 拷贝配置文件
 cp zoo_sample.cfg zoo.cfg
 ```
@@ -87,23 +87,23 @@ cp zoo_sample.cfg zoo.cfg
 tickTime=2000
 initLimit=10
 syncLimit=5
-dataDir=/data/zookeeper/data
-dataLogDir=/data/zookeeper/log
+dataDir=/usr/local/zookeeper/data
+dataLogDir=/usr/local/zookeeper/log
 clientPort=2181
-server.1=140.82.49.26:2888:3888
-server.2=149.28.207.189:2888:3888
-server.3=144.202.97.115:2888:3888
+server.1=172.16.11.130:2888:3888
+server.2=172.16.11.131:2888:3888
+server.3=172.16.11.132:2888:3888
 ```
 
 配置myid文件
 
 ```shell
-#server1（172.32.15.114）
-echo "1" > /data/zookeeper/zkdata/myid
-#server2（172.32.15.112）
-echo "2" > /data/zookeeper/zkdata/myid
-#server3（172.32.15.113）
-echo "3" > /data/zookeeper/zkdata/myid
+#server1
+echo "1" > /usr/local/zookeeper/data/myid
+#server2
+echo "2" > /usr/local/zookeeper/data/myid
+#server3
+echo "3" > /usr/local/zookeeper/data/myid
 ```
 
 配置环境变量
@@ -111,7 +111,7 @@ echo "3" > /data/zookeeper/zkdata/myid
 ```shell
 vi /etc/profile
 
-export ZOOKEEPER_HOME=/usr/local/apache-zookeeper-3.6.0-bin
+export ZOOKEEPER_HOME=/usr/local/zookeeper
 export PATH=$PATH:$ZOOKEEPER_HOME/bin
 
 source /etc/profile
@@ -121,9 +121,9 @@ source /etc/profile
 
 ```shell
 # 启动
-/usr/local/apache-zookeeper-3.6.0-bin/bin/zkServer.sh start
+/usr/local/zookeeper/bin/zkServer.sh start
 # 查看
-/usr/local/apache-zookeeper-3.6.0-bin/bin/zkServer.sh status
+/usr/local/zookeeper/bin/zkServer.sh status
 ```
 
 
@@ -149,4 +149,24 @@ firewall-cmd --add-port=3888/tcp --zone=public --permanent
 firewall-cmd --add-port=12181/tcp --zone=public --permanent
 ```
 
+
+
+## 开机启动
+
+```shell
+[Unit]
+Description=zookeeper Server Daemon
+
+[Service]
+Type=simple
+ExecStartPre=-/usr/sbin/setcap cap_net_bind_service=+ep /usr/local/zookeeper/bin/zkServer.sh
+ExecStart=/usr/local/zookeeper/bin/zkServer.sh start
+Restart=always
+RestartSec=60s
+User=nobody
+PermissionsStartOnly=true
+
+[Install]
+WantedBy=multi-user.target
+```
 
