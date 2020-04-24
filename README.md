@@ -1,5 +1,5 @@
 # 我的个人博客
-[imjcker](http://blog.imjcker.com)
+[imjcker](http://imjcker.com)
 ![imjcker](assets/imjcker.png)
 
 ## 博客规范
