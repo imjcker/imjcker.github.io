@@ -42,3 +42,4 @@ style:
   css: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']
 
 
+google_analytics: UA-164703783-1

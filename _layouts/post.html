@@ -20,14 +20,14 @@ layout: default
             {%- endif -%}
             {%- if page.categories.size > 0 -%}
             {%- for category in page.categories -%}
-            <button type="button" class="btn btn-sm btn-outline-success" disabled>{{category}}</button>
+            <a class="badge badge-pill badge-primary" href="/categories/#{{category}}">{{category}}</a>
             {%- endfor -%}
             {%- endif -%}
-            {%- if page.tags.size > 0 -%}
+            <!--{%- if page.tags.size > 0 -%}
             {%- for tag in page.tags -%}
-            <button type="button" class="btn btn-sm btn-outline-success" disabled>{{tag}}</button>
+            <a class="badge badge-pill badge-info" href="/categories/#{{category}}">{{tag}}</a>
             {%- endfor -%}
-            {%- endif -%}
+            {%- endif -%}-->
           </p>
         </header>
 
