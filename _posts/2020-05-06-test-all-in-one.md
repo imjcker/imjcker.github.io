@@ -125,7 +125,7 @@ pidstat -d 1
 **iotop** 打印进程IO情况
 
 传送门：<https://www.cnblogs.com/bingxinguoke/p/4150903.html>
-
+传送门：<https://jaminzhang.github.io/os/Linux-IO-Monitoring-and-Deep-Analysis>
 ```shell
 iotop -oP 
 ```

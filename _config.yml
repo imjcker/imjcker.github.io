@@ -2,7 +2,7 @@
 author: 百年孤独
 title: imjcker
 description: >- # this means to ignore newlines until "baseurl:"
-  全栈工程师,大数据,人工智能专家,单身万岁!!!
+  我一条狗，吃饭旅行，走走停停!!!
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://imjcker.com" # the base hostname & protocol for your site, e.g. http://example.com
 
@@ -32,8 +32,10 @@ social:
   github_username: imjcker
   email: helloalanturing@icloud.com
   friends:
-    - https://www.google.com
-    - https://cn.bing.com
+    - name: Google
+      url: https://www.google.com
+    - name: Bing
+      url: https://cn.bing.com
 
 
 style:
