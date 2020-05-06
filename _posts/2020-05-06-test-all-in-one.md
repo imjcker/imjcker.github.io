@@ -6,7 +6,7 @@ tags: test 测试
 bg: 2020/jmeter.png
 ---
 
-测试工具使用总结
+测试工具使用总结Jmeter, Nmon, Arthas, jvisualvm,others
 
 
 
@@ -16,11 +16,11 @@ jmeter是一个Apache旗下的开源性能测试工具，是由纯Java开发的�
 
 传送门：<https://www.cnblogs.com/st-leslie/p/5185376.html>
 
-![jmeter-1](assets/2020/jmeter-1.png)
+![jmeter-1](/assets/2020/jmeter-1.png)
 
 ## nmon
 
-![nmon](assets/2020/nmon.gif)
+![nmon](/assets/2020/nmon.gif)
 
 - 官网：http://nmon.sourceforge.net/pmwiki.php
 
@@ -99,7 +99,7 @@ jmeter是一个Apache旗下的开源性能测试工具，是由纯Java开发的�
 2. 配置jmx
 3. visualvm连接远程服务
 
-![jvisualvm](assets/2020/jvisualvm.png)
+![jvisualvm](/assets/2020/jvisualvm.png)
 
 
 
