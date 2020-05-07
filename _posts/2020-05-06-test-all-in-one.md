@@ -22,11 +22,12 @@ jmeter是一个Apache旗下的开源性能测试工具，是由纯Java开发的�
 
 ![nmon](/assets/2020/nmon.gif)
 
-- 官网：http://nmon.sourceforge.net/pmwiki.php
+nmon是一种在AIX与各种Linux操作系统上广泛使用的监控与分析工具， nmon所记录的信息是比较全面的，它能在系统运行过程中实时地捕捉系统资源的使用情况，并且能输出结果到文件中。
 
+- 官网：http://nmon.sourceforge.net/pmwiki.php
 - 分析工具 nmon analyser：https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/Power+Systems/page/nmon_analyser
 
-- > nmon是一种在AIX与各种Linux操作系统上广泛使用的监控与分析工具， nmon所记录的信息是比较全面的，它能在系统运行过程中实时地捕捉系统资源的使用情况，并且能输出结果到文件中。
+
 
 ### 下载/安装
 
@@ -39,6 +40,8 @@ jmeter是一个Apache旗下的开源性能测试工具，是由纯Java开发的�
   ```
 
   前提是你已经有安装 epel 源
+
+  https://rpmfind.net/linux/rpm2html/search.php?query=nmon 
 
   - 或者使用 RPM 包：
 
@@ -129,6 +132,4 @@ pidstat -d 1
 ```shell
 iotop -oP 
 ```
-
-
 
