@@ -55,3 +55,19 @@ vue init webpack xxx
 
 Vue 路由使用：
 
+# element-ui 
+
+## 升级
+
+查看当前版本
+
+```shell
+npm view element-ui versions
+```
+
+升级到最新版本
+
+```shell
+npm update element-ui
+```
+

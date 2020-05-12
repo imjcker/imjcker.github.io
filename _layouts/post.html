@@ -23,15 +23,15 @@ layout: default
             <a class="badge badge-pill badge-primary" href="/categories/#{{category}}">{{category}}</a>
             {%- endfor -%}
             {%- endif -%}
-            <!--{%- if page.tags.size > 0 -%}
-            {%- for tag in page.tags -%}
-            <a class="badge badge-pill badge-info" href="/categories/#{{category}}">{{tag}}</a>
-            {%- endfor -%}
-            {%- endif -%}-->
           </p>
         </header>
 
+        <!--<nav class="document-outline" id="document-outline" style="position: fixed; top: 52px; bottom: 0px;">
+          <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+        </nav>-->
+
         {{ content }}
+
       </div>
       <!--<div class="col-md-3 d-md-none d-lg-block">
         <div class="row">
