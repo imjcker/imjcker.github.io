@@ -70,7 +70,7 @@ bg: inmgr.png
 | 轮播展示区  | middle-right | 展示一些解决方案、服务特色等图片信息                         |
 | 常用热门API | bottom       | 卡片方式展示热门API包括：名称、简介、价格、调用次数等指标    |
 
-![1](/assets/inmgr/1.png)
+![1](../assets/inmgr/1.png)
 
 #### 页面2-API市场
 
@@ -81,7 +81,7 @@ bg: inmgr.png
 | 其他维度分类及探索条件 | middle | 展示其他筛选条件如：收费类型、API来源、付费方式、排序方式... |
 | API列表                | bottom | 卡片方式展示根据筛选条件查询到的API                          |
 
-![2](/assets/inmgr/2.png)
+# ![2](../assets/inmgr/2.png)
 
 #### 页面3-API详情
 
@@ -98,7 +98,7 @@ bg: inmgr.png
 | Tab5            |        | 其他相关                                            |
 | 相关API         | bottom | 与此页面的API相关的API展示。                        |
 
-![3](/assets/inmgr/3.png)
+![3](../assets/inmgr/3.png)
 
 
 
@@ -112,11 +112,11 @@ URL：[showapi](https://www.showapi.com/api/apiList)
 
 **首页**
 
-![1](/assets/inmgr/showapi-1.png)
+![1](../assets/inmgr/showapi-1.png)
 
 **接口详情**
 
-![2](/assets/inmgr/showapi-2.png)
+![2](../assets/inmgr/showapi-2.png)
 
 
 
@@ -126,15 +126,15 @@ URL: [juhe](https://www.juhe.cn)
 
 **首页**
 
-![1](/assets/inmgr/juhe-1.png)
+![1](../assets/inmgr/juhe-1.png)
 
 **分类页面**
 
-![2](/assets/inmgr/juhe-2.png)
+![2](../assets/inmgr/juhe-2.png)
 
 **接口详情**
 
-![3](/assets/inmgr/juhe-3.png)
+![3](../assets/inmgr/juhe-3.png)
 
 
 
@@ -144,15 +144,15 @@ URL: [avatardata](https://www.avatardata.cn)
 
 **首页**
 
-![1](/assets/inmgr/avatardata-1.png)
+![1](../assets/inmgr/avatardata-1.png)
 
 **分类**
 
-![2](/assets/inmgr/avatardata-2.png)
+![2](../assets/inmgr/avatardata-2.png)
 
 **接口详情**
 
-![3](/assets/inmgr/avatardata-3.png)
+![3](../assets/inmgr/avatardata-3.png)
 
 
 
@@ -162,21 +162,21 @@ URL: [binstd](https://www.binstd.com)
 
 **首页**
 
-![0](/assets/inmgr/binstd-0.png)
+![0](../assets/inmgr/binstd-0.png)
 
 **分类**
 
 自营
 
-![1](/assets/inmgr/binstd-1.png)
+![1](../assets/inmgr/binstd-1.png)
 
 商城
 
-![2](/assets/inmgr/binstd-2.png)
+![2](../assets/inmgr/binstd-2.png)
 
 **接口详情**
 
-![3](/assets/inmgr/binstd-3.png)
+![3](../assets/inmgr/binstd-3.png)
 
 
 
@@ -186,15 +186,15 @@ URL: [yongyou](https://api.yonyoucloud.com/#/home)
 
 **首页**
 
-![1](/assets/inmgr/yongyou-1.png)
+![1](../assets/inmgr/yongyou-1.png)
 
 **分类**
 
-![2](/assets/inmgr/yongyou-2.png)
+![2](../assets/inmgr/yongyou-2.png)
 
 **接口详情**
 
-![3](/assets/inmgr/yongyou-3.png)
+![3](../assets/inmgr/yongyou-3.png)
 
 ### aliyun
 
@@ -202,15 +202,15 @@ URL: [aliyun](https://market.aliyun.com/data)
 
 **首页**
 
-![1](/assets/inmgr/aliyun-1.png)
+![1](../assets/inmgr/aliyun-1.png)
 
 **分类**
 
-![2](/assets/inmgr/aliyun-2.png)
+![2](../assets/inmgr/aliyun-2.png)
 
 **接口详情**
 
-![3](/assets/inmgr/aliyun-3.png)
+![3](../assets/inmgr/aliyun-3.png)
 
 
 
@@ -220,19 +220,19 @@ URL: [baidu](https://cloud.baidu.com/market/home)
 
 **首页**
 
-![1](/assets/inmgr/baidu-1.png)
+![1](../assets/inmgr/baidu-1.png)
 
 **分类**
 
-![2](/assets/inmgr/baidu-2.png)
+![2](../assets/inmgr/baidu-2.png)
 
 **接口详情**
 
-![3](/assets/inmgr/baidu-3.png)
+![3](../assets/inmgr/baidu-3.png)
 
-![4](/assets/inmgr/baidu-4.png)
+![4](../assets/inmgr/baidu-4.png)
 
-![5](/assets/inmgr/baidu-5.png)
+![5](../assets/inmgr/baidu-5.png)
 
 ### yesapi
 
@@ -240,17 +240,17 @@ URL: [yesapi](http://api.yesapi.cn/docs.html)
 
 **首页**
 
-![1](/assets/inmgr/yesapi-1.png)
+![1](../assets/inmgr/yesapi-1.png)
 
 **分类**
 
-![2](/assets/inmgr/yesapi-2.png)
+![2](../assets/inmgr/yesapi-2.png)
 
 **接口详情**
 
-![3](/assets/inmgr/yesapi-3.png)
+![3](../assets/inmgr/yesapi-3.png)
 
-![4](/assets/inmgr/yesapi-4.png)
+![4](../assets/inmgr/yesapi-4.png)
 
 
 
@@ -260,11 +260,11 @@ URL: [mxnzp](https://www.mxnzp.com)
 
 **主页/分类**
 
-![1](/assets/inmgr/mxnzp-1.png)
+![1](../assets/inmgr/mxnzp-1.png)
 
 **接口详情**
 
-![2](/assets/inmgr/mxnzp-2.png)
+![2](../assets/inmgr/mxnzp-2.png)
 
 
 
@@ -274,17 +274,17 @@ URL: [jisuapi](https://www.jisuapi.com)
 
 **首页**
 
-![1](/assets/inmgr/jisuapi-1.png)
+![1](../assets/inmgr/jisuapi-1.png)
 
 **分类**
 
-![2](/assets/inmgr/jisuapi-2.png)
+![2](../assets/inmgr/jisuapi-2.png)
 
 **接口详情**
 
-![3](/assets/inmgr/jisuapi-3.png)
+![3](../assets/inmgr/jisuapi-3.png)
 
-![3](/assets/inmgr/jisuapi-4.png)
+![3](../assets/inmgr/jisuapi-4.png)
 
 
 
@@ -294,15 +294,15 @@ URL: [haoservice](http://www.haoservice.com)
 
 **首页**
 
-![1](/assets/inmgr/haoservice-1.png)
+![1](../assets/inmgr/haoservice-1.png)
 
 **分类**
 
-![2](/assets/inmgr/haoservice-2.png)
+![2](../assets/inmgr/haoservice-2.png)
 
 **接口详情**
 
-![3](/assets/inmgr/haoservice-3.png)
+![3](../assets/inmgr/haoservice-3.png)
 
 
 
@@ -312,17 +312,17 @@ URL：[京东万象](https://wx.jdcloud.com)
 
 **首页**
 
-![0](/assets/inmgr/jdwx-0.png)
+![0](../assets/inmgr/jdwx-0.png)
 
 **分类**
 
-![1](/assets/inmgr/jdwx-1.png)
+![1](../assets/inmgr/jdwx-1.png)
 
 **接口详情**
 
-![2](/assets/inmgr/jdwx-2.png)
+![2](../assets/inmgr/jdwx-2.png)
 
-![2](/assets/inmgr/jdwx-3.png)
+![2](../assets/inmgr/jdwx-3.png)
 
-![2](/assets/inmgr/jdwx-4.png)
+![2](../assets/inmgr/jdwx-4.png)
 
