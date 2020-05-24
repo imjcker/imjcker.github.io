@@ -10,7 +10,7 @@ permalink: /resume/
 | ------------------------------- | ------------------------------------------------------------ |
 | 姓名：谭海慧                    | 性别：男                                                     |
 | 出生年月：1991年07月            | 民族：汉                                                     |
-| 籍贯：四川                      | 工作年限：3年                                                |
+| 籍贯：四川                      | 工作年限：5年                                               |
 | 电话：15390017403               | 邮箱：[helloalanturing@icloud.com](mailto:helloalanturing@icloud.com) |
 | 博客：<https://imjcker.com> | GitHub: [imjcker](https://github.com/imjcker)                |
 | 学历：本科                      | 专业：计算机科学与技术                                       |
@@ -19,11 +19,19 @@ permalink: /resume/
 
 ### 技术特长
 
-1. 熟悉JAVA语言,主流开源框架(Spring Cloud, Spring boot, Mybatis, Struts2, JPA等)
-2. 前端技术: JQuery, easyUI, bootstrap3,4, Vue.
-3. 其它技术：Nginx, freemarker, Linux, shell, ES, redis, mongodb, kafka, zookeeper, RabbitMQ, flink, OCR识别.
-4. 熟悉MySQL、Oracle, Sybase, H2, memcache的使用.
-5. 主要使用中间件有：tomcat、webLogic、webSphere.
+Spring Cloud，Spring MVC，Mybatis，Struts2，JPA；
+
+JQuery，easyUI，ElementUI，bootstrap3,4，Vue；
+
+Nginx, freemarker, Linux, shell；
+
+kafka, zookeeper, RabbitMQ；
+
+MySQL，Oracle，Sybase，H2，memcache，redis，Elasticsearch，hbase，mongodb；
+
+tomcat、undertow，webLogic、webSphere；
+
+Maven，OCR，Git，SVN...
 
 ---
 
@@ -50,65 +58,56 @@ permalink: /resume/
 开发工具：Idea、webstorm, 
 
 项目描述： 统一接口平台是一套面向中小型商业银行和金融机构的高并发的接口管理系统.  
-主要使用技术：spring boot，jpa，spring mvc，mybatis, vue，MySQL，rabbitmq, kafka, zookeeper, elasticsearch, redis, mongodb, flink
+主要使用技术：spring cloud，jpa，spring mvc，mybatis, vue，MySQL，rabbitmq, kafka, zookeeper, elasticsearch, redis, mongodb, flink
 
 责任职责：DevOps
----  
-#### 2018/10 - 2019/04 澳门综合办案系统
 
-<p style="color:red">涉及敏感内容，不展示</p> 
----  
-#### 2018/07 - 2018/10 刑拘监督系统
+#### 2018/07 - 2019/04 全国检察院统一办案系统
 
-软件环境： Windows Server 2008
+软件环境： Linux
 
-硬件环境：Windows Server主机，
+开发工具：IntelliJ Idea、Oracle、MySQL、Mockplus、VS code
 
-开发工具：Idea、webstorm
-
-项目描述： 远程送达系统是一个由个人设计开发的java博客，主要使用技术：spring boot，jpa，spring mvc，freemarker，jquery，bootstrap4，以及各种基于jquery的前端插件。本项目以个人爱好为出发点开发，托管在GitHub上。
+项目描述：全国检察院统一业务系统是一个面向全国所有从最高人民检察院到省级市级以及地方检察院的通用业务系统，全国除高级涉密意外的所有刑事以及民事案件都要在本系统中办理。介于系统的庞大和业务线复杂性，研发团队最终决定采用当今流行的微服务架构来开发设计本系统。本系统与包括阿里云、腾讯云、华为云以及航天等多家云服务平台达成合作。系统要求同时适配多种主流数据库，包括Oracle、MySQL、dameng，PostgreSQL等，因此在数据访问层面采用JPA加QueryDSL扩展来达到适配目的；另一方面，采用2pc来处理分布式事务。后端使用dubbo结合spring cloud的方式，同时提供RPC和REST 两种API调用方式，各个微服务之间采用RPC以提高内网性能，对外提供REST API供第三方系统调用。设计方面，采用领域建模的方式，拆分模块，并将多个领域聚合形成一个微服务，保证事务控制在每个聚合中，达到降低分布式事务处理难度。服务治理及部署方面，同时跟多家云服务平台对接联调，形成多套方案，使用K8s + docker管理部署项目，开发使用基于Jenkins的CI模式自动打包部署。
 
 责任职责：开发、设计、运维工程师。
-
 
 ---
 #### 2018/06 - 2018/09 类案监督系统 
 
-软件环境： Windows Server 2008
+软件环境： Windows Server 2012
 
-硬件环境：Windows Server主机，
+开发工具：IntelliJ Idea、Oracle、PL-SQL、vs code
 
-开发工具：Idea、webstorm
+项目描述： 类案统计刑拘监督系统主要是为解决统计各类犯罪案件而设计开发的，后端采用spring boot，都是样板式代码加上自己封装的Java调用Oracle存储过程包，主要逻辑采用oracle存储过程处理，前端采用e-charts和high-charts等各种统计插件展示数据。
 
-项目描述： 远程送达系统是一个由个人设计开发的java博客，主要使用技术：spring boot，jpa，spring mvc，freemarker，jquery，bootstrap4，以及各种基于jquery的前端插件。本项目以个人爱好为出发点开发，托管在GitHub上。
-
-责任职责：开发、设计、运维工程师。
+责任职责：开发、设计。
 
 ---
 
 #### 2018/04 - 2018/06 远程送达系统
 
-软件环境： Windows Server 2008
+软件环境： Windows Server
 
-硬件环境：Windows Server主机，
+开发工具：Idea、MySQL、微信开发工具、VS code
 
-开发工具：Idea、webstorm
+使用技术：Spring boot，MyBatis， JPA
 
-项目描述： 远程送达系统是一个由个人设计开发的java博客，主要使用技术：spring boot，jpa，spring mvc，freemarker，jquery，bootstrap4，以及各种基于jquery的前端插件。本项目以个人爱好为出发点开发，托管在GitHub上。
+项目描述： 法律文书远程送达旨在解决法律文书在法院、检察机关、公安机关、等政法部门以及被害人/被告人之间流通传递的问题。一份文书从产生到传达到机关单位或被/受害人的手工都可以由法律文书远程送达系统完成，并且支持包括邮件，短信，微信等发送方式。
 
-责任职责：开发、设计、运维工程师。
+责任职责：开发和设计部分模块。
 
 ---
 
-#### 2018/02 – 至今 开源Java博客
+#### 2018/02 – 至今 开源静态博客
 
 软件环境： Linux
 
-硬件环境：
+硬件环境：GitHub pages
 
-开发工具：Idea、tomcat、H2
+开发工具：Idea、Jekyll
 
-项目描述： jcker是一个由个人设计开发的java博客，主要使用技术：spring boot，jpa，spring mvc，freemarker，jquery，bootstrap4，以及各种基于jquery的前端插件。本项目以个人爱好为出发点开发，托管在GitHub上。
+项目描述： imjcker是一个由个人设计开发的静态博客系统，主要使用技术：Jekyll、bootstrap4，以及各种基于jquery的前端插件。本项目以个人爱好为出发点开发，托管在GitHub上，是一个简洁大方的个人博客。
 
 责任职责：开发、设计、运维工程师。
 
