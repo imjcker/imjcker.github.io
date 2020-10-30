@@ -1,8 +1,4 @@
----
-layout: default
-title: 关于
-permalink: /resume/
----
+# 简历
 
 ### 基本信息
 
