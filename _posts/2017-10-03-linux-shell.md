@@ -6,14 +6,17 @@ tags: shell
 bg: 2020/shell.png
 ---
 
+# 2017-10-03-linux-shell
+
 shell脚本能解放生产力，记录shell脚本使用情况
 
 ## shell 编程
 
+### ssh 密钥对使用
 
-#### ssh 密钥对使用
 在开发和测试的时有很多场景都要用到ssh连接远程服务器，每次都输入密码让人真的很头痛，那么有说明办法可以避免每次都输入密码呢？答案就是：ssh密钥对
-```shell
+
+```text
 # 生成密钥对
 ssh-keygen -t rsa -b 4096 -C "this is a ssh key demo" # -t指加密方式，-b指加密长度
 # 一直回车默认直到生成密钥对在默认位置，一般为当前用户的根目录下的.ssh目录下
@@ -26,35 +29,28 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 # 查看添加状况
 ssh-add -l
-
-
 ```
 
+### 脚本入参
 
-#### 脚本入参
-
-```shell
+```text
 $# 入参个数
 $1 第一个入参，以此类推
 ```
 
-
-
-#### telnet
+### telnet
 
 telnet: Unable to connect to remote host: No route to host
 
-执行： 
+执行：
 
-```shell
+```text
 iptables -F
 ```
 
+### xsync
 
-
-#### xsync
-
-```shell
+```text
 #!/bin/bash
 
 pcount=$#
