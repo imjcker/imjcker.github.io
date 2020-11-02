@@ -11,7 +11,7 @@ description: 我的个人简历，目前在职。
 | 姓名：谭海慧 | 性别：男 |
 | 出生年月：1991年07月 | 民族：汉 |
 | 籍贯：四川 | 工作年限：5年 |
-| 电话：153****7403 | 邮箱：[helloalanturing@icloud.com](mailto:helloalanturing@icloud.com) |
+| 电话：153_\*\*_7403 | 邮箱：[helloalanturing@icloud.com](mailto:helloalanturing@icloud.com) |
 | 博客：[https://docs.imjcker.com](https://docs.imjcker.com) | GitHub: [imjcker](https://github.com/imjcker) |
 | 学历：本科 | 专业：计算机科学与技术 |
 | 英语等级：CET 4 | 毕业院校：四川理工（2012-2016） |
