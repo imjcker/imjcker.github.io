@@ -118,7 +118,7 @@ print 'Hello, World!'
 * [目录](#目录)
 ```
 
-* [目录](2018-01-12-markdown.md#目录)
+* [目录](markdown.md#目录)
 
 **表情**Emoji
 
