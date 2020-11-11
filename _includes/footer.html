@@ -1,0 +1,66 @@
+<footer class="footer bg-light" style="margin-top: 5px;">
+    <div class="container">
+        <data class="u-url" href="{{ "/" | relative_url }}"></data>
+        <div class="row">
+            <div class="col-md-4">
+                <p class="p-name">
+                    {%- if site.author -%}
+                    {{ site.author | escape }}
+                    {%- else -%}
+                    {{ site.title | escape }}
+                    {%- endif -%}
+                </p>
+                <ul class="list-group list-group-flush">
+                    {%- if site.social.email -%}<li class="list-group-item bg-light" style="padding: 0; "><a class="u-email" href="mailto:{{ site.social.email }}">Email: {{ site.social.email }}</a></li>{%- endif -%}
+                    {%- if site.social.qq -%}<li class="list-group-item bg-light" style="padding: 0; "><a class="u-email" href="mailto:{{ site.social.email }}">QQ: {{ site.social.qq }}</a></li>{%- endif -%}
+                    {%- if site.social.wechat -%}<li class="list-group-item bg-light" style="padding: 0; "><a class="u-email" href="mailto:{{ site.social.email }}">WeChat: {{ site.social.wechat }}</a></li>{%- endif -%}
+                    {%- if site.social.twitter_username -%}
+                    <li class="list-group-item bg-light" style="padding: 0; "><a href="https://www.twitter.com/{{ site.social.twitter_username| cgi_escape | escape }}"><span class="username">twitter: {{ site.social.twitter_username| escape }}</span></a></li>
+                    {%- endif -%}
+                    {%- if site.social.github_username -%}
+                    <li class="list-group-item bg-light" style="padding: 0; "><a href="https://github.com/{{ site.social.github_username| cgi_escape | escape }}"><span class="username">GitHub: {{ site.social.github_username| escape }}</span></a></li>
+                    {%- endif -%}
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                {%- if page.categories.size > 0 -%}
+                    相关文章:
+                    <ul class="list-group list-group-flush">
+                        {% for cat in site.categories %}
+                            {%- if cat[0] == page.categories[0] -%}
+                                {% for p in cat[1] limit:10 %}
+                                    {% if p.title != page.title %}
+                                        <li class="list-group-item bg-light" style="padding: 0; line-height: 30px;"><a href="{{ p.url | relative_url }}">{{p.title}}</a></li>
+                                    {% endif %}
+                                {%- endfor -%}
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {%- else -%}
+                    最新文章:
+                    <ul class="list-group list-group-flush">
+                        {% for post in site.posts limit:10 %}
+                        <li class="list-group-item bg-light" style="padding: 0; line-height: 30px;"><a href="{{ post.url | relative_url }}">{{post.title}}</a></li>
+                        {% endfor %}
+                    </ul>
+                {%- endif -%}
+            </div>
+
+            <div class="col-md-4">
+                <img src="/assets/qrcode.jpg" alt="wechat" style="width: 90px;height: 90px; margin-top: 5px;">
+                <p>{{- site.description | escape -}}</p>
+
+                {%- if site.social.friends.size > 0 -%}
+                友情链接:
+                <ul class="list-group list-group-flush">
+                    {% for friend in site.social.friends %}
+                    <li class="list-group-item bg-light" style="padding: 0; line-height: 30px;"><a href="{{ friend.url | relative_url }}">{{friend.name}}</a></li>
+                    {% endfor %}
+                </ul>
+                {%- endif -%}
+            </div>
+
+        </div>
+    </div>
+</footer>

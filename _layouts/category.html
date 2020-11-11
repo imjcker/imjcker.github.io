@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<div class="row">
+  {%- if page.category -%}
+    <h1 class="page-heading">{{ page.category[0] }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+  <div  style=" margin-top: 5px; width: 100%">
+    <div class="card-body" style="padding: 0;">
+      <ul class="list-group list-group-flush">
+        {% for cat in site.categories %}
+          {%- if cat[0] == page.category -%}
+            {% for p in cat[1] %}
+              {% if p.title != page.title %}
+                <li class="list-group-item" style="padding: 0; "><a href="{{ p.url | relative_url }}">{{p.title}}</a></li>
+              {% endif %}
+            {%- endfor -%}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+</div>

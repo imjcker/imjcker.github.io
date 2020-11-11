@@ -1,0 +1,47 @@
+
+author: 百年孤独
+title: imjcker
+description: >- # this means to ignore newlines until "baseurl:"
+  我一条狗，吃饭旅行，走走停停!!!
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "https://imjcker.com" # the base hostname & protocol for your site, e.g. http://example.com
+
+
+# Build settings
+#theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag
+
+disqus:
+  shortname: imjcker
+# 分页
+paginate: 6
+postCardRow: 2 # 12 x postCardRow / paginate 为整数
+# 是否显示预览信息
+show_excerpts: false
+
+# 自定义变量
+imjcker:
+  menu: 首页
+social:
+  qq: 570577029
+  wechat: helloalanturing
+  twitter_username: helloalanturing
+  github_username: imjcker
+  email: helloalanturing@icloud.com
+  friends:
+    - name: Google
+      url: https://www.google.com
+    - name: Bing
+      url: https://cn.bing.com
+
+
+style:
+  home:
+    card_img: avatar.jpg
+  css: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']
+
+
+google_analytics: UA-164703783-1
