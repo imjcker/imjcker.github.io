@@ -34,7 +34,7 @@ This application requires Visual Studio 2013 Redistributable. Please install the
 ```text
 docker pull mysql:5.7
 
-docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=mysql --restart always -p 3306:3306 mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=root --restart always -p 3306:3306 mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 ```
 
 1. 配置
