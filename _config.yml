@@ -13,9 +13,10 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-seo-tag
+#
+#disqus:
+#  shortname: imjcker
 
-disqus:
-  shortname: imjcker
 # 分页
 paginate: 6
 postCardRow: 2 # 12 x postCardRow / paginate 为整数

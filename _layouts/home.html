@@ -14,15 +14,15 @@ layout: default
             {%- for post in paginator.posts -%}
               <div class="col-md-{{12 | times: site.postCardRow | divided_by: paginator.per_page}}">
                 <a id="{{post.id | split: '/' | last}}" href="{{ post.url | relative_url }}" class="list-group-item list-group-item-action imjcker-post" style=" margin: 5px 2px; ">
-                  {%- if post.bg -%}
+                  <!--{%- if post.bg -%}
                   <img class="img-fluid card-img-top" src="/assets/{{post.bg}}" alt="Card image cap">
                   {%- else -%}
                   <img class="img-fluid card-img-top"  src="/assets/{{site.style.home.card_img}}" alt="Card image cap" >
-                  {%- endif -%}
+                  {%- endif -%}-->
 
-                  <div class="d-flex w-100 justify-content-between">
+                  <!--<div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">{{ post.title | escape }}</h5>
-                  </div>
+                  </div>-->
 
                   <div class="mb-1 d-md-none d-lg-block">
                     {% if post.excerpt.size > 48 %}
@@ -31,7 +31,7 @@ layout: default
                       {{post.excerpt}}
                     {% endif %}
                   </div>
-                  <small class="badge badge-pill badge-primary" style="position: absolute; bottom: 1px; left: 3px;">{{post.category}}</small>
+<!--                  <small class="badge badge-pill badge-primary" style="position: absolute; bottom: 1px; left: 3px;">{{post.category}}</small>-->
                   <small class="text-muted" style="position: absolute; bottom: 0; right: 3px;">{{ post.date | date: "%Y年%m月%d日" }}</small>
                 </a>
               </div>
