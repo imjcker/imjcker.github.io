@@ -11,51 +11,41 @@ layout: default
       <div class="row justify-content-center">
         <div class="col col-md-9">
           <div class="row">
-            {%- for post in paginator.posts -%}
-              <div class="col-md-{{12 | times: site.postCardRow | divided_by: paginator.per_page}}">
-                <a id="{{post.id | split: '/' | last}}" href="{{ post.url | relative_url }}" class="list-group-item list-group-item-action imjcker-post" style=" margin: 5px 2px; ">
-                  <!--{%- if post.bg -%}
-                  <img class="img-fluid card-img-top" src="/assets/{{post.bg}}" alt="Card image cap">
-                  {%- else -%}
-                  <img class="img-fluid card-img-top"  src="/assets/{{site.style.home.card_img}}" alt="Card image cap" >
-                  {%- endif -%}-->
+            <div class="col col-md-12">
+              <!--罗列所有tag-->
+              {%- for category in site.categories -%}
+              <a class="badge badge-pill badge-{{site.style.css | sample}} mx-1 my-1" href="#{{category[0]}}">{{category[0]}}</a>
+              {%- endfor -%}
+              <hr>
+              <!--分组展示blog-->
+              {%- for category in site.categories -%}
+              <h5 id="{{category[0]}}" onclick="handleCategory(this.id)"><i class="fas fa-code-branch">&nbsp;{{category[0]}}</i></h5>
+              <ul id="category-{{category[0]}}" class="list-group list-group-flush">
+                {% for cat in site.categories %}
+                {%- if cat[0] == category[0] -%}
+                {% for p in cat[1] %}
+                {% if p.title != page.title %}
+                <li class="list-group-item" style="padding: 0.625rem 0; color: #2a7ae2">
+                  <a href="{{ p.url | relative_url }}">
+                    {{p.title}}
+                    <time class="dt-published" style="float: right" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+                      {{ p.date | date: "%Y年%m月%d日" }}
+                    </time>
+                  </a>
+                </li>
+                {% endif %}
+                {%- endfor -%}
+                {% endif %}
+                {% endfor %}
+              </ul>
+              {%- endfor -%}
 
-                  <!--<div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">{{ post.title | escape }}</h5>
-                  </div>-->
-
-                  <div class="mb-1 d-md-none d-lg-block">
-                    {% if post.excerpt.size > 48 %}
-                      {{post.excerpt | truncate: 48}}
-                    {% else %}
-                      {{post.excerpt}}
-                    {% endif %}
-                  </div>
-<!--                  <small class="badge badge-pill badge-primary" style="position: absolute; bottom: 1px; left: 3px;">{{post.category}}</small>-->
-                  <small class="text-muted" style="position: absolute; bottom: 0; right: 3px;">{{ post.date | date: "%Y年%m月%d日" }}</small>
-                </a>
-              </div>
-            {%- endfor -%}
-          </div>
-          {% if paginator.total_pages > 1 %}
-          <div class="row justify-content-center">
-            <div class="col-4">
-              {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path | relative_url }}">上一页</a>
-              {%- else -%}
-              上一页: 没了
-              {% endif %}
-            </div>
-            <div class="col-4"><p style="text-align: center; width: 100%;">第{{paginator.page}}页/共{{paginator.total_pages}}页</p></div>
-            <div class="col-4">
-              {% if paginator.next_page %}<a href="{{ paginator.next_page_path | relative_url }}" style="float: right;">下一页</a>
-              {%- else -%}
-              下一页: 没了
-              {% endif %}
             </div>
           </div>
-          {% endif %}
         </div>
       </div>
   {%- endif -%}
 
 </div>
+
