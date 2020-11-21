@@ -20,6 +20,7 @@ layout: default
               <!--展示选中分组的博客-->
               {%- for category in site.categories -%}
               <ul id="category-{{category[0]}}" class="list-group list-group-flush" style="display: none">
+                <h2>{{category[0]}}</h2>
                 {% for cat in site.categories %}
                   {%- if cat[0] == category[0] -%}
                     {% for p in cat[1] %}
@@ -37,42 +38,6 @@ layout: default
                 {% endfor %}
               </ul>
               {%- endfor -%}
-
-
-
-
-              <hr>
-              最新博客：
-              <ul class="list-group list-group-flush">
-                {% for post in site.posts limit:10 %}
-                <li class="list-group-item bg-light" style="padding: 0; line-height: 30px;"><a href="{{ post.url | relative_url }}">{{post.title}}</a></li>
-                {% endfor %}
-              </ul>
-              <hr>
-
-              <!--分组展示blog-->
-<!--              {%- for category in site.categories -%}
-              <h5 id="{{category[0]}}" onclick="handleCategory(this.id)"><i class="fas fa-code-branch">&nbsp;{{category[0]}}</i></h5>
-              <ul id="category-{{category[0]}}" class="list-group list-group-flush"  style="display: none">
-                {% for cat in site.categories %}
-                {%- if cat[0] == category[0] -%}
-                {% for p in cat[1] %}
-                {% if p.title != page.title %}
-                <li class="list-group-item" style="padding: 0.625rem 0; color: #2a7ae2">
-                  <a href="{{ p.url | relative_url }}">
-                    {{p.title}}
-                    <time class="dt-published text-muted" style="float: right" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-                      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-                      <small>{{ p.date | date: "%Y年%m月%d日" }}</small>
-                    </time>
-                  </a>
-                </li>
-                {% endif %}
-                {%- endfor -%}
-                {% endif %}
-                {% endfor %}
-              </ul>
-              {%- endfor -%}-->
 
             </div>
           </div>
