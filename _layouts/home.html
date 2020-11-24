@@ -14,7 +14,7 @@ layout: default
             <div class="col col-md-12">
               <!--罗列所有tag-->
               {%- for category in site.categories -%}
-              <a class="badge badge-pill badge-{{site.style.css | sample}} mx-1 my-1" id="{{category[0]}}" onclick="handleCategory(this.id)">{{category[0]}}</a>
+              <a class="badge badge-{{site.style.css | sample}} mx-1 my-1" id="{{category[0]}}" onclick="handleCategory(this.id)">{{category[0]}}</a>
               {%- endfor -%}
 
               <!--展示选中分组的博客-->

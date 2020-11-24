@@ -14,6 +14,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!--<script src="/assets/all.js"></script>-->
     <script type="text/javascript">
+      let category_id;
+
       $(function(){
         let card = $(".imjcker-post");
         let cardImg = $(".img-fluid");
@@ -23,6 +25,9 @@
           card.height(card.width() / 0.618);
           cardImg.height(cardImg.width() * 0.618);
         });
+
+        // show clicked category
+        handleCategory(decodeURI(document.location.hash.toString().substr(1)));
       });
 
       function showExcerpts(id, bg) {
@@ -112,7 +117,6 @@
         }
       })(jQuery, this);
 
-      var category_id;
       function handleCategory(id) {
         if (category_id !== undefined){
           if (category_id.css("display") === "none") {
