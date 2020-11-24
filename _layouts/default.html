@@ -112,9 +112,19 @@
         }
       })(jQuery, this);
 
+      var category_id;
       function handleCategory(id) {
+        if (category_id !== undefined){
+          if (category_id.css("display") === "none") {
+            category_id.show();
+          } else {
+            category_id.hide();
+          }
+        }
+
         let category = 'category-' + id;
         let cate = $('#'+category);
+        category_id = cate;
         if (cate.css("display") === "none") {
           cate.show();
         } else {
