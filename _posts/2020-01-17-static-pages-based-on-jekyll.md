@@ -5,7 +5,7 @@ category: 博客建设
 tags: 
   - 博客
   - jekyll
-  - "GitHub Pages"
+  - GitHub-Pages
 bg: jekyll.png
 ---
 
