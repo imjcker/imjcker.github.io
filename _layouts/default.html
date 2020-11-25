@@ -15,6 +15,7 @@
     <!--<script src="/assets/all.js"></script>-->
     <script type="text/javascript">
       let category_id;
+      let tag_id;
 
       $(function(){
         let card = $(".imjcker-post");
@@ -27,7 +28,12 @@
         });
 
         // show clicked category
-        handleCategory(decodeURI(document.location.hash.toString().substr(1)));
+        let hash = document.location.hash.toString().substr(1);
+        if (hash.startsWith('c-')){
+          handleCategory(decodeURI(hash));
+        } else if (hash.startsWith('t-')){
+          handleTag(decodeURI(hash));
+        }
       });
 
       function showExcerpts(id, bg) {
@@ -118,6 +124,11 @@
       })(jQuery, this);
 
       function handleCategory(id) {
+        // hide tag
+        if (tag_id !== undefined) {
+            tag_id.hide();
+            tag_id = undefined;
+        }
         if (category_id !== undefined){
           if (category_id.css("display") === "none") {
             category_id.show();
@@ -126,13 +137,37 @@
           }
         }
 
-        let category = 'category-' + id;
+        let category = 'category-' + id.toString().substr(2);
         let cate = $('#'+category);
         category_id = cate;
         if (cate.css("display") === "none") {
           cate.show();
         } else {
           cate.hide();
+        }
+      }
+
+      function handleTag(id) {
+        // hid category
+        if (category_id !== undefined) {
+          category_id.hide();
+          category_id = undefined;
+        }
+        if (tag_id !== undefined){
+          if (tag_id.css("display") === "none") {
+            tag_id.show();
+          } else {
+            tag_id.hide();
+          }
+        }
+
+        let tag = 'tag-' + id.toString().substr(2);
+        let t = $('#'+tag);
+        tag_id = t;
+        if (t.css("display") === "none") {
+          t.show();
+        } else {
+          t.hide();
         }
       }
     </script>
