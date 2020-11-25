@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 关于
-permalink: /resume/
+permalink: /resume
 ---
 
 ### 基本信息
