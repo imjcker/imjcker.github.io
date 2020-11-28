@@ -42,16 +42,16 @@
             <div class="col-md-6">
                 <img src="/assets/qrcode.jpg" alt="wechat" style="width: 90px;height: 90px; margin-top: 5px;">
                 <div class="list-group list-group-flush">
-                    {%- if site.social.email -%}
-                    <div class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;"><a class="u-email" href="mailto:{{ site.social.email }}">Email: {{ site.social.email }}</a></div>{%- endif -%}
-                    {%- if site.social.qq -%}
-                    <div class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;"><a class="u-email" href="mailto:{{ site.social.email }}">QQ: {{ site.social.qq }}</a></div>{%- endif -%}
-                    {%- if site.social.wechat -%}
-                    <div class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;"><a class="u-email" href="mailto:{{ site.social.email }}">WeChat: {{ site.social.wechat }}</a></div>{%- endif -%}
-                    {%- if site.social.twitter_username -%}
-                    <div class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;"><a href="https://www.twitter.com/{{ site.social.twitter_username| cgi_escape | escape }}"><span class="username">Twitter: {{ site.social.twitter_username| escape }}</span></a></div>{%- endif -%}
                     {%- if site.social.github_username -%}
                     <div class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;"><a href="https://github.com/{{ site.social.github_username| cgi_escape | escape }}"><span class="username">GitHub: {{ site.social.github_username| escape }}</span></a></div>{%- endif -%}
+                    {%- if site.social.qq -%}
+                    <div class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;"><a class="u-email" href="mailto:{{ site.social.email }}">QQ: {{ site.social.qq }}</a></div>{%- endif -%}
+                    {%- if site.social.twitter_username -%}
+                    <div class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;"><a href="https://www.twitter.com/{{ site.social.twitter_username| cgi_escape | escape }}"><span class="username">Twitter: {{ site.social.twitter_username| escape }}</span></a></div>{%- endif -%}
+                    {%- if site.social.wechat -%}
+                    <div class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;"><a class="u-email" href="mailto:{{ site.social.email }}">WeChat: {{ site.social.wechat }}</a></div>{%- endif -%}
+                    {%- if site.social.email -%}
+                    <div class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;"><a class="u-email" href="mailto:{{ site.social.email }}">Email: {{ site.social.email }}</a></div>{%- endif -%}
                 </div>
             </div>
 
