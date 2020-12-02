@@ -10,9 +10,9 @@ layout: default
   {%- if site.posts.size > 0 -%}
       <div class="row justify-content-center">
         <div class="col col-md-9">
-          <div class="row">
+          <div class="row  justify-content-center">
             {%- for post in paginator.posts -%}
-              <div class="col-md-{{12 | times: site.postCardRow | divided_by: paginator.per_page}}">
+              <div class="col col-md-4">
                 <a id="{{post.id | split: '/' | last}}" href="{{ post.url | relative_url }}" class="list-group-item list-group-item-action imjcker-post" style=" margin: 5px 2px; ">
                   {%- if post.bg -%}
                   <img class="img-fluid card-img-top" src="/assets/{{post.bg}}" alt="Card image cap">
@@ -25,8 +25,8 @@ layout: default
                   </div>
 
                   <div class="mb-1 d-md-none d-lg-block">
-                    {% if post.excerpt.size > 48 %}
-                      {{post.excerpt | truncate: 48}}
+                    {% if post.excerpt.size > 24 %}
+                      {{post.excerpt | truncate: 24}}
                     {% else %}
                       {{post.excerpt}}
                     {% endif %}
@@ -54,6 +54,31 @@ layout: default
             </div>
           </div>
           {% endif %}
+        </div>
+        <div class="col col-md-3">
+            {%- if page.categories.size > 0 -%}
+            <ul class="list-group list-group-flush">
+              {% for cat in site.categories %}
+              {%- if cat[0] == page.categories[0] -%}
+              {% for p in cat[1] limit:10 %}
+              {% if p.title != page.title %}
+              <li class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;">
+                <a href="{{ p.url | relative_url }}">{{p.title}}</a>
+              </li>
+              {% endif %}
+              {%- endfor -%}
+              {% endif %}
+              {% endfor %}
+            </ul>
+            {%- else -%}
+              <ul class="list-group list-group-flush">
+              {% for post in site.posts limit:7 %}
+              <li class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;">
+                <a href="{{ post.url | relative_url }}">{{post.title}}</a>
+              </li>
+              {% endfor %}
+            </ul>
+            {%- endif -%}
         </div>
       </div>
   {%- endif -%}

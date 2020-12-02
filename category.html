@@ -1,0 +1,77 @@
+---
+layout: default
+title: 分组
+permalink: /category
+---
+
+<div class="row">
+  {%- if site.posts.size > 0 -%}
+  <div class="row justify-content-center">
+    <div class="col col-md-9">
+      <div class="row">
+        <div class="col col-md-12">
+          <!--罗列所有category-->
+          <!--                <button type="button" class="btn btn-block btn-light">分组</button>-->
+          {%- for category in site.categories -%}
+          <button class="btn btn-sm btn-outline-{{site.style.css | sample}} mx-1 my-1" id="c-{{category[0]}}" onclick="handleCategory(this.id)">{{category[0]}}</button>
+          {%- endfor -%}
+
+          <div class="card">
+            <div class="card-body">
+              <!--展示选中分组的博客-->
+              {%- for category in site.categories -%}
+              <div id="category-{{category[0]}}" class="list-group list-group-flush" style="display: none;">
+                {% for cat in site.categories %}
+                {%- if cat[0] == category[0] -%}
+                {% for p in cat[1] %}
+                <div class="list-group-item text-muted" style="padding: 0 0; border-bottom-width: 0;">
+                  <a href="{{ p.url | relative_url }}">
+                    {{p.title}}
+                    <time class="dt-published text-muted" style="float: right" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+                      <small>{{ p.date | date: "%Y年%m月%d日" }}</small>
+                    </time>
+                  </a>
+                </div>
+                {%- endfor -%}
+                {% endif %}
+                {% endfor %}
+              </div>
+              {%- endfor -%}
+
+              <!--展示选中关键字的博客-->
+              {%- for tag in site.tags -%}
+              <div id="tag-{{tag[0]}}" class="list-group list-group-flush" style="display: none;">
+                {% for ta in site.tags %}
+                {%- if ta[0] == tag[0] -%}
+                {% for p in ta[1] %}
+                <div class="list-group-item text-muted" style="padding: 0 0; border-bottom-width: 0;">
+                  <a href="{{ p.url | relative_url }}">
+                    {{p.title}}
+                    <time class="dt-published text-muted" style="float: right" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+                      <small>{{ p.date | date: "%Y年%m月%d日" }}</small>
+                    </time>
+                  </a>
+                </div>
+                {%- endfor -%}
+                {% endif %}
+                {% endfor %}
+              </div>
+              {%- endfor -%}
+            </div>
+          </div>
+
+          <!--罗列所有tag-->
+          <!--              <button type="button" class="btn btn-block btn-light">关键字</button>-->
+          {% for tag in site.tags %}
+          <button class="btn btn-sm btn-outline-{{site.style.css | sample}} mx-1 my-1" id="t-{{tag[0]}}" onclick="handleTag(this.id)">{{tag[0]}}</button>
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+  {%- endif -%}
+</div>
+

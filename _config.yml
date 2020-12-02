@@ -41,7 +41,7 @@ social:
 style:
   home:
     card_img: avatar.jpg
-  css: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']
+  css: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark']
 
 
 google_analytics: UA-164703783-1

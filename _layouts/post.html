@@ -15,29 +15,31 @@ layout: default
               {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
               {{ page.date | date: date_format }}
             </time>
-            {%- if page.author -%}
-            • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card mx-1" itemprop="name">{{ page.author }}</span></span>
-            {%- endif -%}
+
             {%- if page.categories.size > 0 -%}
             {%- for category in page.categories -%}
-            <a class="badge badge-pill badge-primary" href="/categories/#{{category}}">{{category}}</a>
+            分组：<a class="btn btn-sm btn-outline-{{site.style.css | sample}}" href="/category/#c-{{category}}">{{category}}</a>
             {%- endfor -%}
+            {%- endif -%}
+            &nbsp;&nbsp;
+            关键字：
+            {%- if page.tags.size > 0 -%}
+            {%- for tag in page.tags -%}
+            <a class="btn btn-sm btn-outline-{{site.style.css | sample}}" href="/category/#t-{{tag}}">{{tag}}</a>&nbsp;
+            {%- endfor -%}
+            {%- endif -%}
+
+            {%- if site.author -%}
+            &nbsp;作者：<span itemprop="author"><span class="p-author h-card mx-1" itemprop="name">{{ site.author }}</span></span>
             {%- endif -%}
           </p>
         </header>
-
-        <!--<nav class="document-outline" id="document-outline" style="position: fixed; top: 52px; bottom: 0px;">
-          <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-        </nav>-->
-
         {{ content }}
-
       </div>
-      <!--<div class="col-md-3 d-md-none d-lg-block">
+      <div class="col-md-3 d-md-none d-lg-block" style="padding: 0;border: 0;">
         <div class="row">
-          <div class="card" style=" margin-top: 5px; width: 100%;">
-            <div class="card-header">相关文章</div>
-            <div class="card-body">
+          <div class="card" style="padding: 0;border: 0;">
+            <div class="card-body" style="padding: 0;border: 0;">
               {%- if page.categories.size > 0 -%}
               <ul class="list-group list-group-flush">
                 {% for cat in site.categories %}
@@ -53,18 +55,17 @@ layout: default
               {%- endif -%}
             </div>
           </div>
-          <div class="card" style=" margin-top: 5px; width: 100%;">
-            <div class="card-header">最新文章</div>
-            <div class="card-body">
+          <!--<div class="card" style="padding: 0;border: 0;">
+            <div class="card-body" style="padding: 0;border: 0;">
               <ul class="list-group list-group-flush">
                 {% for post in site.posts limit:10 %}
                 <li class="list-group-item" style="padding: 0; "><a href="{{ post.url | relative_url }}">{{post.title}}</a></li>
                 {% endfor %}
               </ul>
             </div>
-          </div>
+          </div>-->
         </div>
-      </div>-->
+      </div>
     </div>
   </div>
   <div class="container">
