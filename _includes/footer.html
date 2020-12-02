@@ -1,60 +1,41 @@
-<footer class="footer" style="margin-top: 5px;">
+<footer class="navbar navbar-fixed-bottom">
+    <data class="u-url" href="{{ '/' | relative_url }}"></data>
     <div class="container">
-        <data class="u-url" href="{{ "/" | relative_url }}"></data>
-        <hr>
-        <div class="row">
-            <div class="col-md-6">
-                {%- if page.categories.size > 0 -%}
-                    相关文章:
-                    <ul class="list-group list-group-flush">
-                        {% for cat in site.categories %}
-                            {%- if cat[0] == page.categories[0] -%}
-                                {% for p in cat[1] limit:10 %}
-                                    {% if p.title != page.title %}
-                                        <li class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;">
-                                            <a href="{{ p.url | relative_url }}">{{p.title}}</a>
-                                            <time class="dt-published text-muted" style="float: right;" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-                                                {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-                                                <small>{{ p.date | date: "%Y年%m月%d日" }}</small>
-                                            </time>
-                                        </li>
-                                    {% endif %}
-                                {%- endfor -%}
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                {%- else -%}
-                    最新文章:
-                    <ul class="list-group list-group-flush">
-                        {% for post in site.posts limit:7 %}
-                        <li class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;">
-                            <a href="{{ post.url | relative_url }}">{{post.title}}</a>
-                            <time class="dt-published text-muted" style="float: right;" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-                                {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-                                <small>{{ post.date | date: "%Y年%m月%d日" }}</small>
-                            </time>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                {%- endif -%}
-            </div>
+        <div class="row bg-light justify-content-center">
+            {%- if site.social.github_username -%}
+            <small>
+                <a href="https://github.com/{{ site.social.github_username| cgi_escape | escape }}">GitHub: {{ site.social.github_username| escape }}</a>
+            </small>
+            &nbsp;&nbsp;
+            {%- endif -%}
 
-            <div class="col-md-6">
-                <img src="/assets/qrcode.jpg" alt="wechat" style="width: 90px;height: 90px; margin-top: 5px;">
-                <div class="list-group list-group-flush">
-                    {%- if site.social.github_username -%}
-                    <div class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;"><a href="https://github.com/{{ site.social.github_username| cgi_escape | escape }}"><span class="username">GitHub: {{ site.social.github_username| escape }}</span></a></div>{%- endif -%}
-                    {%- if site.social.qq -%}
-                    <div class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;"><a class="u-email" href="mailto:{{ site.social.email }}">QQ: {{ site.social.qq }}</a></div>{%- endif -%}
-                    {%- if site.social.twitter_username -%}
-                    <div class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;"><a href="https://www.twitter.com/{{ site.social.twitter_username| cgi_escape | escape }}"><span class="username">Twitter: {{ site.social.twitter_username| escape }}</span></a></div>{%- endif -%}
-                    {%- if site.social.wechat -%}
-                    <div class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;"><a class="u-email" href="mailto:{{ site.social.email }}">WeChat: {{ site.social.wechat }}</a></div>{%- endif -%}
-                    {%- if site.social.email -%}
-                    <div class="list-group-item" style="padding: 0 0;border-bottom-width: 0;line-height: 30px;"><a class="u-email" href="mailto:{{ site.social.email }}">Email: {{ site.social.email }}</a></div>{%- endif -%}
-                </div>
-            </div>
+            {%- if site.social.qq -%}
+            <small>
+                <a class="u-email" href="mailto:{{ site.social.email }}">QQ: {{ site.social.qq }}</a>
+            </small>
+            &nbsp;&nbsp;
+            {%- endif -%}
 
+            {%- if site.social.twitter_username -%}
+            <small>
+                <a href="https://www.twitter.com/{{ site.social.twitter_username| cgi_escape | escape }}">Twitter: {{ site.social.twitter_username| escape }}</a>
+            </small>
+            &nbsp;&nbsp;
+            {%- endif -%}
+
+            {%- if site.social.wechat -%}
+            <small>
+                <a class="u-email" href="mailto:{{ site.social.email }}">WeChat: {{ site.social.wechat }}</a>
+            </small>
+            &nbsp;&nbsp;
+            {%- endif -%}
+
+            {%- if site.social.email -%}
+            <small>
+                <a class="u-email" href="mailto:{{ site.social.email }}">Email: {{ site.social.email }}</a>
+            </small>
+            &nbsp;&nbsp;
+            {%- endif -%}
         </div>
     </div>
 </footer>
