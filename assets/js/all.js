@@ -155,7 +155,7 @@ function search(e) {
     let keyCode = e.which || e.keyCode;
     if(keyCode === 13){
         let v= $('#search').val();
-        $('.row').textSearch(v);
-        // return false;
+        let keys = v + ' ' + v.toUpperCase() + ' ' + v.toLowerCase() + ' ' + v.replace(v[0], v[0].toUpperCase());
+        $('.row').textSearch(keys);
     }
 }
