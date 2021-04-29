@@ -98,7 +98,7 @@
 			$(this).html(new_html);
 			
 			if(test === 0 && sets.nullReport){
-				alert("没有搜索结果");	
+				// alert("没有搜索结果");
 				return false;
 			}
 			

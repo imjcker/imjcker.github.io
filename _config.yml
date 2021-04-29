@@ -36,7 +36,7 @@ social:
 style:
   home:
     card_img: avatar.jpg
-  css: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark'] # 'light' light看不清
+  css: ['dark'] # 'light' light看不清 'primary', 'secondary', 'success', 'danger', 'warning', 'info',
 
 # 谷歌分析
 google_analytics: UA-164703783-1
