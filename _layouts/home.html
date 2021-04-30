@@ -15,13 +15,8 @@ layout: default
 
                     <div class="card">
                         <div class="card-header" style="background-color: white">
-                            <div class="input-group flex-nowrap">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="addon-wrapping">Search</span>
-                                </div>
-                                <input id="search" type="text" class="form-control" placeholder="You know for search"
-                                       aria-label="Username" aria-describedby="addon-wrapping"
-                                       onkeydown="search(event)">
+                            <div class="input-group mb-3">
+                                <input id="search" type="text" class="form-control" aria-label="search" placeholder="you know for search" onkeydown="search(event)">
                             </div>
                         </div>
                         <div class="card-body">
@@ -85,20 +80,21 @@ layout: default
                         </div>
                     </div>
 
-                    <!--罗列所有category-->
-                    {%- for category in site.categories -%}
-                    <button class="btn btn-sm btn-outline-{{site.style.css | sample}} mx-1 my-1" id="c-{{category[0]}}"
-                            onclick="handleCategory(this.id)">{{category[0]}}
-                    </button>
-                    {%- endfor -%}
+                    <div id="tags">
+                        <!--罗列所有category-->
+                        {%- for category in site.categories -%}
+                        <button class="btn btn-sm btn-outline-{{site.style.css | sample}} mx-1 my-1" id="c-{{category[0]}}"
+                                onclick="handleCategory(this.id)">{{category[0]}}
+                        </button>
+                        {%- endfor -%}
 
-                    <!--罗列所有tag-->
-                    {% for tag in site.tags %}
-                    <button class="btn btn-sm btn-outline-{{site.style.css | sample}} mx-1 my-1" id="t-{{tag[0]}}"
-                            onclick="handleTag(this.id)">{{tag[0]}}
-                    </button>
-                    {% endfor %}
-
+                        <!--罗列所有tag-->
+                        {% for tag in site.tags %}
+                        <button class="btn btn-sm btn-outline-{{site.style.css | sample}} mx-1 my-1" id="t-{{tag[0]}}"
+                                onclick="handleTag(this.id)">{{tag[0]}}
+                        </button>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
