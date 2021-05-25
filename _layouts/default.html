@@ -1,183 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {%- seo -%}
 
-  {%- include head.html -%}
+    {%- feed_meta -%}
 
-  <body class="">
-  {%- include header.html -%}
-  <div class="container ">
-      {{ content }}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{"/assets/css/imjcker.css" | relative_url}}">
+
+
+    <title>{{site.title}}</title>
+</head>
+{%- assign default_paths = site.pages | map: "path" -%}
+{%- assign page_paths = site.header_pages | default: default_paths -%}
+
+<body>
+{{ content }}
+</body>
+
+<footer id="footer" class="footer">
+    <div>
+        <hr>
+        <div class="tooter-social" STYLE="text-align: center">
+            <a class="social rss" target="blank" href="/feed">RSS</a>&nbsp;&nbsp;&nbsp;
+            <a class="social zhihu" target="blank" href="https://www.zhihu.com/people/ZHIHU">知乎</a>&nbsp;&nbsp;
+            {%- if site.social.github_username -%}
+            <a class="social github" target="blank" href="https://github.com/{{site.social.github_username}}">Github</a>&nbsp;&nbsp;
+            {%- endif -%}
+            {%- if site.social.twitter_username -%}
+            <a class="social twitter" target="blank" href="https://twitter.com/{{site.social.twitter_username}}">Twitter</a>&nbsp;&nbsp;
+            {%- endif -%}
+            <a class="social csdn" target="blank" href="http://blog.csdn.net/u012137018">CSDN</a>&nbsp;&nbsp;
+            {%- if site.social.qq -%}
+            <a class="u-email" target="_blank" href="mailto:{{ site.social.email }}">QQ</a>&nbsp;&nbsp;
+            {%- endif -%}
+            {%- if site.social.wechat -%}
+            <a class="u-email" href="mailto:{{ site.social.email }}">WeChat</a>&nbsp;&nbsp;
+            {%- endif -%}
+        </div>
     </div>
-    {%- include footer.html -%}
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="/assets/js/all.js"></script>
-    <script src="/assets/js/jquery.textSearch.js"></script>
-    <script type="text/javascript">
-      let category_id;
-      let tag_id;
+</footer>
 
-      $(function(){
-        let card = $(".imjcker-post");
-        let cardImg = $(".img-fluid");
-        card.height(card.width() / 0.618);
-        cardImg.height(cardImg.width() * 0.618);
-        card.resize(function () {
-          card.height(card.width() / 0.618);
-          cardImg.height(cardImg.width() * 0.618);
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/assets/echarts/echarts.min.js"></script>
+<script>
+    $(function(){
+        initGraph();
+    });
+
+    function getNodes(){
+        let nodes_post = [
+            {%- for post in site.posts -%}
+                {
+                    "id": "{{post.url}}",
+                    "name": "{{post.title}}",
+                    "value": "{{post.title}}",
+                    "category": "post",
+                    "label": {"show": true},
+                    "symbolSize": {{post.tags.size | times: 10 }},
+                    "symbol": 'image://assets/java.png',
+                    "x": {{site.style.css.symbolSize | sample | times: 7.3}},
+                    "y": {{site.style.css.symbolSize | sample | times: 3.7}}
+                },
+            {%- endfor -%}
+        ];
+
+        let nodes_tag = [
+            {%- for tag in site.tags -%}
+                    {
+                        "id": "{{tag[0]}}",
+                        "name": "{{tag[0]}}",
+                        "value": "{{tag[0]}}",
+                        "category": "tag",
+                        "label": {"show": false},
+                        "symbolSize": {{tag[1].size | times: 10 }},
+                        "x": {{site.style.css.symbolSize | sample | times: 7.3}},
+                        "y": {{site.style.css.symbolSize | sample | times: 3.7}}
+                    },
+            {%- endfor -%}
+        ];
+
+        let nodes_cat = [
+            {%- for cat in site.categories -%}
+                    {
+                        "id": "{{cat[0]}}",
+                        "name": "{{cat[0]}}",
+                        "value": "{{cat[0]}}",
+                        "category": "category",
+                        "label": {"show": false},
+                        "symbolSize": {{cat[1].size | times: 10 }},
+                        "symbol": 'image://assets/avatar.jpg',
+                        "x": {{site.style.css.symbolSize | sample | times: 7.3}},
+                        "y": {{site.style.css.symbolSize | sample | times: 3.7}}
+                    },
+            {%- endfor -%}
+        ];
+
+        let nodes = Array.from(new Set(nodes_cat.concat(nodes_tag).concat(nodes_post)));
+        return nodes;
+    }
+
+    function getLinks(){
+        let links_c_p = [
+            {%- for category in site.categories -%}
+                {%- for post in category[1] -%}
+                    {
+                        "source": "{{post.url}}",
+                        "target": "{{category[0]}}"
+                    },
+                {%- endfor -%}
+            {%- endfor -%}
+        ];
+        let links_t_p = [
+            {%- for tag in site.tags -%}
+                {%- for post in tag[1] -%}
+                    {
+                        "source": "{{post.url}}",
+                        "target": "{{tag[0]}}"
+                    },
+                {%- endfor -%}
+            {%- endfor -%}
+        ];
+        let links_c_t = [
+                {%- for post in site.posts -%}
+                    {%- for tag in post.tags -%}
+                    {
+                        "source": "{{tag}}",
+                        "target": "{{post.categories[0]}}"
+                    },
+                    {%- endfor -%}
+                {%- endfor -%}
+        ];
+
+        return links_t_p.concat(links_c_t);
+    }
+
+    function initGraph() {
+        let categories = [
+                {"name": "category"},
+                {"name": "tag"},
+                {"name": "post"}
+        ];
+        let links = getLinks();
+        let nodes = getNodes();
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:10086/test/fmt',
+            data: JSON.stringify ({"field": "id", "data": nodes}),
+            success: function(data) { 
+                let graph = {
+                    "categories": categories,
+                    "links": links,
+                    "nodes": data
+                }
+                // console.log(graph);
+
+                let chartDom = document.getElementById('main');
+                let myChart = echarts.init(chartDom);
+                let option;
+
+                myChart.showLoading();
+                myChart.hideLoading();
+                graph.nodes.forEach(function (node) {
+                    node.label = {
+                        show: node.symbolSize > 1
+                    };
+                });
+                option = {
+                    title: {
+                        text: '知识图谱',
+                        subtext: 'Default layout',
+                        top: 'bottom',
+                        left: 'right'
+                    },
+                    tooltip: {},
+                    legend: [{
+                        data: graph.categories.map(function (c) {
+                            return c.name;
+                        })
+                    }],
+                    animationDuration: 1500,
+                    animationEasingUpdate: 'quinticInOut',
+                    series: [
+                        {
+                            name: '知识图谱',
+                            type: 'graph',
+                            layout: 'force',
+                            force: {
+                                repulsion: 0.4,
+                                edgeLength: 0.8
+                            },
+                            data: graph.nodes,
+                            links: graph.links,
+                            categories: graph.categories,
+                            roam: false, // 缩放
+                            label: {
+                                position: 'right',
+                                formatter: '{b}'
+                            },
+                            lineStyle: {
+                                color: 'source',
+                                curveness: 0.3
+                            },
+                            emphasis: {
+                                focus: 'adjacency',
+                                lineStyle: {
+                                    width: 3
+                                }
+                            }
+                        }
+                    ]
+                };
+
+                myChart.setOption(option);
+
+                option && myChart.setOption(option);
+
+                myChart.on('mouseover', function (params) {
+                    console.log(params.name);
+                });
+            },
+            contentType: "application/json",
+            dataType: 'json'
         });
-
-        // show clicked category
-        let hash = document.location.hash.toString().substr(1);
-        if (hash.startsWith('c-')){
-          handleCategory(decodeURI(hash));
-        } else if (hash.startsWith('t-')){
-          handleTag(decodeURI(hash));
-        }
-      });
-
-      function showExcerpts(id, bg) {
-        let postCard = $("#" + id);
-        postCard.mouseover(function(){
-          postCard.css("background-image", "url(/assets/"+bg+")");
-          postCard.css("color", "#ffffff");
-        });
-        postCard.mouseout(function () {
-          postCard.css("background-image", "");
-          postCard.css("color", "");
-        });
-      }
-
-      (function($, h, c) {
-        var a = $([]),
-                e = $.resize = $.extend($.resize, {}),
-                i,
-                k = "setTimeout",
-                j = "resize",
-                d = j + "-special-event",
-                b = "delay",
-                f = "throttleWindow";
-        e[b] = 250;
-        e[f] = true;
-        $.event.special[j] = {
-          setup: function() {
-            if (!e[f] && this[k]) {
-              return false;
-            }
-            var l = $(this);
-            a = a.add(l);
-            $.data(this, d, {
-              w: l.width(),
-              h: l.height()
-            });
-            if (a.length === 1) {
-              g();
-            }
-          },
-          teardown: function() {
-            if (!e[f] && this[k]) {
-              return false;
-            }
-            var l = $(this);
-            a = a.not(l);
-            l.removeData(d);
-            if (!a.length) {
-              clearTimeout(i);
-            }
-          },
-          add: function(l) {
-            if (!e[f] && this[k]) {
-              return false;
-            }
-            var n;
-            function m(s, o, p) {
-              var q = $(this),
-                      r = $.data(this, d);
-              r.w = o !== c ? o: q.width();
-              r.h = p !== c ? p: q.height();
-              n.apply(this, arguments);
-            }
-            if ($.isFunction(l)) {
-              n = l;
-              return m;
-            } else {
-              n = l.handler;
-              l.handler = m;
-            }
-          }
-        };
-        function g() {
-          i = h[k](function() {
-                    a.each(function() {
-                      var n = $(this),
-                              m = n.width(),
-                              l = n.height(),
-                              o = $.data(this, d);
-                      if (m !== o.w || l !== o.h) {
-                        n.trigger(j, [o.w = m, o.h = l]);
-                      }
-                    });
-                    g();
-                  },
-                  e[b]);
-        }
-      })(jQuery, this);
-
-      function handleCategory(id) {
-        // hide tag
-        if (tag_id !== undefined) {
-            tag_id.hide();
-            tag_id = undefined;
-        }
-        if (category_id !== undefined){
-          if (category_id.css("display") === "none") {
-            category_id.show();
-          } else {
-            category_id.hide();
-          }
-        }
-
-        let category = 'category-' + id.toString().substr(2);
-        let cate = $('#'+category);
-        category_id = cate;
-        if (cate.css("display") === "none") {
-          cate.show();
-        } else {
-          cate.hide();
-        }
-
-        $("#latest-posts").hide();
-      }
-
-      function handleTag(id) {
-        // hid category
-        if (category_id !== undefined) {
-          category_id.hide();
-          category_id = undefined;
-        }
-        if (tag_id !== undefined){
-          if (tag_id.css("display") === "none") {
-            tag_id.show();
-          } else {
-            tag_id.hide();
-          }
-        }
-
-        let tag = 'tag-' + id.toString().substr(2);
-        let t = $('#'+tag);
-        tag_id = t;
-        if (t.css("display") === "none") {
-          t.show();
-        } else {
-          t.hide();
-        }
-
-        $("#latest-posts").hide();
-      }
-
-
-    </script>
-  </body>
-
+    }
+</script>
 </html>

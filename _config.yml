@@ -14,8 +14,8 @@ plugins:
   - jekyll-seo-tag
 
 # disqus 评论插件
-disqus:
-  shortname: imjcker
+#disqus:
+#  shortname: imjcker
 
 # 是否显示预览信息
 show_excerpts: true
@@ -39,8 +39,9 @@ style:
   css:
     tags_index: ['dark']
     tag_style: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark']
+    symbolSize: [1.1, 2.3, 3.5, 4.7, 5.9, 6.2, 7.4, 8.6, 9.8]
 
 # 谷歌分析
-google_analytics: UA-164703783-1
+#google_analytics: UA-164703783-1
 
 

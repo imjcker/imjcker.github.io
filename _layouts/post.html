@@ -1,19 +1,13 @@
 ---
 layout: default
 ---
-<article class="post h-entry post-content" style="padding-top: 60px;">
+<article class="post">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-9">
-        <header class="post-header">
-          <h1 class="post-title p-name type-h1" style="padding-bottom: 16px;" itemprop="name headline">{{ page.title | escape }}</h1>
+        <div class="post-header">
+          <h1 class="post-title" >{{ page.title | escape }}</h1>
           <p class="post-meta" style="width: 100%; float: left;">
-            <time class="dt-published" style="float: right;" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-              {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-              {{ page.date | date: "%Y年%m月%d日" }}
-            </time>
-
-
             {%- if page.categories.size > 0 -%}
             {%- for category in page.categories -%}
             分组：<a class="btn btn-sm btn-outline-{{site.style.css.tag_style | sample}}" href="/#c-{{category}}">{{category}}</a>
@@ -30,10 +24,17 @@ layout: default
             {%- if site.author -%}
             &nbsp;作者：<span itemprop="author"><span class="p-author h-card mx-1" itemprop="name">{{ site.author }}</span></span>
             {%- endif -%}
+
+            <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+              {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+              &nbsp;&nbsp;日期：{{ page.date | date: "%Y年%m月%d日" }}
+            </time>
           </p>
-        </header>
+        </div>
         <!--博客内容-->
-        {{ content }}
+        <div style="width: 80%;">
+          {{ content }}
+        </div>
       </div>
     </div>
   </div>
@@ -55,10 +56,6 @@ layout: default
       </div>
     </div>
   </div>
-
-  {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
-  {%- endif -%}
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
