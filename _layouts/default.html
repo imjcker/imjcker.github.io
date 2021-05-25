@@ -149,7 +149,7 @@
 
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:10086/test/fmt',
+            url: 'http://api.imjcker.com/test/fmt',
             data: JSON.stringify ({"field": "id", "data": nodes}),
             success: function(data) { 
                 let graph = {
