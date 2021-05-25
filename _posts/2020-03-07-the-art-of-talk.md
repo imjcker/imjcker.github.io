@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 说话的艺术
-category: 为人处事
-tags: tools
+category: personal
+tags: 为人处事
 
 
 ---

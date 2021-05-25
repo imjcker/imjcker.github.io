@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 科学上网
-category: 科学上网
+category: tools
 tags: ss shadowsocks
 ---
 科学上网之安装shadowsocks到centos7。

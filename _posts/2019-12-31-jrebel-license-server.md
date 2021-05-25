@@ -1,7 +1,7 @@
 ---
 layout: post  
 title: Jrebel激活服务  
-category: IDE
+category: 开发运维
 tags:
   - jrebel
 ---
