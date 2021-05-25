@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 好莱坞往事
-category: 电影
-tags: movies
+category: 吃喝玩乐
+tags: 电影
 bg: hlwws.jpeg
 
 ---

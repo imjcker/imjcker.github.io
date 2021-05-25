@@ -11,13 +11,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{{"/assets/css/imjcker.css" | relative_url}}">
 
+    <!-- 新 Bootstrap4 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+     
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <!-- <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script> -->
+     
+    <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+     
+    <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <title>{{site.title}}</title>
 </head>
 {%- assign default_paths = site.pages | map: "path" -%}
 {%- assign page_paths = site.header_pages | default: default_paths -%}
 
-<body>
+<body class="container-fluid">
 {{ content }}
 </body>
 
@@ -57,10 +68,10 @@
                 {
                     "id": "{{post.url}}",
                     "name": "{{post.title}}",
-                    "value": "{{post.title}}",
-                    "category": "post",
+                    "value": "文章",
+                    "category": "文章",
                     "label": {"show": true},
-                    "symbolSize": {{post.tags.size | times: 10 }},
+                    "symbolSize": {{post.tags.size | times: 7 }},
                     "symbol": 'image://assets/java.png',
                     "x": {{site.style.css.symbolSize | sample | times: 7.3}},
                     "y": {{site.style.css.symbolSize | sample | times: 3.7}}
@@ -73,10 +84,11 @@
                     {
                         "id": "{{tag[0]}}",
                         "name": "{{tag[0]}}",
-                        "value": "{{tag[0]}}",
-                        "category": "tag",
+                        "value": "标签",
+                        "category": "标签",
                         "label": {"show": false},
-                        "symbolSize": {{tag[1].size | times: 10 }},
+                        "symbolSize": {{tag[1].size | times: 7 }},
+                        "symbol": 'ract',
                         "x": {{site.style.css.symbolSize | sample | times: 7.3}},
                         "y": {{site.style.css.symbolSize | sample | times: 3.7}}
                     },
@@ -88,30 +100,43 @@
                     {
                         "id": "{{cat[0]}}",
                         "name": "{{cat[0]}}",
-                        "value": "{{cat[0]}}",
-                        "category": "category",
+                        "value": "分类",
+                        "category": "分类",
                         "label": {"show": false},
-                        "symbolSize": {{cat[1].size | times: 10 }},
-                        "symbol": 'image://assets/avatar.jpg',
+                        "symbolSize": {{cat[1].size | times: 7 }},
+                        "symbol": 'circle',
                         "x": {{site.style.css.symbolSize | sample | times: 7.3}},
                         "y": {{site.style.css.symbolSize | sample | times: 3.7}}
                     },
             {%- endfor -%}
         ];
 
-        let nodes = Array.from(new Set(nodes_cat.concat(nodes_tag).concat(nodes_post)));
+        // imjcker 跟节点
+        let root_node = [
+            {
+                "id": "imjcker",
+                "name": "imjcker",
+                "value": "category",
+                "category": "分类",
+                "label": {"show": false},
+                "symbolSize": 60,
+                "symbol": 'image://assets/avatar.jpg',
+                "x": {{site.style.css.symbolSize | sample | times: 7.3}},
+                "y": {{site.style.css.symbolSize | sample | times: 3.7}}
+            }
+        ];
+
+        let nodes = Array.from(new Set(nodes_cat.concat(nodes_tag).concat(nodes_post).concat(root_node)));
         return nodes;
     }
 
     function getLinks(){
-        let links_c_p = [
+        let links_c_root = [
             {%- for category in site.categories -%}
-                {%- for post in category[1] -%}
-                    {
-                        "source": "{{post.url}}",
-                        "target": "{{category[0]}}"
-                    },
-                {%- endfor -%}
+                {
+                    "source": "{{category[0]}}",
+                    "target": "imjcker"
+                },
             {%- endfor -%}
         ];
         let links_t_p = [
@@ -135,14 +160,14 @@
                 {%- endfor -%}
         ];
 
-        return links_t_p.concat(links_c_t);
+        return links_t_p.concat(links_c_t).concat(links_c_root);
     }
 
     function initGraph() {
         let categories = [
-                {"name": "category"},
-                {"name": "tag"},
-                {"name": "post"}
+                {"name": "分类"},
+                {"name": "标签"},
+                {"name": "文章"}
         ];
         let links = getLinks();
         let nodes = uniqueBy(getNodes(), "id");
@@ -165,7 +190,7 @@
                 top: 'bottom',
                 left: 'right'
             },
-            tooltip: {},
+            tooltip: {"show": false},
             legend: [{
                 data: categories.map(function (c) {
                     return c.name;
@@ -179,20 +204,20 @@
                     type: 'graph',
                     layout: 'force',
                     force: {
-                        repulsion: 0.4,
-                        edgeLength: 0.8
+                        repulsion: 1,
+                        edgeLength: 3
                     },
                     data: nodes,
                     links: links,
                     categories: categories,
-                    roam: false, // 缩放
+                    roam: true, // 缩放
                     label: {
                         position: 'right',
                         formatter: '{b}'
                     },
                     lineStyle: {
                         color: 'source',
-                        curveness: 0.3
+                        curveness: 0.1
                     },
                     emphasis: {
                         focus: 'adjacency',

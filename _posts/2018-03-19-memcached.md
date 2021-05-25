@@ -1,7 +1,7 @@
 ---
 layout: post
 title: memcached
-category: NoDB
+category: DB
 tags: memcached
 ---
 学习使用memcached，本人使用的是MacBook，服务器使用CentoS，因此会有2个版本的安装使用。本人是初学者，有不对的地方还请看到博客的前辈不吝赐教，在此先感谢各位前辈。  

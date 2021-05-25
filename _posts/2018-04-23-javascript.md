@@ -2,7 +2,7 @@
 layout: post
 title: javascript
 categories: javascript
-tags: nodejs javascript vue
+tags: nodejs vue node.js
 ---
 
 # Node.js
