@@ -145,88 +145,91 @@
                 {"name": "post"}
         ];
         let links = getLinks();
-        let nodes = getNodes();
+        let nodes = uniqueBy(getNodes(), "id");
 
-        $.ajax({
-            type: 'POST',
-            url: 'http://data.imjcker.com/test/fmt',
-            data: JSON.stringify ({"field": "id", "data": nodes}),
-            success: function(data) { 
-                let graph = {
-                    "categories": categories,
-                    "links": links,
-                    "nodes": data
-                }
-                // console.log(graph);
+        let chartDom = document.getElementById('main');
+        let myChart = echarts.init(chartDom);
+        let option;
 
-                let chartDom = document.getElementById('main');
-                let myChart = echarts.init(chartDom);
-                let option;
-
-                myChart.showLoading();
-                myChart.hideLoading();
-                graph.nodes.forEach(function (node) {
-                    node.label = {
-                        show: node.symbolSize > 1
-                    };
-                });
-                option = {
-                    title: {
-                        text: '知识图谱',
-                        subtext: 'Default layout',
-                        top: 'bottom',
-                        left: 'right'
-                    },
-                    tooltip: {},
-                    legend: [{
-                        data: graph.categories.map(function (c) {
-                            return c.name;
-                        })
-                    }],
-                    animationDuration: 1500,
-                    animationEasingUpdate: 'quinticInOut',
-                    series: [
-                        {
-                            name: '知识图谱',
-                            type: 'graph',
-                            layout: 'force',
-                            force: {
-                                repulsion: 0.4,
-                                edgeLength: 0.8
-                            },
-                            data: graph.nodes,
-                            links: graph.links,
-                            categories: graph.categories,
-                            roam: false, // 缩放
-                            label: {
-                                position: 'right',
-                                formatter: '{b}'
-                            },
-                            lineStyle: {
-                                color: 'source',
-                                curveness: 0.3
-                            },
-                            emphasis: {
-                                focus: 'adjacency',
-                                lineStyle: {
-                                    width: 3
-                                }
-                            }
-                        }
-                    ]
-                };
-
-                myChart.setOption(option);
-
-                option && myChart.setOption(option);
-
-                myChart.on('mouseover', function (params) {
-                    console.log(params.name);
-                });
-            },
-            contentType: "application/json",
-            dataType: 'json'
+        myChart.showLoading();
+        myChart.hideLoading();
+        nodes.forEach(function (node) {
+            node.label = {
+                show: node.symbolSize > 1
+            };
         });
+        option = {
+            title: {
+                text: '知识图谱',
+                subtext: 'Default layout',
+                top: 'bottom',
+                left: 'right'
+            },
+            tooltip: {},
+            legend: [{
+                data: categories.map(function (c) {
+                    return c.name;
+                })
+            }],
+            animationDuration: 1500,
+            animationEasingUpdate: 'quinticInOut',
+            series: [
+                {
+                    name: '知识图谱',
+                    type: 'graph',
+                    layout: 'force',
+                    force: {
+                        repulsion: 0.4,
+                        edgeLength: 0.8
+                    },
+                    data: nodes,
+                    links: links,
+                    categories: categories,
+                    roam: false, // 缩放
+                    label: {
+                        position: 'right',
+                        formatter: '{b}'
+                    },
+                    lineStyle: {
+                        color: 'source',
+                        curveness: 0.3
+                    },
+                    emphasis: {
+                        focus: 'adjacency',
+                        lineStyle: {
+                            width: 3
+                        }
+                    }
+                }
+            ]
+        };
+
+        myChart.setOption(option);
+
+        option && myChart.setOption(option);
+
+        myChart.on('mouseover', function (params) {
+            console.log(params.name);
+        });
+
     }
+
+function uniqueBy(dataSet, field) {
+    var dest = [];
+    for (var i = 0; i < dataSet.length; i++) {
+        var ai = dataSet[i];
+        if (i == 0) {
+            dest.push(ai);
+        } else {
+            var filterData = dest.filter(function (e) {
+                return e[field] == ai[field];
+            })
+            if (filterData.length == 0) {
+                dest.push(ai);
+            }
+        }
+    }
+    return dest;
+}
 </script>
 </html>
