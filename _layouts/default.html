@@ -11,16 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{{"/assets/css/imjcker.css" | relative_url}}">
 
-    <!-- 新 Bootstrap4 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-     
-    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-    <!-- <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script> -->
-     
-    <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
      
-    <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <title>{{site.title}}</title>
@@ -32,36 +28,42 @@
 {{ content }}
 </body>
 
-<footer id="footer" class="footer">
+<footer id="footer" class="footer" style="height: 36px;">
     <div>
         <hr>
         <div class="tooter-social" STYLE="text-align: center">
-            <a class="social rss" target="blank" href="/feed">RSS</a>&nbsp;&nbsp;&nbsp;
-            <a class="social zhihu" target="blank" href="https://www.zhihu.com/people/ZHIHU">知乎</a>&nbsp;&nbsp;
+            <small><a class="social rss" target="blank" href="/feed">RSS</a>&nbsp;&nbsp;&nbsp;</small>
+            <small><a class="social zhihu" target="blank" href="https://www.zhihu.com/people/ZHIHU">知乎</a>&nbsp;&nbsp;</small>
             {%- if site.social.github_username -%}
-            <a class="social github" target="blank" href="https://github.com/{{site.social.github_username}}">Github</a>&nbsp;&nbsp;
+            <small><a class="social github" target="blank" href="https://github.com/{{site.social.github_username}}">Github</a>&nbsp;&nbsp;</small>
             {%- endif -%}
             {%- if site.social.twitter_username -%}
-            <a class="social twitter" target="blank" href="https://twitter.com/{{site.social.twitter_username}}">Twitter</a>&nbsp;&nbsp;
+            <small><a class="social twitter" target="blank" href="https://twitter.com/{{site.social.twitter_username}}">Twitter</a>&nbsp;&nbsp;</small>
             {%- endif -%}
-            <a class="social csdn" target="blank" href="http://blog.csdn.net/u012137018">CSDN</a>&nbsp;&nbsp;
+            <small><a class="social csdn" target="blank" href="http://blog.csdn.net/u012137018">CSDN</a>&nbsp;&nbsp;</small>
             {%- if site.social.qq -%}
-            <a class="u-email" target="_blank" href="mailto:{{ site.social.email }}">QQ</a>&nbsp;&nbsp;
+            <small><a class="u-email" target="_blank" href="mailto:{{ site.social.email }}">QQ</a>&nbsp;&nbsp;</small>
             {%- endif -%}
             {%- if site.social.wechat -%}
-            <a class="u-email" href="mailto:{{ site.social.email }}">WeChat</a>&nbsp;&nbsp;
+            <small><a class="u-email" href="mailto:{{ site.social.email }}">WeChat</a>&nbsp;&nbsp;</small>
             {%- endif -%}
         </div>
     </div>
 </footer>
 
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="/assets/echarts/echarts.min.js"></script>
 <script>
     $(function(){
         initGraph();
     });
 
+    function getCategories(){
+        return [
+            {"name": "分类"},
+            {"name": "标签"},
+            {"name": "文章"}
+        ];
+    }
     function getNodes(){
         let nodes_post = [
             {%- for post in site.posts -%}
@@ -129,7 +131,6 @@
         let nodes = Array.from(new Set(nodes_cat.concat(nodes_tag).concat(nodes_post).concat(root_node)));
         return nodes;
     }
-
     function getLinks(){
         let links_c_root = [
             {%- for category in site.categories -%}
@@ -162,35 +163,37 @@
 
         return links_t_p.concat(links_c_t).concat(links_c_root);
     }
-
-    function initGraph() {
-        let categories = [
-                {"name": "分类"},
-                {"name": "标签"},
-                {"name": "文章"}
-        ];
+    function getGraph() {
+        let categories = getCategories();
         let links = getLinks();
         let nodes = uniqueBy(getNodes(), "id");
+        return {
+            "categories": categories,
+            "links": links,
+            "nodes": nodes
+        }
+    }
 
+    function initGraph() {
         let chartDom = document.getElementById('main');
         let myChart = echarts.init(chartDom);
-        let option;
+        let graph = getGraph();
 
         myChart.showLoading();
         myChart.hideLoading();
-        nodes.forEach(function (node) {
+        graph.nodes.forEach(function (node) {
             node.label = {
                 show: node.symbolSize > 1
             };
         });
-        option = {
+        let option = {
             title: {
                 text: '知识图谱',
                 subtext: 'BY IMJCKER.COM\n2021-05-25',
             },
             tooltip: {"show": false},
             legend: [{
-                data: categories.map(function (c) {
+                data: graph.categories.map(function (c) {
                     return c.name;
                 })
             }],
@@ -205,9 +208,9 @@
                         repulsion: 1,
                         edgeLength: 3
                     },
-                    data: nodes,
-                    links: links,
-                    categories: categories,
+                    data: graph.nodes,
+                    links: graph.links,
+                    categories: graph.categories,
                     roam: true, // 缩放
                     label: {
                         position: 'right',
@@ -215,11 +218,7 @@
                     },
                     lineStyle: {
                         color: 'source',
-                        curveness: 0.01,
-                        // opacity: 0.9,
-                        // width: 1,
-                        // curveness: 0,
-                        // color: "#aaa"
+                        curveness: 0.01
                     },
                     emphasis: {
                         focus: 'adjacency',
@@ -230,33 +229,27 @@
                 }
             ]
         };
-
         myChart.setOption(option);
-
-        option && myChart.setOption(option);
-
-        myChart.on('mouseover', function (params) {
-            console.log(params.name);
-        });
 
     }
 
 function uniqueBy(dataSet, field) {
-    var dest = [];
-    for (var i = 0; i < dataSet.length; i++) {
-        var ai = dataSet[i];
-        if (i == 0) {
+    let dest = [];
+    for (let i = 0; i < dataSet.length; i++) {
+        let ai = dataSet[i];
+        if (i === 0) {
             dest.push(ai);
         } else {
-            var filterData = dest.filter(function (e) {
-                return e[field] == ai[field];
+            let filterData = dest.filter(function (e) {
+                return e[field] === ai[field];
             })
-            if (filterData.length == 0) {
+            if (filterData.length === 0) {
                 dest.push(ai);
             }
         }
     }
     return dest;
 }
+
 </script>
 </html>
