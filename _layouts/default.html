@@ -175,7 +175,7 @@
     }
 
     function initGraph() {
-        $('#main').height(document.body.clientHeight);
+        $('#main').height(window.outerHeight);
         let chartDom = document.getElementById('main');
         let myChart = echarts.init(chartDom);
         let graph = getGraph();
