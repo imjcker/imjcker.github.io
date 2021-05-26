@@ -4,25 +4,14 @@ title: 大道至简
 baseurl: "/"
 url: "http://imjcker.com"
 
-# Build settings
-#theme: minima
-
 # 插件
 plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-seo-tag
 
-# disqus 评论插件
-#disqus:
-#  shortname: imjcker
-
 # 是否显示预览信息
 show_excerpts: true
-
-# 自定义变量
-imjcker:
-  menu: 首页
 
 # 社交信息
 social:
@@ -31,17 +20,14 @@ social:
   twitter_username: helloalanturing
   github_username: imjcker
   email: helloalanturing@icloud.com
+  csdn: u012137018
 
 # 样式设置
 style:
   home:
-    card_img: avatar.jpg
+    avatar: avatar.jpg
   css:
-    tags_index: ['dark']
     tag_style: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark']
-    symbolSize: [1.1, 2.3, 3.5, 4.7, 5.9, 6.2, 7.4, 8.6, 9.8]
 
-# 谷歌分析
-#google_analytics: UA-164703783-1
 
 

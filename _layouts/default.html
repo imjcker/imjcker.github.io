@@ -10,14 +10,15 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{{"/assets/css/imjcker.css" | relative_url}}">
+    <link rel="stylesheet" href="/assets/css/highlight.css">
 
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
 
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.16.0/umd/popper.min.js"></script>
      
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <title>{{site.title}}</title>
 </head>
@@ -25,27 +26,47 @@
 {%- assign page_paths = site.header_pages | default: default_paths -%}
 
 <body class="container-fluid">
-{{ content }}
-</body>
+<nav class="navbar navbar-light ">
+    <div class="container">
+        <a href="/" class="navbar-brand py-0"><img src="/assets/avatar.jpg" class="rounded-circle" style="width: 27px" alt="Avatar"><span class="fa fa-lg">{{site.title}}</span></a>
 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/category">分组</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{{ content }}
+
+</body>
 <footer id="footer" class="footer fixed-bottom">
     <div>
         <hr>
-        <div class="tooter-social" STYLE="text-align: center">
-            <small><a class="social rss" target="blank" href="/feed">RSS</a>&nbsp;&nbsp;&nbsp;</small>
-            <small><a class="social zhihu" target="blank" href="https://www.zhihu.com/people/ZHIHU">知乎</a>&nbsp;&nbsp;</small>
+        <div class="tooter-social" style="text-align: center;">
             {%- if site.social.github_username -%}
             <small><a class="social github" target="blank" href="https://github.com/{{site.social.github_username}}">Github</a>&nbsp;&nbsp;</small>
             {%- endif -%}
             {%- if site.social.twitter_username -%}
             <small><a class="social twitter" target="blank" href="https://twitter.com/{{site.social.twitter_username}}">Twitter</a>&nbsp;&nbsp;</small>
             {%- endif -%}
-            <small><a class="social csdn" target="blank" href="http://blog.csdn.net/u012137018">CSDN</a>&nbsp;&nbsp;</small>
+            {%- if site.social.csdn -%}
+            <small><a class="social csdn" target="blank" href="http://blog.csdn.net/{{site.social.csdn}}">CSDN</a>&nbsp;&nbsp;</small>
+            {%- endif -%}
             {%- if site.social.qq -%}
             <small><a class="u-email" target="_blank" href="mailto:{{ site.social.email }}">QQ</a>&nbsp;&nbsp;</small>
             {%- endif -%}
             {%- if site.social.wechat -%}
             <small><a class="u-email" href="mailto:{{ site.social.email }}">WeChat</a>&nbsp;&nbsp;</small>
+            {%- endif -%}
+            {%- if site.social.email -%}
+            <small><a class="u-email" href="mailto:{{ site.social.email }}">email</a>&nbsp;&nbsp;</small>
             {%- endif -%}
         </div>
     </div>
@@ -75,8 +96,9 @@
                     "label": {"show": true},
                     "symbolSize": 10,
                     "symbol": 'circle',
-                    "x": {{site.style.css.symbolSize | sample | times: 7.3}},
-                    "y": {{site.style.css.symbolSize | sample | times: 3.7}}
+                    "x": randomX(),
+                    "y": randomY(),
+                    "url": "{{post.url}}"
                 },
             {%- endfor -%}
         ]
@@ -91,8 +113,8 @@
                         "label": {"show": false},
                         "symbolSize": 20,
                         "symbol": 'image://assets/icon/{{tag[0]}}.png',
-                        "x": {{site.style.css.symbolSize | sample | times: 7.3}},
-                        "y": {{site.style.css.symbolSize | sample | times: 3.7}}
+                        "x": randomX(),
+                        "y": randomY()
                     },
             {%- endfor -%}
         ]
@@ -105,10 +127,10 @@
                         "value": "分类",
                         "category": "分类",
                         "label": {"show": false},
-                        "symbolSize": 30,
+                        "symbolSize": 35,
                         "symbol": 'image://assets/icon/{{cat[0]}}.png',
-                        "x": {{site.style.css.symbolSize | sample | times: 7.3}},
-                        "y": {{site.style.css.symbolSize | sample | times: 3.7}}
+                        "x": randomX(),
+                        "y": randomY()
                     },
             {%- endfor -%}
         ]
@@ -117,18 +139,18 @@
         let root_node = [
             {
                 "id": "imjcker",
-                "name": "imjcker",
+                "name": "{{site.author}}",
                 "value": "category",
                 "category": "分类",
                 "label": {"show": false},
                 "symbolSize": 50,
-                "symbol": 'image://assets/avatar.jpg',
-                "x": {{site.style.css.symbolSize | sample | times: 7.3}},
-                "y": {{site.style.css.symbolSize | sample | times: 3.7}}
+                "symbol": 'image://assets/{{site.style.home.avatar}}',
+                "x": randomX(),
+                "y": randomY()
             }
         ]
 
-        let nodes = Array.from(new Set(nodes_cat.concat(nodes_tag).concat(nodes_post).concat(root_node)));
+        let nodes = Array.from(new Set(root_node.concat(nodes_cat).concat(nodes_tag).concat(nodes_post)));
         return nodes;
     }
     function getLinks(){
@@ -232,6 +254,12 @@
         };
         myChart.setOption(option);
 
+        myChart.on('click', function (params) {
+            console.log(params)
+            if (params.data.category === '文章'){
+                window.open(params.data.url, '_blank')
+            }
+        })
     }
 
 function uniqueBy(dataSet, field) {
@@ -252,5 +280,11 @@ function uniqueBy(dataSet, field) {
     return dest;
 }
 
+    function randomX() {
+        return Math.random() * 38.2
+    }
+    function randomY() {
+        return Math.random() * 61.8
+    }
 </script>
 </html>
