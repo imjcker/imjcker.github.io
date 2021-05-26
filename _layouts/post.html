@@ -10,14 +10,14 @@ layout: default
           <p class="post-meta" style="width: 100%; float: left;">
             {%- if page.categories.size > 0 -%}
             {%- for category in page.categories -%}
-            分组：<a class="btn btn-sm btn-outline-{{site.style.css.tag_style | sample}}" href="/#c-{{category}}">{{category}}</a>
+            分组：<a class="btn btn-sm btn-outline-{{site.style.css.tag_style | sample}}" href="/category/#c-{{category}}">{{category}}</a>
             {%- endfor -%}
             {%- endif -%}
             &nbsp;&nbsp;
             关键字：
             {%- if page.tags.size > 0 -%}
             {%- for tag in page.tags -%}
-            <a class="btn btn-sm btn-outline-{{site.style.css.tag_style | sample}}" href="/#t-{{tag}}">{{tag}}</a>&nbsp;
+            <a class="btn btn-sm btn-outline-{{site.style.css.tag_style | sample}}" href="/tag/#t-{{tag}}">{{tag}}</a>&nbsp;
             {%- endfor -%}
             {%- endif -%}
 
@@ -32,13 +32,13 @@ layout: default
           </p>
         </div>
         <!--博客内容-->
-        <div style="width: 80%;">
+        <div>
           {{ content }}
         </div>
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container" style="padding-bottom: 60px;">
     <div class="row justify-content-between">
       <div class="col-4">
         {%- if page.next -%}
