@@ -79,7 +79,7 @@
                     "y": {{site.style.css.symbolSize | sample | times: 3.7}}
                 },
             {%- endfor -%}
-        ];
+        ]
 
         let nodes_tag = [
             {%- for tag in site.tags -%}
@@ -95,7 +95,7 @@
                         "y": {{site.style.css.symbolSize | sample | times: 3.7}}
                     },
             {%- endfor -%}
-        ];
+        ]
 
         let nodes_cat = [
             {%- for cat in site.categories -%}
@@ -111,7 +111,7 @@
                         "y": {{site.style.css.symbolSize | sample | times: 3.7}}
                     },
             {%- endfor -%}
-        ];
+        ]
 
         // imjcker 跟节点
         let root_node = [
@@ -126,7 +126,7 @@
                 "x": {{site.style.css.symbolSize | sample | times: 7.3}},
                 "y": {{site.style.css.symbolSize | sample | times: 3.7}}
             }
-        ];
+        ]
 
         let nodes = Array.from(new Set(nodes_cat.concat(nodes_tag).concat(nodes_post).concat(root_node)));
         return nodes;
@@ -139,7 +139,7 @@
                     "target": "imjcker"
                 },
             {%- endfor -%}
-        ];
+        ]
         let links_t_p = [
             {%- for tag in site.tags -%}
                 {%- for post in tag[1] -%}
@@ -149,7 +149,7 @@
                     },
                 {%- endfor -%}
             {%- endfor -%}
-        ];
+        ]
         let links_c_t = [
                 {%- for post in site.posts -%}
                     {%- for tag in post.tags -%}
@@ -159,7 +159,7 @@
                     },
                     {%- endfor -%}
                 {%- endfor -%}
-        ];
+        ]
 
         return links_t_p.concat(links_c_t).concat(links_c_root);
     }
@@ -189,7 +189,7 @@
         let option = {
             title: {
                 text: '知识图谱',
-                subtext: 'BY IMJCKER.COM\n2021-05-25',
+                subtext: 'BY {{site.author}}\n{{site.posts[0].date | date: "%D" }}',
             },
             tooltip: {"show": false},
             legend: [{
