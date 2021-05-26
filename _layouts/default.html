@@ -71,8 +71,8 @@
                     "value": "文章",
                     "category": "文章",
                     "label": {"show": true},
-                    "symbolSize": {{post.tags.size | times: 7 }},
-                    "symbol": 'image://assets/java.png',
+                    "symbolSize": 10,
+                    "symbol": 'circle',
                     "x": {{site.style.css.symbolSize | sample | times: 7.3}},
                     "y": {{site.style.css.symbolSize | sample | times: 3.7}}
                 },
@@ -87,8 +87,8 @@
                         "value": "标签",
                         "category": "标签",
                         "label": {"show": false},
-                        "symbolSize": {{tag[1].size | times: 7 }},
-                        "symbol": 'ract',
+                        "symbolSize": 20,
+                        "symbol": 'image://assets/icon/{{tag[0]}}.png',
                         "x": {{site.style.css.symbolSize | sample | times: 7.3}},
                         "y": {{site.style.css.symbolSize | sample | times: 3.7}}
                     },
@@ -103,8 +103,8 @@
                         "value": "分类",
                         "category": "分类",
                         "label": {"show": false},
-                        "symbolSize": {{cat[1].size | times: 7 }},
-                        "symbol": 'circle',
+                        "symbolSize": 30,
+                        "symbol": 'image://assets/icon/{{cat[0]}}.png',
                         "x": {{site.style.css.symbolSize | sample | times: 7.3}},
                         "y": {{site.style.css.symbolSize | sample | times: 3.7}}
                     },
@@ -119,7 +119,7 @@
                 "value": "category",
                 "category": "分类",
                 "label": {"show": false},
-                "symbolSize": 60,
+                "symbolSize": 50,
                 "symbol": 'image://assets/avatar.jpg',
                 "x": {{site.style.css.symbolSize | sample | times: 7.3}},
                 "y": {{site.style.css.symbolSize | sample | times: 3.7}}
