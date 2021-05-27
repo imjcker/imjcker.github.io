@@ -78,14 +78,13 @@
         initGraph();
     });
 
-    function getCategories(){
-        return [
+    function getGraph(){
+        let categories = [
             {"name": "分类"},
             {"name": "标签"},
             {"name": "文章"}
         ];
-    }
-    function getNodes(){
+
         let nodes_post = [
             {%- for post in site.posts -%}
                 {
@@ -149,46 +148,126 @@
                 "y": randomY()
             }
         ]
+        let nodes = uniqueBy(Array.from(new Set(root_node.concat(nodes_cat).concat(nodes_tag).concat(nodes_post))), 'id');
 
-        let nodes = Array.from(new Set(root_node.concat(nodes_cat).concat(nodes_tag).concat(nodes_post)));
-        return nodes;
-    }
-    function getLinks(){
+
+
         let links_c_root = [
             {%- for category in site.categories -%}
-                {
-                    "source": "{{category[0]}}",
-                    "target": "imjcker"
-                },
-            {%- endfor -%}
+        {
+            "source": "{{category[0]}}",
+            "target": "imjcker"
+        },
+        {%- endfor -%}
         ]
         let links_t_p = [
-            {%- for tag in site.tags -%}
-                {%- for post in tag[1] -%}
-                    {
-                        "source": "{{post.url}}",
-                        "target": "{{tag[0]}}"
-                    },
-                {%- endfor -%}
+                {%- for tag in site.tags -%}
+            {%- for post in tag[1] -%}
+            {
+                "source": "{{post.url}}",
+                "target": "{{tag[0]}}"
+            },
+            {%- endfor -%}
             {%- endfor -%}
         ]
         let links_c_t = [
                 {%- for post in site.posts -%}
-                    {%- for tag in post.tags -%}
+            {%- for tag in post.tags -%}
+            {
+                "source": "{{tag}}",
+                "target": "{{post.categories[0]}}"
+            },
+            {%- endfor -%}
+            {%- endfor -%}
+        ]
+        let links = links_t_p.concat(links_c_t).concat(links_c_root);
+
+        // show clicked category
+        let hash = decodeURI(document.location.hash.toString().substr(1));
+        console.log('hash', hash)
+        if (hash === ''){
+            return {
+                "categories": categories,
+                "links": links,
+                "nodes": nodes
+            }
+        }
+
+        if (hash.startsWith('c-')){
+            let cat = hash.substr(2)
+            console.log('分类：',cat)
+            // 过滤分类节点
+            nodes_cat = nodes_cat.filter(function(item){
+                return item.name === cat;
+            });
+            console.log('nodes_cat：',nodes_cat)
+            // 过滤文章节点
+            nodes_post = [
+                    {%- for category in site.categories -%}
+                    {%- for post in category[1] -%}
                     {
-                        "source": "{{tag}}",
-                        "target": "{{post.categories[0]}}"
+                        "id": "{{post.url}}",
+                        "name": "{{post.title}}",
+                        "value": "文章",
+                        "category": "文章",
+                        "label": {"show": true},
+                        "symbolSize": 20,
+                        "symbol": 'circle',
+                        "x": randomX(),
+                        "y": randomY(),
+                        "url": "{{post.url}}",
+                        "ccc": "{{category[0]}}"
                     },
                     {%- endfor -%}
-                {%- endfor -%}
-        ]
+                    {%- endfor -%}
+                ].filter(function (item) {
+                    return item.ccc === cat
+                });
+            console.log('nodes_post:',nodes_post)
 
-        return links_t_p.concat(links_c_t).concat(links_c_root);
-    }
-    function getGraph() {
-        let categories = getCategories();
-        let links = getLinks();
-        let nodes = uniqueBy(getNodes(), "id");
+            // 寻找target为hash的link，然后通过这批link的source过滤tags节点
+            let links_t_c = links.filter(function (link) {
+                return link.target === cat;// || link.source === cat;
+            })
+            console.log('links_t_c:', links_t_c)
+            // 过滤标签节点
+            nodes_tag = nodes_tag.filter(function (node) {
+                return  links_t_c.find((value) => value.source === node.name)
+            })
+            console.log('nodes_tag', nodes_tag)
+            //合并节点
+            nodes = nodes_cat.concat(nodes_tag).concat(nodes_post);
+            console.log('所有节点：', nodes);
+        } else if (hash.startsWith('t-')){
+            let tag = hash.substr(2)
+            nodes_tag = nodes_tag.filter(function (node){
+                return node.name === tag;
+            });
+
+            nodes_post = [
+                    {%- for tag in site.tags -%}
+                    {%- for post in tag[1] -%}
+                    {
+                        "id": "{{post.url}}",
+                        "name": "{{post.title}}",
+                        "value": "文章",
+                        "category": "文章",
+                        "label": {"show": true},
+                        "symbolSize": 20,
+                        "symbol": 'circle',
+                        "x": randomX(),
+                        "y": randomY(),
+                        "url": "{{post.url}}",
+                        "ttt": "{{tag[0]}}"
+                    },
+                    {%- endfor -%}
+                    {%- endfor -%}
+                ].filter(function (item) {
+                    return item.ttt === tag;
+            });
+            nodes = nodes_tag.concat(nodes_post);
+        }
+
         return {
             "categories": categories,
             "links": links,
@@ -229,16 +308,18 @@
                     layout: 'force',
                     force: {
                         repulsion: 1,
-                        edgeLength: 3
+                        edgeLength: 7
                     },
                     data: graph.nodes,
                     links: graph.links,
                     categories: graph.categories,
-                    roam: true, // 缩放
+                    roam: false, // 缩放
+                    draggable: true,
                     label: {
                         position: 'right',
                         formatter: '{b}'
                     },
+                    edgeSymbol : ['none', 'arrow'],
                     lineStyle: {
                         color: 'source',
                         curveness: 0.01
@@ -262,23 +343,23 @@
         })
     }
 
-function uniqueBy(dataSet, field) {
-    let dest = [];
-    for (let i = 0; i < dataSet.length; i++) {
-        let ai = dataSet[i];
-        if (i === 0) {
-            dest.push(ai);
-        } else {
-            let filterData = dest.filter(function (e) {
-                return e[field] === ai[field];
-            })
-            if (filterData.length === 0) {
+    function uniqueBy(dataSet, field) {
+        let dest = [];
+        for (let i = 0; i < dataSet.length; i++) {
+            let ai = dataSet[i];
+            if (i === 0) {
                 dest.push(ai);
+            } else {
+                let filterData = dest.filter(function (e) {
+                    return e[field] === ai[field];
+                })
+                if (filterData.length === 0) {
+                    dest.push(ai);
+                }
             }
         }
+        return dest;
     }
-    return dest;
-}
 
     function randomX() {
         return Math.random() * 38.2
