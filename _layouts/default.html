@@ -338,7 +338,17 @@
         myChart.on('click', function (params) {
             console.log(params)
             if (params.data.category === '文章'){
-                window.open(params.data.url, '_blank')
+                window.open(params.data.url, '_self')
+            }
+        })
+        myChart.on('dblclick', function (params) {
+            console.log(params)
+            if (params.data.category === '分类'){
+                window.open('/#c-'+params.data.name, '_self')
+                initGraph();
+            } else if (params.data.category === '标签') {
+                window.open('/#t-'+params.data.name, '_self')
+                initGraph();
             }
         })
     }
