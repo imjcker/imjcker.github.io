@@ -343,7 +343,7 @@
         })
         myChart.on('dblclick', function (params) {
             console.log(params)
-            if (params.data.category === '分类'){
+            if (params.data.category === '分类' && params.data.name !== '{{site.author}}'){
                 window.open('/#c-'+params.data.name, '_self')
                 initGraph();
             } else if (params.data.category === '标签') {
