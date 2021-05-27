@@ -1,184 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {%- seo -%}
 
-  {%- include head.html -%}
+    {%- feed_meta -%}
 
-  <body>
-  {%- include header.html -%}
-  <div class="container">
-      {{ content }}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://cdn.staticfile.org/popper.js/1.16.0/umd/popper.min.js"></script>
+     
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <title>{{site.title}}</title>
+</head>
+{%- assign default_paths = site.pages | map: "path" -%}
+{%- assign page_paths = site.header_pages | default: default_paths -%}
+
+<body class="container-fluid">
+<nav class="navbar navbar-light" style="margin: 0; border: 0; padding: 0;">
+    <div class="container">
+        <a href="/" class="navbar-brand py-0"><img src="/assets/{{site.style.home.avatar}}" class="rounded-circle" style="width: 27px" alt="Avatar"><span class="fa fa-lg">{{site.title}}</span></a>
     </div>
-    {%- include footer.html -%}
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-    let category_id;
-    let tag_id;
-    let golden = 0.618;
+</nav>
 
+{{ content }}
+
+</body>
+<footer id="footer" class="footer fixed-bottom">
+    <div>
+        <hr>
+        <div class="tooter-social" style="text-align: center;">
+            {%- if site.social.github_username -%}
+            <small><a class="social github" target="blank" href="https://github.com/{{site.social.github_username}}">Github</a>&nbsp;&nbsp;</small>
+            {%- endif -%}
+            {%- if site.social.twitter_username -%}
+            <small><a class="social twitter" target="blank" href="https://twitter.com/{{site.social.twitter_username}}">Twitter</a>&nbsp;&nbsp;</small>
+            {%- endif -%}
+            {%- if site.social.csdn -%}
+            <small><a class="social csdn" target="blank" href="http://blog.csdn.net/{{site.social.csdn}}">CSDN</a>&nbsp;&nbsp;</small>
+            {%- endif -%}
+            {%- if site.social.qq -%}
+            <small><a class="u-email" target="_blank" href="mailto:{{ site.social.email }}">QQ</a>&nbsp;&nbsp;</small>
+            {%- endif -%}
+            {%- if site.social.wechat -%}
+            <small><a class="u-email" href="mailto:{{ site.social.email }}">WeChat</a>&nbsp;&nbsp;</small>
+            {%- endif -%}
+            {%- if site.social.email -%}
+            <small><a class="u-email" href="mailto:{{ site.social.email }}">email</a>&nbsp;&nbsp;</small>
+            {%- endif -%}
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/echarts/echarts.min.js"></script>
+<script>
     $(function(){
-      let card = $(".imjcker-post");
-      let cardImg = $(".img-fluid");
-
-      card.height(card.width() / golden);
-      cardImg.height(card.width() * golden);
-      // card.resize(function () {
-      //   card.height(card.width() / golden);
-      //   cardImg.height(cardImg.width() * golden);
-      // });
-
-      // card.height(card.width() * golden);
-      // cardImg.width(cardImg.height() * golden);
-      // card.resize(function () {
-      //   card.height(card.width() * golden);
-      //   cardImg.width(cardImg.height() * golden);
-      // });
-
-      // show clicked category
-      let hash = document.location.hash.toString().substr(1);
-      if (hash.startsWith('c-')){
-        handleCategory(decodeURI(hash));
-      } else if (hash.startsWith('t-')){
-        handleTag(decodeURI(hash));
-      }
+        initGraph();
     });
 
-    function showExcerpts(id, bg) {
-      let postCard = $("#" + id);
-      postCard.mouseover(function(){
-        postCard.css("background-image", "url(/assets/"+bg+")");
-        postCard.css("color", "#ffffff");
-      });
-      postCard.mouseout(function () {
-        postCard.css("background-image", "");
-        postCard.css("color", "");
-      });
-    }
+    function getGraph(){
+        let categories = [
+            {"name": "分类"},
+            {"name": "标签"},
+            {"name": "文章"}
+        ];
 
-    (function($, h, c) {
-      var a = $([]),
-              e = $.resize = $.extend($.resize, {}),
-              i,
-              k = "setTimeout",
-              j = "resize",
-              d = j + "-special-event",
-              b = "delay",
-              f = "throttleWindow";
-      e[b] = 250;
-      e[f] = true;
-      $.event.special[j] = {
-        setup: function() {
-          if (!e[f] && this[k]) {
-            return false;
-          }
-          var l = $(this);
-          a = a.add(l);
-          $.data(this, d, {
-            w: l.width(),
-            h: l.height()
-          });
-          if (a.length === 1) {
-            g();
-          }
-        },
-        teardown: function() {
-          if (!e[f] && this[k]) {
-            return false;
-          }
-          var l = $(this);
-          a = a.not(l);
-          l.removeData(d);
-          if (!a.length) {
-            clearTimeout(i);
-          }
-        },
-        add: function(l) {
-          if (!e[f] && this[k]) {
-            return false;
-          }
-          var n;
-          function m(s, o, p) {
-            var q = $(this),
-                    r = $.data(this, d);
-            r.w = o !== c ? o: q.width();
-            r.h = p !== c ? p: q.height();
-            n.apply(this, arguments);
-          }
-          if ($.isFunction(l)) {
-            n = l;
-            return m;
-          } else {
-            n = l.handler;
-            l.handler = m;
-          }
-        }
-      };
-      function g() {
-        i = h[k](function() {
-                  a.each(function() {
-                    var n = $(this),
-                            m = n.width(),
-                            l = n.height(),
-                            o = $.data(this, d);
-                    if (m !== o.w || l !== o.h) {
-                      n.trigger(j, [o.w = m, o.h = l]);
-                    }
-                  });
-                  g();
+        let nodes_post = [
+            {%- for post in site.posts -%}
+                {
+                    "id": "{{post.url}}",
+                    "name": "{{post.title}}",
+                    "value": "文章",
+                    "category": "文章",
+                    "label": {"show": true},
+                    "symbolSize": 10,
+                    "symbol": 'circle',
+                    "x": randomX(),
+                    "y": randomY(),
+                    "url": "{{post.url}}"
                 },
-                e[b]);
-      }
-    })(jQuery, this);
+            {%- endfor -%}
+        ]
 
-    function handleCategory(id) {
-      // hide tag
-      if (tag_id !== undefined) {
-        tag_id.hide();
-        tag_id = undefined;
-      }
-      if (category_id !== undefined){
-        if (category_id.css("display") === "none") {
-          category_id.show();
-        } else {
-          category_id.hide();
+        let nodes_tag = [
+            {%- for tag in site.tags -%}
+                    {
+                        "id": "{{tag[0]}}",
+                        "name": "{{tag[0]}}",
+                        "value": "标签",
+                        "category": "标签",
+                        "label": {"show": false},
+                        "symbolSize": 20,
+                        "symbol": 'image://assets/icon/{{tag[0]}}.png',
+                        "x": randomX(),
+                        "y": randomY()
+                    },
+            {%- endfor -%}
+        ]
+
+        let nodes_cat = [
+            {%- for cat in site.categories -%}
+                    {
+                        "id": "{{cat[0]}}",
+                        "name": "{{cat[0]}}",
+                        "value": "分类",
+                        "category": "分类",
+                        "label": {"show": false},
+                        "symbolSize": 35,
+                        "symbol": 'image://assets/icon/{{cat[0]}}.png',
+                        "x": randomX(),
+                        "y": randomY()
+                    },
+            {%- endfor -%}
+        ]
+
+        // imjcker 跟节点
+        let root_node = [
+            {
+                "id": "imjcker",
+                "name": "{{site.author}}",
+                "value": "category",
+                "category": "分类",
+                "label": {"show": false},
+                "symbolSize": 50,
+                "symbol": 'image://assets/{{site.style.home.avatar}}',
+                "x": randomX(),
+                "y": randomY()
+            }
+        ]
+        let nodes = uniqueBy(Array.from(new Set(root_node.concat(nodes_cat).concat(nodes_tag).concat(nodes_post))), 'id');
+
+
+
+        let links_c_root = [
+            {%- for category in site.categories -%}
+        {
+            "source": "{{category[0]}}",
+            "target": "imjcker"
+        },
+        {%- endfor -%}
+        ]
+        let links_t_p = [
+                {%- for tag in site.tags -%}
+            {%- for post in tag[1] -%}
+            {
+                "source": "{{post.url}}",
+                "target": "{{tag[0]}}"
+            },
+            {%- endfor -%}
+            {%- endfor -%}
+        ]
+        let links_c_t = [
+                {%- for post in site.posts -%}
+            {%- for tag in post.tags -%}
+            {
+                "source": "{{tag}}",
+                "target": "{{post.categories[0]}}"
+            },
+            {%- endfor -%}
+            {%- endfor -%}
+        ]
+        let links = links_t_p.concat(links_c_t).concat(links_c_root);
+
+        // show clicked category
+        let hash = decodeURI(document.location.hash.toString().substr(1));
+        if (hash === ''){
+            return {
+                "categories": categories,
+                "links": links,
+                "nodes": nodes
+            }
         }
-      }
 
-      let category = 'category-' + id.toString().substr(2);
-      let cate = $('#'+category);
-      category_id = cate;
-      if (cate.css("display") === "none") {
-        cate.show();
-      } else {
-        cate.hide();
-      }
+        if (hash.startsWith('c-')){
+            let cat = hash.substr(2)
+            // 过滤分类节点
+            nodes_cat = nodes_cat.filter(function(item){
+                return item.name === cat;
+            });
+            // 过滤文章节点
+            nodes_post = [
+                    {%- for category in site.categories -%}
+                    {%- for post in category[1] -%}
+                    {
+                        "id": "{{post.url}}",
+                        "name": "{{post.title}}",
+                        "value": "文章",
+                        "category": "文章",
+                        "label": {"show": true},
+                        "symbolSize": 20,
+                        "symbol": 'circle',
+                        "x": randomX(),
+                        "y": randomY(),
+                        "url": "{{post.url}}",
+                        "ccc": "{{category[0]}}"
+                    },
+                    {%- endfor -%}
+                    {%- endfor -%}
+                ].filter(function (item) {
+                    return item.ccc === cat
+                });
+
+            // 寻找target为hash的link，然后通过这批link的source过滤tags节点
+            let links_t_c = links.filter(function (link) {
+                return link.target === cat;// || link.source === cat;
+            })
+            // 过滤标签节点
+            nodes_tag = nodes_tag.filter(function (node) {
+                return  links_t_c.find((value) => value.source === node.name)
+            })
+            //合并节点
+            nodes = nodes_cat.concat(nodes_tag).concat(nodes_post);
+        } else if (hash.startsWith('t-')){
+            let tag = hash.substr(2)
+            nodes_tag = nodes_tag.filter(function (node){
+                return node.name === tag;
+            });
+
+            nodes_post = [
+                    {%- for tag in site.tags -%}
+                    {%- for post in tag[1] -%}
+                    {
+                        "id": "{{post.url}}",
+                        "name": "{{post.title}}",
+                        "value": "文章",
+                        "category": "文章",
+                        "label": {"show": true},
+                        "symbolSize": 20,
+                        "symbol": 'circle',
+                        "x": randomX(),
+                        "y": randomY(),
+                        "url": "{{post.url}}",
+                        "ttt": "{{tag[0]}}"
+                    },
+                    {%- endfor -%}
+                    {%- endfor -%}
+                ].filter(function (item) {
+                    return item.ttt === tag;
+            });
+            nodes = nodes_tag.concat(nodes_post);
+        }
+
+        return {
+            "categories": categories,
+            "links": links,
+            "nodes": nodes
+        }
     }
 
-    function handleTag(id) {
-      // hid category
-      if (category_id !== undefined) {
-        category_id.hide();
-        category_id = undefined;
-      }
-      if (tag_id !== undefined){
-        if (tag_id.css("display") === "none") {
-          tag_id.show();
-        } else {
-          tag_id.hide();
+    function initGraph() {
+        let chartDom = document.getElementById('main');
+        if(chartDom === undefined){
+            return;
         }
-      }
+        $('#main').height(window.outerHeight);
+        let myChart = echarts.init(chartDom);
+        let graph = getGraph();
 
-      let tag = 'tag-' + id.toString().substr(2);
-      let t = $('#'+tag);
-      tag_id = t;
-      if (t.css("display") === "none") {
-        t.show();
-      } else {
-        t.hide();
-      }
+        myChart.showLoading();
+        myChart.hideLoading();
+        graph.nodes.forEach(function (node) {
+            node.label = {
+                show: node.symbolSize > 1
+            };
+        });
+        let option = {
+            title: {
+                text: '{{site.graph.option.title.text}}',
+                subtext: '{{site.graph.option.title.subtext}}'
+            },
+            tooltip: {"show": false},
+            legend: {
+                orient: 'vertical',
+                x: 70,
+                y: 'center',
+                // selected: {'文章': false},
+                data: graph.categories.map(function (c) {
+                    return c.name;
+                })
+            },
+            animationDuration: 1500,
+            animationEasingUpdate: 'quinticInOut',
+            series: [
+                {
+                    name: '知识图谱',
+                    type: 'graph',
+                    layout: 'force',
+                    force: {
+                        repulsion: 1,
+                        edgeLength: 7
+                    },
+                    data: graph.nodes,
+                    links: graph.links,
+                    categories: graph.categories,
+                    roam: false, // 缩放
+                    draggable: true,
+                    label: {
+                        position: 'right',
+                        formatter: '{b}'
+                    },
+                    edgeSymbol : ['none', 'arrow'],
+                    lineStyle: {
+                        color: 'source',
+                        curveness: 0.01
+                    },
+                    emphasis: {
+                        focus: 'adjacency',
+                        lineStyle: {
+                            width: 3
+                        }
+                    }
+                }
+            ]
+        };
+        myChart.setOption(option);
+
+        myChart.on('click', function (params) {
+            if (params.data.category === '文章'){
+                window.open(params.data.url, '_self')
+            }
+        })
+        myChart.on('dblclick', function (params) {
+            if (params.data.category === '分类' && params.data.name !== '{{site.author}}'){
+                window.open('/#c-'+params.data.name, '_self')
+                initGraph();
+            } else if (params.data.category === '标签') {
+                window.open('/#t-'+params.data.name, '_self')
+                initGraph();
+            }
+        })
     }
-  </script>
-  </body>
 
+    function uniqueBy(dataSet, field) {
+        let dest = [];
+        for (let i = 0; i < dataSet.length; i++) {
+            let ai = dataSet[i];
+            if (i === 0) {
+                dest.push(ai);
+            } else {
+                let filterData = dest.filter(function (e) {
+                    return e[field] === ai[field];
+                })
+                if (filterData.length === 0) {
+                    dest.push(ai);
+                }
+            }
+        }
+        return dest;
+    }
+
+    function randomX() {
+        return Math.random() * 38.2
+    }
+    function randomY() {
+        return Math.random() * 61.8
+    }
+</script>
 </html>

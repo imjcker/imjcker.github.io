@@ -1,48 +1,36 @@
-
 author: 百年孤独
-title: 百年孤独
-description: >- # this means to ignore newlines until "baseurl:"
-  我一条狗，吃饭旅行，走走停停!!!
-baseurl: "/" # the subpath of your site, e.g. /blog
-url: "https://blog.imjcker.com" # the base hostname & protocol for your site, e.g. http://example.com
+title: 大道至简
 
+baseurl: "/"
+url: "http://imjcker.com"
 
-# Build settings
-#theme: minima
+# 插件
 plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-seo-tag
-#
-#disqus:
-#  shortname: imjcker
 
-# 分页
-paginate: 6
-postCardRow: 2 # 12 x postCardRow / paginate 为整数
 # 是否显示预览信息
 show_excerpts: true
 
-# 自定义变量
-imjcker:
-  menu: 首页
+# 社交信息
 social:
   qq: 570577029
-  wechat: helloalanturing
+  wechat: QQ570577029
   twitter_username: helloalanturing
   github_username: imjcker
   email: helloalanturing@icloud.com
-  friends:
-    - name: Google
-      url: https://www.google.com
-    - name: Bing
-      url: https://cn.bing.com
+  csdn: u012137018
 
-
+# 样式设置
 style:
   home:
-    card_img: avatar.jpg
-  css: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark']
+    avatar: avatar.jpg
+  css:
+    tag_style: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark']
 
-
-google_analytics: UA-164703783-1
+graph:
+  option:
+    title:
+      text: 知识图谱
+      subtext: 单击文章节点跳转至指定文章页面，双击标签/分类，展示指定标签/分类的图谱信息

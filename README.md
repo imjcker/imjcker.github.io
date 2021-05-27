@@ -1,7 +1,6 @@
 # my personal blog
 [我的个人博客](https://imjcker.github.io)，好看你就fork me，顺便给个小星星哟～
 
-## 不同分支不同主题哟
 
 
 ![1](/docs/1.png)
