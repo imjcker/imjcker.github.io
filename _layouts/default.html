@@ -9,8 +9,7 @@
     {%- feed_meta -%}
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{{"/assets/css/imjcker.css" | relative_url}}">
-    <link rel="stylesheet" href="/assets/css/highlight.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
 
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -26,20 +25,9 @@
 {%- assign page_paths = site.header_pages | default: default_paths -%}
 
 <body class="container-fluid">
-<nav class="navbar navbar-light ">
+<nav class="navbar navbar-light" style="margin: 0; border: 0; padding: 0;">
     <div class="container">
-        <a href="/" class="navbar-brand py-0"><img src="/assets/avatar.jpg" class="rounded-circle" style="width: 27px" alt="Avatar"><span class="fa fa-lg">{{site.title}}</span></a>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">首页</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/category">分组</a>
-                </li>
-            </ul>
-        </div>
+        <a href="/" class="navbar-brand py-0"><img src="/assets/{{site.style.home.avatar}}" class="rounded-circle" style="width: 27px" alt="Avatar"><span class="fa fa-lg">{{site.title}}</span></a>
     </div>
 </nav>
 
@@ -184,7 +172,6 @@
 
         // show clicked category
         let hash = decodeURI(document.location.hash.toString().substr(1));
-        console.log('hash', hash)
         if (hash === ''){
             return {
                 "categories": categories,
@@ -195,12 +182,10 @@
 
         if (hash.startsWith('c-')){
             let cat = hash.substr(2)
-            console.log('分类：',cat)
             // 过滤分类节点
             nodes_cat = nodes_cat.filter(function(item){
                 return item.name === cat;
             });
-            console.log('nodes_cat：',nodes_cat)
             // 过滤文章节点
             nodes_post = [
                     {%- for category in site.categories -%}
@@ -223,21 +208,17 @@
                 ].filter(function (item) {
                     return item.ccc === cat
                 });
-            console.log('nodes_post:',nodes_post)
 
             // 寻找target为hash的link，然后通过这批link的source过滤tags节点
             let links_t_c = links.filter(function (link) {
                 return link.target === cat;// || link.source === cat;
             })
-            console.log('links_t_c:', links_t_c)
             // 过滤标签节点
             nodes_tag = nodes_tag.filter(function (node) {
                 return  links_t_c.find((value) => value.source === node.name)
             })
-            console.log('nodes_tag', nodes_tag)
             //合并节点
             nodes = nodes_cat.concat(nodes_tag).concat(nodes_post);
-            console.log('所有节点：', nodes);
         } else if (hash.startsWith('t-')){
             let tag = hash.substr(2)
             nodes_tag = nodes_tag.filter(function (node){
@@ -276,8 +257,11 @@
     }
 
     function initGraph() {
-        $('#main').height(window.outerHeight);
         let chartDom = document.getElementById('main');
+        if(chartDom === undefined){
+            return;
+        }
+        $('#main').height(window.outerHeight);
         let myChart = echarts.init(chartDom);
         let graph = getGraph();
 
@@ -290,15 +274,19 @@
         });
         let option = {
             title: {
-                text: '知识图谱',
-                subtext: 'BY {{site.author}}\n{{site.posts[0].date | date: "%D" }}',
+                text: '{{site.graph.option.title.text}}',
+                subtext: '{{site.graph.option.title.subtext}}'
             },
             tooltip: {"show": false},
-            legend: [{
+            legend: {
+                orient: 'vertical',
+                x: 70,
+                y: 'center',
+                // selected: {'文章': false},
                 data: graph.categories.map(function (c) {
                     return c.name;
                 })
-            }],
+            },
             animationDuration: 1500,
             animationEasingUpdate: 'quinticInOut',
             series: [
@@ -336,13 +324,11 @@
         myChart.setOption(option);
 
         myChart.on('click', function (params) {
-            console.log(params)
             if (params.data.category === '文章'){
                 window.open(params.data.url, '_self')
             }
         })
         myChart.on('dblclick', function (params) {
-            console.log(params)
             if (params.data.category === '分类' && params.data.name !== '{{site.author}}'){
                 window.open('/#c-'+params.data.name, '_self')
                 initGraph();

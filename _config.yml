@@ -29,5 +29,8 @@ style:
   css:
     tag_style: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark']
 
-
-
+graph:
+  option:
+    title:
+      text: 知识图谱
+      subtext: 单击文章节点跳转至指定文章页面，双击标签/分类，展示指定标签/分类的图谱信息
