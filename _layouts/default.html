@@ -25,38 +25,36 @@
 {%- assign page_paths = site.header_pages | default: default_paths -%}
 
 <body class="container-fluid">
-<nav class="navbar navbar-light" style="margin: 0; border: 0; padding: 0;">
+<nav class="navbar navbar-light" style="margin: 0; border: 0; padding: 0; position: fixed;">
     <div class="container">
-        <a href="/" class="navbar-brand py-0"><img src="{{site.data.style.avatar}}" class="rounded-circle" style="width: 27px" alt="Avatar"><span class="fa fa-lg">{{site.title}}</span></a>
+        <a href="/" class="navbar-brand py-0"><img src="/assets/favicon.ico" class="rounded-circle" style="width: 26px;"><span>{{site.title}}</span></a>
     </div>
 </nav>
 
 {{ content }}
 
 </body>
-<footer id="footer" class="footer fixed-bottom">
-    <div>
-        <hr>
-        <div class="tooter-social" style="text-align: center;">
-            {%- if site.social.github_username -%}
-            <small><a class="social github" target="blank" href="https://github.com/{{site.social.github_username}}">Github</a>&nbsp;&nbsp;</small>
-            {%- endif -%}
-            {%- if site.social.twitter_username -%}
-            <small><a class="social twitter" target="blank" href="https://twitter.com/{{site.social.twitter_username}}">Twitter</a>&nbsp;&nbsp;</small>
-            {%- endif -%}
-            {%- if site.social.csdn -%}
-            <small><a class="social csdn" target="blank" href="http://blog.csdn.net/{{site.social.csdn}}">CSDN</a>&nbsp;&nbsp;</small>
-            {%- endif -%}
-            {%- if site.social.qq -%}
-            <small><a class="u-email" target="_blank" href="mailto:{{ site.social.email }}">QQ</a>&nbsp;&nbsp;</small>
-            {%- endif -%}
-            {%- if site.social.wechat -%}
-            <small><a class="u-email" href="mailto:{{ site.social.email }}">WeChat</a>&nbsp;&nbsp;</small>
-            {%- endif -%}
-            {%- if site.social.email -%}
-            <small><a class="u-email" href="mailto:{{ site.social.email }}">email</a>&nbsp;&nbsp;</small>
-            {%- endif -%}
-        </div>
+<footer id="footer" class="footer fixed-bottom" style="height: 24px;">
+    <hr style="margin: 0;">
+    <div class="tooter-social" style="text-align: center;">
+        {%- if site.social.github_username -%}
+        <small><a class="social github" target="blank" href="https://github.com/{{site.social.github_username}}">Github</a>&nbsp;&nbsp;</small>
+        {%- endif -%}
+        {%- if site.social.twitter_username -%}
+        <small><a class="social twitter" target="blank" href="https://twitter.com/{{site.social.twitter_username}}">Twitter</a>&nbsp;&nbsp;</small>
+        {%- endif -%}
+        {%- if site.social.csdn -%}
+        <small><a class="social csdn" target="blank" href="http://blog.csdn.net/{{site.social.csdn}}">CSDN</a>&nbsp;&nbsp;</small>
+        {%- endif -%}
+        {%- if site.social.qq -%}
+        <small><a class="u-email" target="_blank" href="mailto:{{ site.social.email }}">QQ</a>&nbsp;&nbsp;</small>
+        {%- endif -%}
+        {%- if site.social.wechat -%}
+        <small><a class="u-email" href="mailto:{{ site.social.email }}">WeChat</a>&nbsp;&nbsp;</small>
+        {%- endif -%}
+        {%- if site.social.email -%}
+        <small><a class="u-email" href="mailto:{{ site.social.email }}">email</a>&nbsp;&nbsp;</small>
+        {%- endif -%}
     </div>
 </footer>
 
@@ -131,7 +129,7 @@
                 "category": "分类",
                 "label": {"show": false},
                 "symbolSize": 50,
-                "symbol": 'image:/{{site.data.style.avatar}}',
+                "symbol": 'image://assets/favicon.ico',
                 "x": randomX(),
                 "y": randomY()
             }
@@ -274,6 +272,8 @@
         });
         let option = {
             title: {
+                x: 0,
+                y: 37,
                 text: '{{site.graph.option.title.text}}',
                 subtext: '{{site.graph.option.title.subtext}}'
             },

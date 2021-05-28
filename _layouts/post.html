@@ -5,19 +5,18 @@ layout: default
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-9">
-        <div class="post-header">
-          <h1 class="post-title" >{{ page.title | escape }}</h1>
-          <p class="post-meta" style="width: 100%; float: left;">
+        <div class="post-header" style="margin-top: 60px;">
+          <h1 class="post-title" style="text-align: center;">{{ page.title | escape }}</h1>
+          <p class="post-meta" style="width: 100%; text-align: center;">
             {%- if page.categories.size > 0 -%}
             {%- for category in page.categories -%}
-            分组：<a class="btn btn-sm btn-outline-{{site.data.style.tag_style | sample}}" href="/#c-{{category}}">{{category}}</a>
+            分类：<a class="badge badge-{{site.data.style.tag_style | sample}}" href="/#c-{{category}}">{{category}}</a>
             {%- endfor -%}
             {%- endif -%}
-            &nbsp;&nbsp;
-            关键字：
+            &nbsp;标签：
             {%- if page.tags.size > 0 -%}
             {%- for tag in page.tags -%}
-            <a class="btn btn-sm btn-outline-{{site.data.style.tag_style | sample}}" href="/#t-{{tag}}">{{tag}}</a>&nbsp;
+            <a class="badge badge-{{site.data.style.tag_style | sample}}" href="/#t-{{tag}}">{{tag}}</a>&nbsp;
             {%- endfor -%}
             {%- endif -%}
 
@@ -33,7 +32,7 @@ layout: default
         </div>
         <hr>
         <!--博客内容-->
-        <div>
+        <div class="post-content">
           {{ content }}
         </div>
       </div>
