@@ -1,0 +1,4 @@
+{
+  "avatar": "/assets/avatar.jpg",
+  "tag_style": ["primary", "secondary", "success", "danger", "warning", "info", "dark"]
+}

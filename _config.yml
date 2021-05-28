@@ -1,17 +1,11 @@
 author: 百年孤独
 title: 大道至简
 
-baseurl: "/"
-url: "http://imjcker.com"
-
 # 插件
 plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-seo-tag
-
-# 是否显示预览信息
-show_excerpts: true
 
 # 社交信息
 social:
@@ -22,13 +16,7 @@ social:
   email: helloalanturing@icloud.com
   csdn: u012137018
 
-# 样式设置
-style:
-  home:
-    avatar: avatar.jpg
-  css:
-    tag_style: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark']
-
+# 图谱设置
 graph:
   option:
     title:

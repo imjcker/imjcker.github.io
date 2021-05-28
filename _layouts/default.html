@@ -27,7 +27,7 @@
 <body class="container-fluid">
 <nav class="navbar navbar-light" style="margin: 0; border: 0; padding: 0;">
     <div class="container">
-        <a href="/" class="navbar-brand py-0"><img src="/assets/{{site.style.home.avatar}}" class="rounded-circle" style="width: 27px" alt="Avatar"><span class="fa fa-lg">{{site.title}}</span></a>
+        <a href="/" class="navbar-brand py-0"><img src="{{site.data.style.avatar}}" class="rounded-circle" style="width: 27px" alt="Avatar"><span class="fa fa-lg">{{site.title}}</span></a>
     </div>
 </nav>
 
@@ -131,7 +131,7 @@
                 "category": "分类",
                 "label": {"show": false},
                 "symbolSize": 50,
-                "symbol": 'image://assets/{{site.style.home.avatar}}',
+                "symbol": 'image:/{{site.data.style.avatar}}',
                 "x": randomX(),
                 "y": randomY()
             }
